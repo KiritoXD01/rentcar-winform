@@ -82,7 +82,16 @@
     <Compile Include="FrmMarcaVehiculo.Designer.cs">
       <DependentUpon>FrmMarcaVehiculo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmModeloVehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmModeloVehiculo.Designer.cs">
+      <DependentUpon>FrmModeloVehiculo.cs</DependentUpon>
+    </Compile>
     <Compile Include="MARCA_VEHICULO.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MODELO_VEHICULO.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -101,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMarcaVehiculo.resx">
       <DependentUpon>FrmMarcaVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmModeloVehiculo.resx">
+      <DependentUpon>FrmModeloVehiculo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

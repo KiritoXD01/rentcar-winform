@@ -10,16 +10,23 @@ using System.Windows.Forms;
 
 namespace RentACar
 {
-    public partial class FrmMarcaVehiculo : Form
+    public partial class FrmModeloVehiculo : Form
     {
-        MARCA_VEHICULO model = new MARCA_VEHICULO();
+        MODELO_VEHICULO model = new MODELO_VEHICULO();
 
-        public FrmMarcaVehiculo()
+        public FrmModeloVehiculo()
         {
             InitializeComponent();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void FrmModeloVehiculo_Load(object sender, EventArgs e)
+        {
+            ClearForm();
+            PopulateDataGridView();
+            PopulateComboMarca();
+        }
+
+        private void btnCloseTipoVehiculo_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -33,31 +40,36 @@ namespace RentACar
             model.ID = 0;
         }
 
-        private void FrmMarcaVehiculo_Load(object sender, EventArgs e)
-        {
-            ClearForm();
-            PopulateDataGridView();
-        }
-
         private void PopulateDataGridView()
         {
-            gridMarcaVehiculo.AutoGenerateColumns = false;
+            gridModeloVehiculo.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
-                gridMarcaVehiculo.DataSource = db.MARCA_VEHICULO.ToList<MARCA_VEHICULO>();
+                gridModeloVehiculo.DataSource = db.MODELO_VEHICULO.ToList<MODELO_VEHICULO>();
+            }
+        }
+
+        private void PopulateComboMarca()
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                comboMarca.DataSource = db.MARCA_VEHICULO.ToList<MARCA_VEHICULO>();
+                comboMarca.DisplayMember = "NOMBRE";
+                comboMarca.ValueMember = "ID";
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             model.NOMBRE = TxNombre.Text.Trim();
+            model.MARCA_VEHICULO = Convert.ToInt32(comboMarca.SelectedValue);
             model.ESTADO = checkEstado.Checked;
 
             using (DBEntities db = new DBEntities())
             {
                 if (model.ID == 0)
                 {
-                    db.MARCA_VEHICULO.Add(model);
+                    db.MODELO_VEHICULO.Add(model);
                 }
                 else
                 {
@@ -67,19 +79,22 @@ namespace RentACar
             }
             ClearForm();
             PopulateDataGridView();
-            MessageBox.Show("Marca de vehiculo actualizado existosamente");
+            PopulateComboMarca();
+            MessageBox.Show("Modelo de vehiculo actualizado existosamente");
         }
 
-        private void gridMarcaVehiculo_DoubleClick(object sender, EventArgs e)
+        private void gridModeloVehiculo_DoubleClick(object sender, EventArgs e)
         {
-            if (gridMarcaVehiculo.CurrentRow.Index != -1)
+            if (gridModeloVehiculo.CurrentRow.Index != -1)
             {
-                model.ID = Convert.ToInt32(gridMarcaVehiculo.CurrentRow.Cells["ID"].Value);
+                model.ID = Convert.ToInt32(gridModeloVehiculo.CurrentRow.Cells["ID"].Value);
+
                 using (DBEntities db = new DBEntities())
                 {
-                    model = db.MARCA_VEHICULO.Where(x => x.ID == model.ID).FirstOrDefault();
+                    model = db.MODELO_VEHICULO.Where(x => x.ID == model.ID).FirstOrDefault();
                     TxNombre.Text = model.NOMBRE;
                     checkEstado.Checked = Convert.ToBoolean(model.ESTADO);
+                    comboMarca.SelectedValue = Convert.ToInt32(model.MARCA_VEHICULO);
                 }
                 btnSave.Text = "Actualizar";
                 btnDelete.Enabled = true;
@@ -93,18 +108,24 @@ namespace RentACar
                 using (DBEntities db = new DBEntities())
                 {
                     var entry = db.Entry(model);
-                    if (entry.State == System.Data.Entity.EntityState.Detached)
+                    if(entry.State == System.Data.Entity.EntityState.Detached)
                     {
-                        db.MARCA_VEHICULO.Attach(model);
+                        db.MODELO_VEHICULO.Attach(model);
                     }
-                    db.MARCA_VEHICULO.Remove(model);
+                    db.MODELO_VEHICULO.Remove(model);
                     db.SaveChanges();
 
                     PopulateDataGridView();
+                    PopulateComboMarca();
                     ClearForm();
                     MessageBox.Show("Marca de vehiculo eliminado existosamente");
                 }
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            ClearForm();
         }
     }
 }

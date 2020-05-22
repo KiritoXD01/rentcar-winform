@@ -77,5 +77,10 @@ namespace RentACar
         {
             openChildForm(new FrmMarcaVehiculo());
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FrmModeloVehiculo());
+        }
     }
 }
