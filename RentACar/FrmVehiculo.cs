@@ -37,7 +37,7 @@ namespace RentACar
             gridVehiculo.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
-                gridVehiculo.DataSource = db.VEHICULO.ToList<VEHICULO>();
+                gridVehiculo.DataSource = db.VEHICULOes.ToList<VEHICULO>();
             }
         }
 
@@ -90,7 +90,7 @@ namespace RentACar
             {
                 if (model.ID == 0)
                 {
-                    db.VEHICULO.Add(model);
+                    db.VEHICULOes.Add(model);
                 }
                 else
                 {
@@ -112,7 +112,7 @@ namespace RentACar
 
                 using (DBEntities db = new DBEntities())
                 {
-                    model = db.VEHICULO.Where(x => x.ID == model.ID).FirstOrDefault();
+                    model = db.VEHICULOes.Where(x => x.ID == model.ID).FirstOrDefault();
                     comboModelo.SelectedValue = Convert.ToInt32(model.MODELO_VEHICULO);
                     TxNumeroChasis.Text = model.NUMERO_CHASIS;
                     TxNumeroMotor.Text = model.NUMERO_MOTOR;
@@ -143,9 +143,9 @@ namespace RentACar
                     var entry = db.Entry(model);
                     if(entry.State == System.Data.Entity.EntityState.Detached)
                     {
-                        db.VEHICULO.Attach(model);
+                        db.VEHICULOes.Attach(model);
                     }
-                    db.VEHICULO.Remove(model);
+                    db.VEHICULOes.Remove(model);
                     db.SaveChanges();
 
                     PopulateDataGridView();

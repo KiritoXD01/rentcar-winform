@@ -5,6 +5,22 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="rentacarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRES" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="APELLIDOS" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="CEDULA" Type="int" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TARJETA_CREDITO" Type="int" Nullable="false" />
+          <Property Name="LIMITE_CREDITO" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TIPO_PERSONA" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ESTADO" Type="bit" />
+          <Property Name="FECHA_CREACION" Type="datetime" />
+        </EntityType>
         <EntityType Name="COMBUSTIBLE_VEHICULO">
           <Key>
             <PropertyRef Name="ID" />
@@ -64,43 +80,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VEHICULO__COMBUS__6B24EA82">
-          <End Role="COMBUSTIBLE_VEHICULO" Type="Self.COMBUSTIBLE_VEHICULO" Multiplicity="0..1" />
-          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="COMBUSTIBLE_VEHICULO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="VEHICULO">
-              <PropertyRef Name="COMBUSTIBLE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VEHICULO__MODELO__6A30C649">
-          <End Role="MODELO_VEHICULO" Type="Self.MODELO_VEHICULO" Multiplicity="0..1" />
-          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MODELO_VEHICULO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="VEHICULO">
-              <PropertyRef Name="MODELO_VEHICULO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VEHICULO__TIPO_V__693CA210">
-          <End Role="TIPO_VEHICULO" Type="Self.TIPO_VEHICULO" Multiplicity="0..1" />
-          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_VEHICULO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="VEHICULO">
-              <PropertyRef Name="TIPO_VEHICULO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="rentacarModelStoreContainer">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMBUSTIBLE_VEHICULO" EntityType="Self.COMBUSTIBLE_VEHICULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MARCA_VEHICULO" EntityType="Self.MARCA_VEHICULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MODELO_VEHICULO" EntityType="Self.MODELO_VEHICULO" Schema="dbo" store:Type="Tables" />
@@ -109,18 +90,6 @@
           <AssociationSet Name="FK__MODELO_VE__MARCA__68487DD7" Association="Self.FK__MODELO_VE__MARCA__68487DD7">
             <End Role="MARCA_VEHICULO" EntitySet="MARCA_VEHICULO" />
             <End Role="MODELO_VEHICULO" EntitySet="MODELO_VEHICULO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VEHICULO__COMBUS__6B24EA82" Association="Self.FK__VEHICULO__COMBUS__6B24EA82">
-            <End Role="COMBUSTIBLE_VEHICULO" EntitySet="COMBUSTIBLE_VEHICULO" />
-            <End Role="VEHICULO" EntitySet="VEHICULO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VEHICULO__MODELO__6A30C649" Association="Self.FK__VEHICULO__MODELO__6A30C649">
-            <End Role="MODELO_VEHICULO" EntitySet="MODELO_VEHICULO" />
-            <End Role="VEHICULO" EntitySet="VEHICULO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VEHICULO__TIPO_V__693CA210" Association="Self.FK__VEHICULO__TIPO_V__693CA210">
-            <End Role="TIPO_VEHICULO" EntitySet="TIPO_VEHICULO" />
-            <End Role="VEHICULO" EntitySet="VEHICULO" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -158,6 +127,7 @@
             <End Role="TIPO_VEHICULO" EntitySet="TIPO_VEHICULO" />
             <End Role="VEHICULO" EntitySet="VEHICULOes" />
           </AssociationSet>
+          <EntitySet Name="CLIENTEs" EntityType="rentacarModel.CLIENTE" />
         </EntityContainer>
         <EntityType Name="MARCA_VEHICULO">
           <Key>
@@ -253,6 +223,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRES" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDOS" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CEDULA" Type="Int32" Nullable="false" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TARJETA_CREDITO" Type="Int32" Nullable="false" />
+          <Property Name="LIMITE_CREDITO" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TIPO_PERSONA" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ESTADO" Type="Boolean" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -307,6 +293,23 @@
                 <ScalarProperty Name="NUMERO_MOTOR" ColumnName="NUMERO_MOTOR" />
                 <ScalarProperty Name="NUMERO_CHASIS" ColumnName="NUMERO_CHASIS" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTEs">
+            <EntityTypeMapping TypeName="rentacarModel.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="TIPO_PERSONA" ColumnName="TIPO_PERSONA" />
+                <ScalarProperty Name="LIMITE_CREDITO" ColumnName="LIMITE_CREDITO" />
+                <ScalarProperty Name="TARJETA_CREDITO" ColumnName="TARJETA_CREDITO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="CEDULA" ColumnName="CEDULA" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -40,6 +40,7 @@
             this.SidebarLogo = new System.Windows.Forms.Panel();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnClientes = new System.Windows.Forms.Button();
             this.Sidebar.SuspendLayout();
             this.panelVehiculo.SuspendLayout();
             this.panelContainer.SuspendLayout();
@@ -50,6 +51,7 @@
             // 
             this.Sidebar.AutoScroll = true;
             this.Sidebar.BackColor = System.Drawing.Color.Black;
+            this.Sidebar.Controls.Add(this.btnClientes);
             this.Sidebar.Controls.Add(this.panelVehiculo);
             this.Sidebar.Controls.Add(this.btnVehiculoPanel);
             this.Sidebar.Controls.Add(this.SidebarLogo);
@@ -199,6 +201,22 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // btnClientes
+            // 
+            this.btnClientes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClientes.FlatAppearance.BorderSize = 0;
+            this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClientes.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnClientes.Location = new System.Drawing.Point(0, 354);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnClientes.Size = new System.Drawing.Size(250, 45);
+            this.btnClientes.TabIndex = 2;
+            this.btnClientes.Text = "Clientes";
+            this.btnClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClientes.UseVisualStyleBackColor = true;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
+            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -233,6 +251,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panelContainer;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnClientes;
     }
 }
 

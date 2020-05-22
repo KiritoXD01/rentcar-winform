@@ -55,6 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CLIENTE.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="COMBUSTIBLE_VEHICULO.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
@@ -72,6 +75,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCliente.Designer.cs">
+      <DependentUpon>FrmCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCombustibleVehiculo.cs">
       <SubType>Form</SubType>
@@ -123,6 +132,9 @@
     <Compile Include="VEHICULO.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FrmCliente.resx">
+      <DependentUpon>FrmCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCombustibleVehiculo.resx">
       <DependentUpon>FrmCombustibleVehiculo.cs</DependentUpon>
     </EmbeddedResource>

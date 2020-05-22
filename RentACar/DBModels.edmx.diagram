@@ -14,6 +14,7 @@
         <AssociationConnector Association="rentacarModel.FK__VEHICULO__COMBUS__6B24EA82" />
         <AssociationConnector Association="rentacarModel.FK__VEHICULO__MODELO__6A30C649" />
         <AssociationConnector Association="rentacarModel.FK__VEHICULO__TIPO_V__693CA210" />
+        <EntityTypeShape EntityType="rentacarModel.CLIENTE" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

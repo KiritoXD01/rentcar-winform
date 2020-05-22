@@ -97,5 +97,10 @@ namespace RentACar
         {
             this.WindowState = FormWindowState.Maximized;
         }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FrmCliente());
+        }
     }
 }
