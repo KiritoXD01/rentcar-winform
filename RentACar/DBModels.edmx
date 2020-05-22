@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="rentacarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="COMBUSTIBLE_VEHICULO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ESTADO" Type="bit" />
+        </EntityType>
         <EntityType Name="MARCA_VEHICULO">
           <Key>
             <PropertyRef Name="ID" />
@@ -43,6 +51,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="rentacarModelStoreContainer">
+          <EntitySet Name="COMBUSTIBLE_VEHICULO" EntityType="Self.COMBUSTIBLE_VEHICULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MARCA_VEHICULO" EntityType="Self.MARCA_VEHICULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MODELO_VEHICULO" EntityType="Self.MODELO_VEHICULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_VEHICULO" EntityType="Self.TIPO_VEHICULO" Schema="dbo" store:Type="Tables" />
@@ -71,6 +80,7 @@
             <End Role="MARCA_VEHICULO" EntitySet="MARCA_VEHICULO" />
             <End Role="MODELO_VEHICULO" EntitySet="MODELO_VEHICULO" />
           </AssociationSet>
+          <EntitySet Name="COMBUSTIBLE_VEHICULO" EntityType="rentacarModel.COMBUSTIBLE_VEHICULO" />
         </EntityContainer>
         <EntityType Name="MARCA_VEHICULO">
           <Key>
@@ -103,6 +113,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="COMBUSTIBLE_VEHICULO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -133,6 +151,15 @@
                 <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="MARCA_VEHICULO" ColumnName="MARCA_VEHICULO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMBUSTIBLE_VEHICULO">
+            <EntityTypeMapping TypeName="rentacarModel.COMBUSTIBLE_VEHICULO">
+              <MappingFragment StoreEntitySet="COMBUSTIBLE_VEHICULO">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

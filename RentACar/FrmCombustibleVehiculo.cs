@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace RentACar
 {
-    public partial class FrmMarcaVehiculo : Form
+    public partial class FrmCombustibleVehiculo : Form
     {
-        MARCA_VEHICULO model = new MARCA_VEHICULO();
+        COMBUSTIBLE_VEHICULO model = new COMBUSTIBLE_VEHICULO();
 
-        public FrmMarcaVehiculo()
+        public FrmCombustibleVehiculo()
         {
             InitializeComponent();
         }
@@ -33,19 +33,19 @@ namespace RentACar
             model.ID = 0;
         }
 
-        private void FrmMarcaVehiculo_Load(object sender, EventArgs e)
+        private void PopulateDataGridView()
+        {
+            gridCombustibleVehiculo.AutoGenerateColumns = false;
+            using (DBEntities db = new DBEntities())
+            {
+                gridCombustibleVehiculo.DataSource = db.COMBUSTIBLE_VEHICULO.ToList<COMBUSTIBLE_VEHICULO>();
+            }
+        }
+
+        private void FormCombustibleVehiculo_Load(object sender, EventArgs e)
         {
             ClearForm();
             PopulateDataGridView();
-        }
-
-        private void PopulateDataGridView()
-        {
-            gridMarcaVehiculo.AutoGenerateColumns = false;
-            using (DBEntities db = new DBEntities())
-            {
-                gridMarcaVehiculo.DataSource = db.MARCA_VEHICULO.ToList<MARCA_VEHICULO>();
-            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace RentACar
             {
                 if (model.ID == 0)
                 {
-                    db.MARCA_VEHICULO.Add(model);
+                    db.COMBUSTIBLE_VEHICULO.Add(model);
                 }
                 else
                 {
@@ -67,17 +67,17 @@ namespace RentACar
             }
             ClearForm();
             PopulateDataGridView();
-            MessageBox.Show("Marca de vehiculo actualizado existosamente");
+            MessageBox.Show("Combustible de vehiculo actualizado existosamente");
         }
 
-        private void gridMarcaVehiculo_DoubleClick(object sender, EventArgs e)
+        private void gridCombustibleVehiculo_DoubleClick(object sender, EventArgs e)
         {
-            if (gridMarcaVehiculo.CurrentRow.Index != -1)
+            if (gridCombustibleVehiculo.CurrentRow.Index != -1)
             {
-                model.ID = Convert.ToInt32(gridMarcaVehiculo.CurrentRow.Cells["ID"].Value);
+                model.ID = Convert.ToInt32(gridCombustibleVehiculo.CurrentRow.Cells["ID"].Value);
                 using (DBEntities db = new DBEntities())
                 {
-                    model = db.MARCA_VEHICULO.Where(x => x.ID == model.ID).FirstOrDefault();
+                    model = db.COMBUSTIBLE_VEHICULO.Where(x => x.ID == model.ID).FirstOrDefault();
                     TxNombre.Text = model.NOMBRE;
                     checkEstado.Checked = Convert.ToBoolean(model.ESTADO);
                 }
@@ -95,14 +95,14 @@ namespace RentACar
                     var entry = db.Entry(model);
                     if (entry.State == System.Data.Entity.EntityState.Detached)
                     {
-                        db.MARCA_VEHICULO.Attach(model);
+                        db.COMBUSTIBLE_VEHICULO.Attach(model);
                     }
-                    db.MARCA_VEHICULO.Remove(model);
+                    db.COMBUSTIBLE_VEHICULO.Remove(model);
                     db.SaveChanges();
 
                     PopulateDataGridView();
                     ClearForm();
-                    MessageBox.Show("Marca de vehiculo eliminado existosamente");
+                    MessageBox.Show("Combustible de vehiculo eliminado existosamente");
                 }
             }
         }

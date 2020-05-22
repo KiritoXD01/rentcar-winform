@@ -28,5 +28,6 @@ namespace RentACar
         public virtual DbSet<TIPO_VEHICULO> TIPO_VEHICULO { get; set; }
         public virtual DbSet<MARCA_VEHICULO> MARCA_VEHICULO { get; set; }
         public virtual DbSet<MODELO_VEHICULO> MODELO_VEHICULO { get; set; }
+        public virtual DbSet<COMBUSTIBLE_VEHICULO> COMBUSTIBLE_VEHICULO { get; set; }
     }
 }
