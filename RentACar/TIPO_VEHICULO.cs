@@ -14,8 +14,17 @@ namespace RentACar
     
     public partial class TIPO_VEHICULO
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TIPO_VEHICULO()
+        {
+            this.VEHICULOes = new HashSet<VEHICULO>();
+        }
+    
         public int ID { get; set; }
         public string NOMBRE { get; set; }
         public Nullable<bool> ESTADO { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VEHICULO> VEHICULOes { get; set; }
     }
 }

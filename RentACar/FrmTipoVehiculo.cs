@@ -28,6 +28,7 @@ namespace RentACar
         {
             ClearForm();
             PopulateDataGridView();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

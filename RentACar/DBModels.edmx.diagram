@@ -10,6 +10,10 @@
         <EntityTypeShape EntityType="rentacarModel.MODELO_VEHICULO" Width="1.5" PointX="5.875" PointY="0.75" />
         <AssociationConnector Association="rentacarModel.FK__MODELO_VE__MARCA__68487DD7" />
         <EntityTypeShape EntityType="rentacarModel.COMBUSTIBLE_VEHICULO" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="rentacarModel.VEHICULO" Width="1.5" PointX="8.125" PointY="1.5" />
+        <AssociationConnector Association="rentacarModel.FK__VEHICULO__COMBUS__6B24EA82" />
+        <AssociationConnector Association="rentacarModel.FK__VEHICULO__MODELO__6A30C649" />
+        <AssociationConnector Association="rentacarModel.FK__VEHICULO__TIPO_V__693CA210" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

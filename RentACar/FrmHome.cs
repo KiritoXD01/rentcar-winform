@@ -87,5 +87,15 @@ namespace RentACar
         {
             openChildForm(new FrmCombustibleVehiculo());
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FrmVehiculo());
+        }
+
+        private void FrmHome_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
     }
 }

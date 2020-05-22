@@ -87,6 +87,7 @@
             this.button5.Text = "Vehiculos";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -210,6 +211,7 @@
             this.MinimumSize = new System.Drawing.Size(950, 600);
             this.Name = "FrmHome";
             this.Text = "Rent a Car";
+            this.Load += new System.EventHandler(this.FrmHome_Load);
             this.Sidebar.ResumeLayout(false);
             this.panelVehiculo.ResumeLayout(false);
             this.panelContainer.ResumeLayout(false);

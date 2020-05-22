@@ -46,6 +46,7 @@ namespace RentACar
         {
             ClearForm();
             PopulateDataGridView();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

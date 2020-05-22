@@ -24,6 +24,7 @@ namespace RentACar
             ClearForm();
             PopulateDataGridView();
             PopulateComboMarca();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void btnCloseTipoVehiculo_Click(object sender, EventArgs e)
