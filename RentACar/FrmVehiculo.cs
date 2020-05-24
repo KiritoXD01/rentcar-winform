@@ -37,7 +37,7 @@ namespace RentACar
             gridVehiculo.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
-                gridVehiculo.DataSource = db.VEHICULOes.ToList<VEHICULO>();
+                gridVehiculo.DataSource = db.VEHICULO.ToList<VEHICULO>();
             }
         }
 
@@ -77,12 +77,12 @@ namespace RentACar
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            model.MODELO_VEHICULO = Convert.ToInt32(comboModelo.SelectedValue);
+            model.ID_MODELO_VEHICULO = Convert.ToInt32(comboModelo.SelectedValue);
             model.NUMERO_CHASIS = TxNumeroChasis.Text.Trim();
             model.NUMERO_MOTOR = TxNumeroMotor.Text.Trim();
             model.NUMERO_PLACA = TxNumeroPlaca.Text.Trim();
-            model.TIPO_VEHICULO = Convert.ToInt32(comboTipoVehiculo.SelectedValue);
-            model.COMBUSTIBLE = Convert.ToInt32(comboTipoCombustible.SelectedValue);
+            model.ID_TIPO_VEHICULO = Convert.ToInt32(comboTipoVehiculo.SelectedValue);
+            model.ID_TIPO_COMBUSTIBLE = Convert.ToInt32(comboTipoCombustible.SelectedValue);
             model.DESCRIPCION = TxDescripcion.Text.Trim();
             model.FECHA_CREACION = DateTime.Now;
 
@@ -90,7 +90,7 @@ namespace RentACar
             {
                 if (model.ID == 0)
                 {
-                    db.VEHICULOes.Add(model);
+                    db.VEHICULO.Add(model);
                 }
                 else
                 {
@@ -112,13 +112,13 @@ namespace RentACar
 
                 using (DBEntities db = new DBEntities())
                 {
-                    model = db.VEHICULOes.Where(x => x.ID == model.ID).FirstOrDefault();
+                    model = db.VEHICULO.Where(x => x.ID == model.ID).FirstOrDefault();
                     comboModelo.SelectedValue = Convert.ToInt32(model.MODELO_VEHICULO);
                     TxNumeroChasis.Text = model.NUMERO_CHASIS;
                     TxNumeroMotor.Text = model.NUMERO_MOTOR;
                     TxNumeroPlaca.Text = model.NUMERO_PLACA;
                     comboTipoVehiculo.SelectedValue = Convert.ToInt32(model.TIPO_VEHICULO);
-                    comboTipoCombustible.SelectedValue = Convert.ToInt32(model.COMBUSTIBLE);
+                    comboTipoCombustible.SelectedValue = Convert.ToInt32(model.ID_TIPO_COMBUSTIBLE);
                     TxDescripcion.Text = model.DESCRIPCION;
                     TxFechaCreacion.Visible = true;
                     labelFechaCreacion.Visible = true;
@@ -143,9 +143,9 @@ namespace RentACar
                     var entry = db.Entry(model);
                     if(entry.State == System.Data.Entity.EntityState.Detached)
                     {
-                        db.VEHICULOes.Attach(model);
+                        db.VEHICULO.Attach(model);
                     }
-                    db.VEHICULOes.Remove(model);
+                    db.VEHICULO.Remove(model);
                     db.SaveChanges();
 
                     PopulateDataGridView();

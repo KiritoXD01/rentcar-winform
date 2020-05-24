@@ -12,19 +12,18 @@ namespace RentACar
     using System;
     using System.Collections.Generic;
     
-    public partial class COMBUSTIBLE_VEHICULO
+    public partial class TIPO_CLIENTE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public COMBUSTIBLE_VEHICULO()
+        public TIPO_CLIENTE()
         {
-            this.VEHICULO = new HashSet<VEHICULO>();
+            this.CLIENTE = new HashSet<CLIENTE>();
         }
     
         public int ID { get; set; }
-        public string NOMBRE { get; set; }
-        public Nullable<bool> ESTADO { get; set; }
+        public string DESCRIPCION { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VEHICULO> VEHICULO { get; set; }
+        public virtual ICollection<CLIENTE> CLIENTE { get; set; }
     }
 }

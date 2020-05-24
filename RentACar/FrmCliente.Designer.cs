@@ -32,6 +32,11 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gridCliente = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMAIL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.TxNombres = new System.Windows.Forms.TextBox();
@@ -51,16 +56,9 @@
             this.comboTipoPersona = new System.Windows.Forms.ComboBox();
             this.labelFechaCreacion = new System.Windows.Forms.Label();
             this.TxFechaCreacion = new System.Windows.Forms.TextBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMAIL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxCedula = new System.Windows.Forms.NumericUpDown();
-            this.TxTarjetaCredito = new System.Windows.Forms.NumericUpDown();
+            this.TxCedula = new System.Windows.Forms.TextBox();
+            this.TxTarjetaCredito = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridCliente)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxCedula)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxTarjetaCredito)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -83,6 +81,7 @@
             this.btnDelete.TabIndex = 21;
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
@@ -111,6 +110,44 @@
             this.gridCliente.ReadOnly = true;
             this.gridCliente.Size = new System.Drawing.Size(684, 295);
             this.gridCliente.TabIndex = 19;
+            this.gridCliente.DoubleClick += new System.EventHandler(this.gridCliente_DoubleClick);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // NOMBRES
+            // 
+            this.NOMBRES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NOMBRES.DataPropertyName = "NOMBRES";
+            this.NOMBRES.HeaderText = "Nombres";
+            this.NOMBRES.Name = "NOMBRES";
+            this.NOMBRES.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.DataPropertyName = "APELLIDOS";
+            this.Apellido.HeaderText = "Apellidos";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // EMAIL
+            // 
+            this.EMAIL.DataPropertyName = "EMAIL";
+            this.EMAIL.HeaderText = "Email";
+            this.EMAIL.Name = "EMAIL";
+            this.EMAIL.ReadOnly = true;
+            // 
+            // ESTADO
+            // 
+            this.ESTADO.DataPropertyName = "ESTADO";
+            this.ESTADO.HeaderText = "Estado";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.ReadOnly = true;
             // 
             // btnClose
             // 
@@ -272,56 +309,19 @@
             this.TxFechaCreacion.Size = new System.Drawing.Size(178, 20);
             this.TxFechaCreacion.TabIndex = 42;
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // NOMBRES
-            // 
-            this.NOMBRES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NOMBRES.DataPropertyName = "NOMBRES";
-            this.NOMBRES.HeaderText = "Nombres";
-            this.NOMBRES.Name = "NOMBRES";
-            this.NOMBRES.ReadOnly = true;
-            // 
-            // Apellido
-            // 
-            this.Apellido.DataPropertyName = "APELLIDOS";
-            this.Apellido.HeaderText = "Apellidos";
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
-            // 
-            // EMAIL
-            // 
-            this.EMAIL.DataPropertyName = "EMAIL";
-            this.EMAIL.HeaderText = "Email";
-            this.EMAIL.Name = "EMAIL";
-            this.EMAIL.ReadOnly = true;
-            // 
-            // ESTADO
-            // 
-            this.ESTADO.DataPropertyName = "ESTADO";
-            this.ESTADO.HeaderText = "Estado";
-            this.ESTADO.Name = "ESTADO";
-            this.ESTADO.ReadOnly = true;
-            // 
             // TxCedula
             // 
-            this.TxCedula.Location = new System.Drawing.Point(71, 99);
+            this.TxCedula.Location = new System.Drawing.Point(71, 100);
             this.TxCedula.Name = "TxCedula";
             this.TxCedula.Size = new System.Drawing.Size(178, 20);
-            this.TxCedula.TabIndex = 43;
+            this.TxCedula.TabIndex = 45;
             // 
             // TxTarjetaCredito
             // 
             this.TxTarjetaCredito.Location = new System.Drawing.Point(353, 48);
             this.TxTarjetaCredito.Name = "TxTarjetaCredito";
             this.TxTarjetaCredito.Size = new System.Drawing.Size(178, 20);
-            this.TxTarjetaCredito.TabIndex = 44;
+            this.TxTarjetaCredito.TabIndex = 46;
             // 
             // FrmCliente
             // 
@@ -358,8 +358,6 @@
             this.Text = "FrmCliente";
             this.Load += new System.EventHandler(this.FrmCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridCliente)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxCedula)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxTarjetaCredito)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -395,7 +393,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn EMAIL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
-        private System.Windows.Forms.NumericUpDown TxCedula;
-        private System.Windows.Forms.NumericUpDown TxTarjetaCredito;
+        private System.Windows.Forms.TextBox TxCedula;
+        private System.Windows.Forms.TextBox TxTarjetaCredito;
     }
 }

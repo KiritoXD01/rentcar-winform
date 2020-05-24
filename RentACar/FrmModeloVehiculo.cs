@@ -63,7 +63,7 @@ namespace RentACar
         private void btnSave_Click(object sender, EventArgs e)
         {
             model.NOMBRE = TxNombre.Text.Trim();
-            model.MARCA_VEHICULO = Convert.ToInt32(comboMarca.SelectedValue);
+            model.ID_MARCA_VEHICULO = Convert.ToInt32(comboMarca.SelectedValue);
             model.ESTADO = checkEstado.Checked;
 
             using (DBEntities db = new DBEntities())

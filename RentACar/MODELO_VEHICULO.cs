@@ -17,16 +17,16 @@ namespace RentACar
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MODELO_VEHICULO()
         {
-            this.VEHICULOes = new HashSet<VEHICULO>();
+            this.VEHICULO = new HashSet<VEHICULO>();
         }
     
         public int ID { get; set; }
-        public Nullable<int> MARCA_VEHICULO { get; set; }
+        public Nullable<int> ID_MARCA_VEHICULO { get; set; }
         public string NOMBRE { get; set; }
         public Nullable<bool> ESTADO { get; set; }
     
-        public virtual MARCA_VEHICULO MARCA_VEHICULO1 { get; set; }
+        public virtual MARCA_VEHICULO MARCA_VEHICULO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VEHICULO> VEHICULOes { get; set; }
+        public virtual ICollection<VEHICULO> VEHICULO { get; set; }
     }
 }
