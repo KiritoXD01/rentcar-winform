@@ -44,6 +44,9 @@ namespace RentACar
             TxLimiteCredito.Text = "";
             labelFechaCreacion.Visible = false;
             TxFechaCreacion.Visible = false;
+            model.ID = 0;
+            btnSave.Text = "Guardar";
+            btnDelete.Enabled = false;
         }
 
         private void PopulateDataGridView()

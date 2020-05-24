@@ -32,5 +32,8 @@ namespace RentACar
         public virtual DbSet<VEHICULO> VEHICULO { get; set; }
         public virtual DbSet<TIPO_CLIENTE> TIPO_CLIENTE { get; set; }
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
+        public virtual DbSet<EMPLEADO> EMPLEADO { get; set; }
+        public virtual DbSet<TANDA> TANDA { get; set; }
+        public virtual DbSet<TIPO_EMPLEADO> TIPO_EMPLEADO { get; set; }
     }
 }

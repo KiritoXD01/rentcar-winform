@@ -29,6 +29,21 @@
           <Property Name="NOMBRE" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="ESTADO" Type="bit" />
         </EntityType>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRES" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="APELLIDOS" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ID_TANDA" Type="int" />
+          <Property Name="PORCIENTO_COMISION" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FECHA_INGRESO" Type="datetime" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="ESTADO" Type="bit" />
+          <Property Name="CLAVE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ID_TIPO_EMPLEADO" Type="int" />
+        </EntityType>
         <EntityType Name="MARCA_VEHICULO">
           <Key>
             <PropertyRef Name="ID" />
@@ -46,7 +61,21 @@
           <Property Name="NOMBRE" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="ESTADO" Type="bit" />
         </EntityType>
+        <EntityType Name="TANDA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
         <EntityType Name="TIPO_CLIENTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_EMPLEADO">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -84,6 +113,30 @@
             </Principal>
             <Dependent Role="CLIENTE">
               <PropertyRef Name="ID_TIPO_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EMPLEADO__ID_TAN__71D1E811">
+          <End Role="TANDA" Type="Self.TANDA" Multiplicity="0..1" />
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TANDA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="ID_TANDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EMPLEADO__ID_TIP__72C60C4A">
+          <End Role="TIPO_EMPLEADO" Type="Self.TIPO_EMPLEADO" Multiplicity="0..1" />
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_EMPLEADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="ID_TIPO_EMPLEADO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -138,14 +191,25 @@
         <EntityContainer Name="rentacarModelStoreContainer">
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMBUSTIBLE_VEHICULO" EntityType="Self.COMBUSTIBLE_VEHICULO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MARCA_VEHICULO" EntityType="Self.MARCA_VEHICULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MODELO_VEHICULO" EntityType="Self.MODELO_VEHICULO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TANDA" EntityType="Self.TANDA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_CLIENTE" EntityType="Self.TIPO_CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_EMPLEADO" EntityType="Self.TIPO_EMPLEADO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_VEHICULO" EntityType="Self.TIPO_VEHICULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VEHICULO" EntityType="Self.VEHICULO" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__CLIENTE__ID_TIPO__70DDC3D8" Association="Self.FK__CLIENTE__ID_TIPO__70DDC3D8">
             <End Role="TIPO_CLIENTE" EntitySet="TIPO_CLIENTE" />
             <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMPLEADO__ID_TAN__71D1E811" Association="Self.FK__EMPLEADO__ID_TAN__71D1E811">
+            <End Role="TANDA" EntitySet="TANDA" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMPLEADO__ID_TIP__72C60C4A" Association="Self.FK__EMPLEADO__ID_TIP__72C60C4A">
+            <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
           </AssociationSet>
           <AssociationSet Name="FK__MODELO_VE__ID_MA__6D0D32F4" Association="Self.FK__MODELO_VE__ID_MA__6D0D32F4">
             <End Role="MARCA_VEHICULO" EntitySet="MARCA_VEHICULO" />
@@ -299,6 +363,17 @@
             <End Role="TIPO_CLIENTE" EntitySet="TIPO_CLIENTE" />
             <End Role="CLIENTE" EntitySet="CLIENTE" />
           </AssociationSet>
+          <EntitySet Name="EMPLEADO" EntityType="rentacarModel.EMPLEADO" />
+          <EntitySet Name="TANDA" EntityType="rentacarModel.TANDA" />
+          <EntitySet Name="TIPO_EMPLEADO" EntityType="rentacarModel.TIPO_EMPLEADO" />
+          <AssociationSet Name="FK__EMPLEADO__ID_TAN__71D1E811" Association="rentacarModel.FK__EMPLEADO__ID_TAN__71D1E811">
+            <End Role="TANDA" EntitySet="TANDA" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMPLEADO__ID_TIP__72C60C4A" Association="rentacarModel.FK__EMPLEADO__ID_TIP__72C60C4A">
+            <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="TIPO_CLIENTE">
           <Key>
@@ -334,6 +409,63 @@
             </Principal>
             <Dependent Role="CLIENTE">
               <PropertyRef Name="ID_TIPO_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRES" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDOS" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TANDA" Type="Int32" />
+          <Property Name="PORCIENTO_COMISION" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FECHA_INGRESO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ESTADO" Type="Boolean" />
+          <Property Name="CLAVE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TIPO_EMPLEADO" Type="Int32" />
+          <NavigationProperty Name="TANDA" Relationship="rentacarModel.FK__EMPLEADO__ID_TAN__71D1E811" FromRole="EMPLEADO" ToRole="TANDA" />
+          <NavigationProperty Name="TIPO_EMPLEADO" Relationship="rentacarModel.FK__EMPLEADO__ID_TIP__72C60C4A" FromRole="EMPLEADO" ToRole="TIPO_EMPLEADO" />
+        </EntityType>
+        <EntityType Name="TANDA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLEADO" Relationship="rentacarModel.FK__EMPLEADO__ID_TAN__71D1E811" FromRole="TANDA" ToRole="EMPLEADO" />
+        </EntityType>
+        <EntityType Name="TIPO_EMPLEADO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLEADO" Relationship="rentacarModel.FK__EMPLEADO__ID_TIP__72C60C4A" FromRole="TIPO_EMPLEADO" ToRole="EMPLEADO" />
+        </EntityType>
+        <Association Name="FK__EMPLEADO__ID_TAN__71D1E811">
+          <End Type="rentacarModel.TANDA" Role="TANDA" Multiplicity="0..1" />
+          <End Type="rentacarModel.EMPLEADO" Role="EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TANDA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="ID_TANDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EMPLEADO__ID_TIP__72C60C4A">
+          <End Type="rentacarModel.TIPO_EMPLEADO" Role="TIPO_EMPLEADO" Multiplicity="0..1" />
+          <End Type="rentacarModel.EMPLEADO" Role="EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_EMPLEADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="ID_TIPO_EMPLEADO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -416,6 +548,38 @@
                 <ScalarProperty Name="CEDULA" ColumnName="CEDULA" />
                 <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
                 <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLEADO">
+            <EntityTypeMapping TypeName="rentacarModel.EMPLEADO">
+              <MappingFragment StoreEntitySet="EMPLEADO">
+                <ScalarProperty Name="ID_TIPO_EMPLEADO" ColumnName="ID_TIPO_EMPLEADO" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="FECHA_INGRESO" ColumnName="FECHA_INGRESO" />
+                <ScalarProperty Name="PORCIENTO_COMISION" ColumnName="PORCIENTO_COMISION" />
+                <ScalarProperty Name="ID_TANDA" ColumnName="ID_TANDA" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TANDA">
+            <EntityTypeMapping TypeName="rentacarModel.TANDA">
+              <MappingFragment StoreEntitySet="TANDA">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_EMPLEADO">
+            <EntityTypeMapping TypeName="rentacarModel.TIPO_EMPLEADO">
+              <MappingFragment StoreEntitySet="TIPO_EMPLEADO">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

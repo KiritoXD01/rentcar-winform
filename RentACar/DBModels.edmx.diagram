@@ -17,6 +17,11 @@
         <EntityTypeShape EntityType="rentacarModel.TIPO_CLIENTE" Width="1.5" PointX="7.875" PointY="6" />
         <EntityTypeShape EntityType="rentacarModel.CLIENTE" Width="1.5" PointX="5.875" PointY="6" />
         <AssociationConnector Association="rentacarModel.FK__CLIENTE__ID_TIPO__70DDC3D8" />
+        <EntityTypeShape EntityType="rentacarModel.EMPLEADO" Width="1.5" PointX="9.625" PointY="1" />
+        <EntityTypeShape EntityType="rentacarModel.TANDA" Width="1.5" PointX="7.375" PointY="10.875" />
+        <EntityTypeShape EntityType="rentacarModel.TIPO_EMPLEADO" Width="1.5" PointX="7.375" PointY="1.875" />
+        <AssociationConnector Association="rentacarModel.FK__EMPLEADO__ID_TAN__71D1E811" />
+        <AssociationConnector Association="rentacarModel.FK__EMPLEADO__ID_TIP__72C60C4A" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
