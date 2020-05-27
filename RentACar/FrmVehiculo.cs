@@ -199,9 +199,11 @@ namespace RentACar
                     TxFechaCreacion.Visible = true;
                     labelFechaCreacion.Visible = true;
                     TxFechaCreacion.Text = model.FECHA_CREACION.ToString();
+                    checkEstado.Checked = Convert.ToBoolean(model.ESTADO);
+                    btnDelete.Text = model.ESTADO == true ? "Deshabilitar" : "Habilitar";
+                    btnSave.Text = "Actualizar";
+                    btnDelete.Enabled = true;
                 }
-                btnSave.Text = "Actualizar";
-                btnDelete.Enabled = true;
             }
         }
 
@@ -212,22 +214,22 @@ namespace RentACar
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea borrar este elemento?", "Eliminar Elemento", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            string question = (model.ESTADO == true) ? "Desea desactivar este elemento?" : "Desea activar este elemento";
+
+            if (MessageBox.Show(question, "Cambiar Estado", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                model.ESTADO = !model.ESTADO;
+
                 using (DBEntities db = new DBEntities())
                 {
-                    var entry = db.Entry(model);
-                    if(entry.State == System.Data.Entity.EntityState.Detached)
-                    {
-                        db.VEHICULO.Attach(model);
-                    }
-                    db.VEHICULO.Remove(model);
+                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
-
-                    PopulateDataGridView();
-                    PopulateCombos();
-                    ClearForm();
                 }
+                ClearForm();
+                PopulateDataGridView();
+                PopulateCombos();
+                string result = (model.ESTADO == true) ? "Vehiculo activado existosamente" : "Vehiculo desactivado existosamente";
+                MessageBox.Show(result);
             }
         }
     }

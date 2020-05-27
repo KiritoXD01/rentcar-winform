@@ -42,6 +42,7 @@
             this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridModeloVehiculo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,9 +51,8 @@
             this.checkEstado.AutoSize = true;
             this.checkEstado.Location = new System.Drawing.Point(61, 130);
             this.checkEstado.Name = "checkEstado";
-            this.checkEstado.Size = new System.Drawing.Size(59, 17);
+            this.checkEstado.Size = new System.Drawing.Size(15, 14);
             this.checkEstado.TabIndex = 7;
-            this.checkEstado.Text = "Estado";
             this.checkEstado.UseVisualStyleBackColor = true;
             // 
             // TxNombre
@@ -119,7 +119,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 11;
-            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.Text = "Deshabilitar";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -182,11 +182,21 @@
             this.ESTADO.Name = "ESTADO";
             this.ESTADO.ReadOnly = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 130);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Estado";
+            // 
             // FrmModeloVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 561);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.gridModeloVehiculo);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnDelete);
@@ -223,5 +233,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRE;
         private System.Windows.Forms.DataGridViewTextBoxColumn MARCA;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
+        private System.Windows.Forms.Label label3;
     }
 }

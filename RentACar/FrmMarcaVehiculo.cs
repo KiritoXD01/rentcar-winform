@@ -102,30 +102,30 @@ namespace RentACar
                     model = db.MARCA_VEHICULO.Where(x => x.ID == model.ID).FirstOrDefault();
                     TxNombre.Text = model.NOMBRE;
                     checkEstado.Checked = Convert.ToBoolean(model.ESTADO);
+                    btnDelete.Text = model.ESTADO == true ? "Deshabilitar" : "Habilitar";
+                    btnSave.Text = "Actualizar";
+                    btnDelete.Enabled = true;
                 }
-                btnSave.Text = "Actualizar";
-                btnDelete.Enabled = true;
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea borrar este elemento?", "Eliminar Elemento", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            string question = (model.ESTADO == true) ? "Desea desactivar este elemento?" : "Desea activar este elemento";
+
+            if (MessageBox.Show(question, "Cambiar Estado", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                model.ESTADO = !model.ESTADO;
+
                 using (DBEntities db = new DBEntities())
                 {
-                    var entry = db.Entry(model);
-                    if (entry.State == System.Data.Entity.EntityState.Detached)
-                    {
-                        db.MARCA_VEHICULO.Attach(model);
-                    }
-                    db.MARCA_VEHICULO.Remove(model);
+                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
-
-                    PopulateDataGridView();
-                    ClearForm();
-                    MessageBox.Show("Marca de vehiculo eliminado existosamente");
                 }
+                ClearForm();
+                PopulateDataGridView();
+                string result = (model.ESTADO == true) ? "Marca activada existosamente" : "Marca desactivada existosamente";
+                MessageBox.Show(result);
             }
         }
 
