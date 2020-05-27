@@ -32,11 +32,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gridCliente = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMAIL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.TxNombres = new System.Windows.Forms.TextBox();
@@ -58,6 +53,11 @@
             this.TxFechaCreacion = new System.Windows.Forms.TextBox();
             this.TxCedula = new System.Windows.Forms.TextBox();
             this.TxTarjetaCredito = new System.Windows.Forms.TextBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMAIL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridCliente)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,43 +112,6 @@
             this.gridCliente.TabIndex = 19;
             this.gridCliente.DoubleClick += new System.EventHandler(this.gridCliente_DoubleClick);
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // NOMBRES
-            // 
-            this.NOMBRES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NOMBRES.DataPropertyName = "NOMBRES";
-            this.NOMBRES.HeaderText = "Nombres";
-            this.NOMBRES.Name = "NOMBRES";
-            this.NOMBRES.ReadOnly = true;
-            // 
-            // Apellido
-            // 
-            this.Apellido.DataPropertyName = "APELLIDOS";
-            this.Apellido.HeaderText = "Apellidos";
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
-            // 
-            // EMAIL
-            // 
-            this.EMAIL.DataPropertyName = "EMAIL";
-            this.EMAIL.HeaderText = "Email";
-            this.EMAIL.Name = "EMAIL";
-            this.EMAIL.ReadOnly = true;
-            // 
-            // ESTADO
-            // 
-            this.ESTADO.DataPropertyName = "ESTADO";
-            this.ESTADO.HeaderText = "Estado";
-            this.ESTADO.Name = "ESTADO";
-            this.ESTADO.ReadOnly = true;
-            // 
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(13, 6);
@@ -171,6 +134,7 @@
             // TxNombres
             // 
             this.TxNombres.Location = new System.Drawing.Point(71, 48);
+            this.TxNombres.MaxLength = 25;
             this.TxNombres.Name = "TxNombres";
             this.TxNombres.Size = new System.Drawing.Size(178, 20);
             this.TxNombres.TabIndex = 24;
@@ -178,6 +142,7 @@
             // TxApellidos
             // 
             this.TxApellidos.Location = new System.Drawing.Point(71, 74);
+            this.TxApellidos.MaxLength = 25;
             this.TxApellidos.Name = "TxApellidos";
             this.TxApellidos.Size = new System.Drawing.Size(178, 20);
             this.TxApellidos.TabIndex = 26;
@@ -203,6 +168,7 @@
             // TxEmail
             // 
             this.TxEmail.Location = new System.Drawing.Point(71, 126);
+            this.TxEmail.MaxLength = 255;
             this.TxEmail.Name = "TxEmail";
             this.TxEmail.Size = new System.Drawing.Size(178, 20);
             this.TxEmail.TabIndex = 30;
@@ -219,6 +185,7 @@
             // TxTelefono
             // 
             this.TxTelefono.Location = new System.Drawing.Point(71, 152);
+            this.TxTelefono.MaxLength = 15;
             this.TxTelefono.Name = "TxTelefono";
             this.TxTelefono.Size = new System.Drawing.Size(178, 20);
             this.TxTelefono.TabIndex = 32;
@@ -312,6 +279,7 @@
             // TxCedula
             // 
             this.TxCedula.Location = new System.Drawing.Point(71, 100);
+            this.TxCedula.MaxLength = 11;
             this.TxCedula.Name = "TxCedula";
             this.TxCedula.Size = new System.Drawing.Size(178, 20);
             this.TxCedula.TabIndex = 45;
@@ -319,9 +287,49 @@
             // TxTarjetaCredito
             // 
             this.TxTarjetaCredito.Location = new System.Drawing.Point(353, 48);
+            this.TxTarjetaCredito.MaxLength = 16;
             this.TxTarjetaCredito.Name = "TxTarjetaCredito";
             this.TxTarjetaCredito.Size = new System.Drawing.Size(178, 20);
             this.TxTarjetaCredito.TabIndex = 46;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // NOMBRES
+            // 
+            this.NOMBRES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NOMBRES.DataPropertyName = "NOMBRES";
+            this.NOMBRES.HeaderText = "Nombres";
+            this.NOMBRES.Name = "NOMBRES";
+            this.NOMBRES.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Apellido.DataPropertyName = "APELLIDOS";
+            this.Apellido.HeaderText = "Apellidos";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // EMAIL
+            // 
+            this.EMAIL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EMAIL.DataPropertyName = "EMAIL";
+            this.EMAIL.HeaderText = "Email";
+            this.EMAIL.Name = "EMAIL";
+            this.EMAIL.ReadOnly = true;
+            // 
+            // ESTADO
+            // 
+            this.ESTADO.DataPropertyName = "ESTADO";
+            this.ESTADO.HeaderText = "Estado";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.ReadOnly = true;
             // 
             // FrmCliente
             // 
@@ -388,12 +396,12 @@
         private System.Windows.Forms.ComboBox comboTipoPersona;
         private System.Windows.Forms.Label labelFechaCreacion;
         private System.Windows.Forms.TextBox TxFechaCreacion;
+        private System.Windows.Forms.TextBox TxCedula;
+        private System.Windows.Forms.TextBox TxTarjetaCredito;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRES;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn EMAIL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
-        private System.Windows.Forms.TextBox TxCedula;
-        private System.Windows.Forms.TextBox TxTarjetaCredito;
     }
 }

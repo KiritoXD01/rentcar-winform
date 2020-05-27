@@ -56,7 +56,16 @@ namespace RentACar
             using (DBEntities db = new DBEntities())
             {
                 //Fill comboModelo
-                comboModelo.DataSource = db.MODELO_VEHICULO.Where(x => x.ESTADO == true).ToList();
+                var models = db.MODELO_VEHICULO
+                    .Where(x => x.ESTADO == true)
+                    .Select(
+                    x => new
+                    {
+                        x.ID,
+                        NOMBRE = x.MARCA_VEHICULO.NOMBRE + " - " + x.NOMBRE
+                    })
+                    .ToList();
+                comboModelo.DataSource = models;
                 comboModelo.DisplayMember = "NOMBRE";
                 comboModelo.ValueMember = "ID";
 
@@ -85,33 +94,90 @@ namespace RentACar
             this.Close();
         }
 
+        private bool ValidateData()
+        {
+            if (comboModelo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar el modelo del vehiculo.");
+                comboModelo.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(TxNumeroChasis.Text))
+            {
+                MessageBox.Show("Debe el numero del chasis del vehiculo.");
+                TxNumeroChasis.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(TxNumeroMotor.Text))
+            {
+                MessageBox.Show("Debe el numero del motor del vehiculo.");
+                TxNumeroMotor.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(TxNumeroPlaca.Text))
+            {
+                MessageBox.Show("Debe el numero de placa del vehiculo.");
+                TxNumeroPlaca.Focus();
+                return false;
+            }
+
+            if (comboTipoVehiculo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar el tipo de vehiculo.");
+                comboTipoVehiculo.Focus();
+                return false;
+            }
+
+            if (comboTipoCombustible.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar el tipo de combustible del vehiculo.");
+                comboTipoCombustible.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(TxDescripcion.Text))
+            {
+                MessageBox.Show("Debe ingresar una descripcion del vehiculo.");
+                TxDescripcion.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            model.ID_MODELO_VEHICULO = Convert.ToInt32(comboModelo.SelectedValue);
-            model.NUMERO_CHASIS = TxNumeroChasis.Text.Trim();
-            model.NUMERO_MOTOR = TxNumeroMotor.Text.Trim();
-            model.NUMERO_PLACA = TxNumeroPlaca.Text.Trim();
-            model.ID_TIPO_VEHICULO = Convert.ToInt32(comboTipoVehiculo.SelectedValue);
-            model.ID_TIPO_COMBUSTIBLE = Convert.ToInt32(comboTipoCombustible.SelectedValue);
-            model.DESCRIPCION = TxDescripcion.Text.Trim();
-            model.FECHA_CREACION = DateTime.Now;
-
-            using (DBEntities db = new DBEntities())
+            if (ValidateData())
             {
-                if (model.ID == 0)
+                model.ID_MODELO_VEHICULO = Convert.ToInt32(comboModelo.SelectedValue);
+                model.NUMERO_CHASIS = TxNumeroChasis.Text.Trim();
+                model.NUMERO_MOTOR = TxNumeroMotor.Text.Trim();
+                model.NUMERO_PLACA = TxNumeroPlaca.Text.Trim();
+                model.ID_TIPO_VEHICULO = Convert.ToInt32(comboTipoVehiculo.SelectedValue);
+                model.ID_TIPO_COMBUSTIBLE = Convert.ToInt32(comboTipoCombustible.SelectedValue);
+                model.DESCRIPCION = TxDescripcion.Text.Trim();
+                model.FECHA_CREACION = DateTime.Now;
+
+                using (DBEntities db = new DBEntities())
                 {
-                    db.VEHICULO.Add(model);
+                    if (model.ID == 0)
+                    {
+                        db.VEHICULO.Add(model);
+                    }
+                    else
+                    {
+                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    db.SaveChanges();
                 }
-                else
-                {
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                }
-                db.SaveChanges();
+                ClearForm();
+                PopulateDataGridView();
+                PopulateCombos();
+                MessageBox.Show("Vehiculo actualizado existosamente");
             }
-            ClearForm();
-            PopulateDataGridView();
-            PopulateCombos();
-            MessageBox.Show("Vehiculo actualizado existosamente");
         }
 
         private void gridVehiculo_DoubleClick(object sender, EventArgs e)
@@ -123,11 +189,11 @@ namespace RentACar
                 using (DBEntities db = new DBEntities())
                 {
                     model = db.VEHICULO.Where(x => x.ID == model.ID).FirstOrDefault();
-                    comboModelo.SelectedValue = Convert.ToInt32(model.MODELO_VEHICULO);
+                    comboModelo.SelectedValue = Convert.ToInt32(model.ID_MODELO_VEHICULO);
                     TxNumeroChasis.Text = model.NUMERO_CHASIS;
                     TxNumeroMotor.Text = model.NUMERO_MOTOR;
                     TxNumeroPlaca.Text = model.NUMERO_PLACA;
-                    comboTipoVehiculo.SelectedValue = Convert.ToInt32(model.TIPO_VEHICULO);
+                    comboTipoVehiculo.SelectedValue = Convert.ToInt32(model.ID_TIPO_VEHICULO);
                     comboTipoCombustible.SelectedValue = Convert.ToInt32(model.ID_TIPO_COMBUSTIBLE);
                     TxDescripcion.Text = model.DESCRIPCION;
                     TxFechaCreacion.Visible = true;

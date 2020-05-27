@@ -44,7 +44,16 @@ namespace RentACar
             gridEmpleado.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
-                gridEmpleado.DataSource = db.EMPLEADO.ToList<EMPLEADO>();
+                var items = db.EMPLEADO.Select(
+                    x => new
+                    {
+                        x.ID,
+                        x.NOMBRES,
+                        x.APELLIDOS,
+                        TIPO_EMPLEADO = x.TIPO_EMPLEADO.DESCRIPCION,
+                        ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                    }).ToList();
+                gridEmpleado.DataSource = items;
             }
         }
 
@@ -72,34 +81,91 @@ namespace RentACar
             PopulateCombos();            
         }
 
+        private bool ValidateData()
+        {
+            if (String.IsNullOrWhiteSpace(TxNombre.Text))
+            {
+                MessageBox.Show("Debe ingresar el nombre del empleado.");
+                TxNombre.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(TxApellido.Text))
+            {
+                MessageBox.Show("Debe ingresar el apellido del empleado.");
+                TxApellido.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(TxClave.Text))
+            {
+                MessageBox.Show("Debe ingresar la clave del empleado.");
+                TxClave.Focus();
+                return false;
+            }
+
+            if (comboTanda.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar la tanda del empleado.");
+                comboTanda.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(TxPorcientoComision.Text))
+            {
+                MessageBox.Show("Debe ingresar el porciento de comision del empleado.");
+                TxPorcientoComision.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(DPFechaIngreso.Text))
+            {
+                MessageBox.Show("Debe ingresar la fecha de ingreso del empleado.");
+                DPFechaIngreso.Focus();
+                return false;
+            }
+
+            if (comboTipoEmpleado.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar el tipo de empleado.");
+                comboTipoEmpleado.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            model.NOMBRES = TxNombre.Text.Trim();
-            model.APELLIDOS = TxApellido.Text.Trim();
-            model.CLAVE = TxClave.Text.Trim();
-            model.ID_TANDA = Convert.ToInt32(comboTanda.SelectedValue);
-            model.ESTADO = checkEstado.Checked;
-            model.PORCIENTO_COMISION = Convert.ToDecimal(TxPorcientoComision.Text.Trim());
-            model.FECHA_INGRESO = Convert.ToDateTime(DPFechaIngreso.Value);
-            model.ID_TIPO_EMPLEADO = Convert.ToInt32(comboTipoEmpleado.SelectedValue);
-            model.FECHA_CREACION = DateTime.Now;
-
-            using (DBEntities db = new DBEntities())
+            if (ValidateData())
             {
-                if (model.ID == 0)
+                model.NOMBRES = TxNombre.Text.Trim();
+                model.APELLIDOS = TxApellido.Text.Trim();
+                model.CLAVE = TxClave.Text.Trim();
+                model.ID_TANDA = Convert.ToInt32(comboTanda.SelectedValue);
+                model.ESTADO = checkEstado.Checked;
+                model.PORCIENTO_COMISION = Convert.ToDecimal(TxPorcientoComision.Text.Trim());
+                model.FECHA_INGRESO = Convert.ToDateTime(DPFechaIngreso.Value);
+                model.ID_TIPO_EMPLEADO = Convert.ToInt32(comboTipoEmpleado.SelectedValue);
+                model.FECHA_CREACION = DateTime.Now;
+
+                using (DBEntities db = new DBEntities())
                 {
-                    db.EMPLEADO.Add(model);
+                    if (model.ID == 0)
+                    {
+                        db.EMPLEADO.Add(model);
+                    }
+                    else
+                    {
+                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    db.SaveChanges();
                 }
-                else
-                {
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                }
-                db.SaveChanges();
-            }
-            ClearForm();
-            PopulateDataGridView();
-            PopulateCombos();
-            MessageBox.Show("Empleado actualizado existosamente");
+                ClearForm();
+                PopulateDataGridView();
+                PopulateCombos();
+                MessageBox.Show("Empleado actualizado existosamente");
+            }            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

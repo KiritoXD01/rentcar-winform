@@ -49,13 +49,13 @@
             this.DPFechaIngreso = new System.Windows.Forms.DateTimePicker();
             this.labelFechaCreacion = new System.Windows.Forms.Label();
             this.TxFechaCreacion = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboTipoEmpleado = new System.Windows.Forms.ComboBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMAIL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPO_EMPLEADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboTipoEmpleado = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridEmpleado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,7 +110,7 @@
             this.ID,
             this.NOMBRES,
             this.Apellido,
-            this.EMAIL,
+            this.TIPO_EMPLEADO,
             this.ESTADO});
             this.gridEmpleado.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gridEmpleado.Location = new System.Drawing.Point(0, 266);
@@ -132,6 +132,7 @@
             // TxNombre
             // 
             this.TxNombre.Location = new System.Drawing.Point(73, 67);
+            this.TxNombre.MaxLength = 25;
             this.TxNombre.Name = "TxNombre";
             this.TxNombre.Size = new System.Drawing.Size(177, 20);
             this.TxNombre.TabIndex = 28;
@@ -148,6 +149,7 @@
             // TxApellido
             // 
             this.TxApellido.Location = new System.Drawing.Point(73, 96);
+            this.TxApellido.MaxLength = 25;
             this.TxApellido.Name = "TxApellido";
             this.TxApellido.Size = new System.Drawing.Size(177, 20);
             this.TxApellido.TabIndex = 30;
@@ -164,6 +166,7 @@
             // TxClave
             // 
             this.TxClave.Location = new System.Drawing.Point(73, 125);
+            this.TxClave.MaxLength = 10;
             this.TxClave.Name = "TxClave";
             this.TxClave.Size = new System.Drawing.Size(177, 20);
             this.TxClave.TabIndex = 32;
@@ -252,6 +255,23 @@
             this.TxFechaCreacion.Size = new System.Drawing.Size(157, 20);
             this.TxFechaCreacion.TabIndex = 42;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(268, 128);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(78, 13);
+            this.label8.TabIndex = 43;
+            this.label8.Text = "Tipo Empleado";
+            // 
+            // comboTipoEmpleado
+            // 
+            this.comboTipoEmpleado.FormattingEnabled = true;
+            this.comboTipoEmpleado.Location = new System.Drawing.Point(371, 122);
+            this.comboTipoEmpleado.Name = "comboTipoEmpleado";
+            this.comboTipoEmpleado.Size = new System.Drawing.Size(157, 21);
+            this.comboTipoEmpleado.TabIndex = 44;
+            // 
             // ID
             // 
             this.ID.DataPropertyName = "ID";
@@ -276,12 +296,13 @@
             this.Apellido.Name = "Apellido";
             this.Apellido.ReadOnly = true;
             // 
-            // EMAIL
+            // TIPO_EMPLEADO
             // 
-            this.EMAIL.DataPropertyName = "EMAIL";
-            this.EMAIL.HeaderText = "Email";
-            this.EMAIL.Name = "EMAIL";
-            this.EMAIL.ReadOnly = true;
+            this.TIPO_EMPLEADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TIPO_EMPLEADO.DataPropertyName = "TIPO_EMPLEADO";
+            this.TIPO_EMPLEADO.HeaderText = "Tipo";
+            this.TIPO_EMPLEADO.Name = "TIPO_EMPLEADO";
+            this.TIPO_EMPLEADO.ReadOnly = true;
             // 
             // ESTADO
             // 
@@ -289,23 +310,6 @@
             this.ESTADO.HeaderText = "Estado";
             this.ESTADO.Name = "ESTADO";
             this.ESTADO.ReadOnly = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(268, 128);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 13);
-            this.label8.TabIndex = 43;
-            this.label8.Text = "Tipo Empleado";
-            // 
-            // comboTipoEmpleado
-            // 
-            this.comboTipoEmpleado.FormattingEnabled = true;
-            this.comboTipoEmpleado.Location = new System.Drawing.Point(371, 122);
-            this.comboTipoEmpleado.Name = "comboTipoEmpleado";
-            this.comboTipoEmpleado.Size = new System.Drawing.Size(157, 21);
-            this.comboTipoEmpleado.TabIndex = 44;
             // 
             // FrmEmpleado
             // 
@@ -368,12 +372,12 @@
         private System.Windows.Forms.DateTimePicker DPFechaIngreso;
         private System.Windows.Forms.Label labelFechaCreacion;
         private System.Windows.Forms.TextBox TxFechaCreacion;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox comboTipoEmpleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRES;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EMAIL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIPO_EMPLEADO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboTipoEmpleado;
     }
 }

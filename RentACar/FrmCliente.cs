@@ -54,7 +54,17 @@ namespace RentACar
             gridCliente.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
-                gridCliente.DataSource = db.CLIENTE.ToList<CLIENTE>();
+                var items = db.CLIENTE.Select(
+                    x => new
+                    {
+                        x.ID,
+                        x.NOMBRES,
+                        x.APELLIDOS,
+                        x.EMAIL,
+                        ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                    }).ToList();
+
+                gridCliente.DataSource = items;
             }
         }
 
@@ -73,35 +83,92 @@ namespace RentACar
             ClearForm();
         }
 
+        private bool ValidateData()
+        {
+            if (String.IsNullOrWhiteSpace(TxNombres.Text))
+            {
+                MessageBox.Show("Debe ingresar el nombre del cliente.");
+                TxNombres.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(TxApellidos.Text))
+            {
+                MessageBox.Show("Debe ingresar el apellidos del cliente.");
+                TxApellidos.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(TxCedula.Text))
+            {
+                MessageBox.Show("Debe ingresar la cedula del cliente.");
+                TxCedula.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(TxEmail.Text))
+            {
+                MessageBox.Show("Debe ingresar la correo del cliente.");
+                TxEmail.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(TxTarjetaCredito.Text))
+            {
+                MessageBox.Show("Debe ingresar la tarjeta de credito del cliente.");
+                TxTarjetaCredito.Focus();
+                return false;
+            }
+
+            if (String.IsNullOrWhiteSpace(TxLimiteCredito.Text))
+            {
+                MessageBox.Show("Debe ingresar el limite de credito del cliente.");
+                TxLimiteCredito.Focus();
+                return false;
+            }
+
+            if (comboTipoPersona.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar el tipo de cliente.");
+                comboTipoPersona.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            model.NOMBRES = TxNombres.Text.Trim();
-            model.APELLIDOS = TxApellidos.Text.Trim();
-            model.CEDULA = TxCedula.Text.Trim();
-            model.EMAIL = TxEmail.Text.Trim();
-            model.TELEFONO = TxTelefono.Text.Trim();
-            model.TARJETA_CREDITO = TxTarjetaCredito.Text.Trim();
-            model.LIMITE_CREDITO = Convert.ToDecimal(TxLimiteCredito.Text.Trim());
-            model.ESTADO = checkEstado.Checked;
-            model.ID_TIPO_CLIENTE = Convert.ToInt32(comboTipoPersona.SelectedValue);
-            model.FECHA_CREACION = DateTime.Now;
-
-            using (DBEntities db = new DBEntities())
+            if (ValidateData())
             {
-                if (model.ID == 0)
+                model.NOMBRES = TxNombres.Text.Trim();
+                model.APELLIDOS = TxApellidos.Text.Trim();
+                model.CEDULA = TxCedula.Text.Trim();
+                model.EMAIL = TxEmail.Text.Trim();
+                model.TELEFONO = TxTelefono.Text.Trim();
+                model.TARJETA_CREDITO = TxTarjetaCredito.Text.Trim();
+                model.LIMITE_CREDITO = Convert.ToDecimal(TxLimiteCredito.Text.Trim());
+                model.ESTADO = checkEstado.Checked;
+                model.ID_TIPO_CLIENTE = Convert.ToInt32(comboTipoPersona.SelectedValue);
+                model.FECHA_CREACION = DateTime.Now;
+
+                using (DBEntities db = new DBEntities())
                 {
-                    db.CLIENTE.Add(model);
+                    if (model.ID == 0)
+                    {
+                        db.CLIENTE.Add(model);
+                    }
+                    else
+                    {
+                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    db.SaveChanges();
                 }
-                else
-                {
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                }
-                db.SaveChanges();
-            }
-            ClearForm();
-            PopulateDataGridView();
-            PopulateCombos();
-            MessageBox.Show("Cliente actualizado existosamente");
+                ClearForm();
+                PopulateDataGridView();
+                PopulateCombos();
+                MessageBox.Show("Cliente actualizado existosamente");
+            }            
         }
 
         private void gridCliente_DoubleClick(object sender, EventArgs e)
