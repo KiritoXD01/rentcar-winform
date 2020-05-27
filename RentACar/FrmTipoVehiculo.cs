@@ -50,30 +50,51 @@ namespace RentACar
             gridTipoVehiculo.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
-                gridTipoVehiculo.DataSource = db.TIPO_VEHICULO.ToList<TIPO_VEHICULO>();
+                var items = db.TIPO_VEHICULO.Select(
+                    x => new
+                    {
+                        x.ID,
+                        x.NOMBRE,
+                        ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                    }).ToList();
+                gridTipoVehiculo.DataSource = items;
             }
+        }
+
+        private bool ValidateData()
+        {
+            if (String.IsNullOrWhiteSpace(TxNombre.Text))
+            {
+                MessageBox.Show("Debe ingresar el tipo de vehiculo.");
+                TxNombre.Focus();
+                return false;
+            }
+            return true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            model.NOMBRE = TxNombre.Text.Trim();
-            model.ESTADO = checkEstado.Checked;
-
-            using (DBEntities db = new DBEntities())
+            if (ValidateData())
             {
-                if (model.ID == 0)
+                model.NOMBRE = TxNombre.Text.Trim();
+                model.ESTADO = checkEstado.Checked;
+
+                using (DBEntities db = new DBEntities())
                 {
-                    db.TIPO_VEHICULO.Add(model);
+                    if (model.ID == 0)
+                    {
+                        db.TIPO_VEHICULO.Add(model);
+                    }
+                    else
+                    {
+                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    db.SaveChanges();
                 }
-                else
-                {
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                }
-                db.SaveChanges();
-            }
-            ClearForm();
-            PopulateDataGridView();
-            MessageBox.Show("Tipo de vehiculo actualizado existosamente");
+                ClearForm();
+                PopulateDataGridView();
+                MessageBox.Show("Tipo de vehiculo actualizado existosamente");
+            }            
         }
 
         private void gridTipoVehiculo_DoubleClick(object sender, EventArgs e)

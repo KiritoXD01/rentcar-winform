@@ -46,7 +46,15 @@ namespace RentACar
             gridModeloVehiculo.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
-                gridModeloVehiculo.DataSource = db.MODELO_VEHICULO.ToList<MODELO_VEHICULO>();
+                var items = db.MODELO_VEHICULO.Select(
+                    x => new
+                    {
+                        x.ID,
+                        x.NOMBRE,
+                        MARCA = x.MARCA_VEHICULO.NOMBRE,
+                        ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                    }).ToList();
+                gridModeloVehiculo.DataSource = items;
             }
         }
 
@@ -54,34 +62,57 @@ namespace RentACar
         {
             using (DBEntities db = new DBEntities())
             {
-                comboMarca.DataSource = db.MARCA_VEHICULO.ToList<MARCA_VEHICULO>();
+                var items = db.MARCA_VEHICULO.Where(x => x.ESTADO == true).ToList();
+                comboMarca.DataSource = items;
                 comboMarca.DisplayMember = "NOMBRE";
                 comboMarca.ValueMember = "ID";
             }
         }
 
+        private bool ValidateData()
+        {
+            if (String.IsNullOrWhiteSpace(TxNombre.Text))
+            {
+                MessageBox.Show("Debe ingresar el modelo del vehiculo.");
+                TxNombre.Focus();
+                return false;
+            }
+
+            if (comboMarca.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar la marca del vehiculo.");
+                comboMarca.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            model.NOMBRE = TxNombre.Text.Trim();
-            model.ID_MARCA_VEHICULO = Convert.ToInt32(comboMarca.SelectedValue);
-            model.ESTADO = checkEstado.Checked;
-
-            using (DBEntities db = new DBEntities())
+            if (ValidateData())
             {
-                if (model.ID == 0)
+                model.NOMBRE = TxNombre.Text.Trim();
+                model.ID_MARCA_VEHICULO = Convert.ToInt32(comboMarca.SelectedValue);
+                model.ESTADO = checkEstado.Checked;
+
+                using (DBEntities db = new DBEntities())
                 {
-                    db.MODELO_VEHICULO.Add(model);
+                    if (model.ID == 0)
+                    {
+                        db.MODELO_VEHICULO.Add(model);
+                    }
+                    else
+                    {
+                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    db.SaveChanges();
                 }
-                else
-                {
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                }
-                db.SaveChanges();
-            }
-            ClearForm();
-            PopulateDataGridView();
-            PopulateComboMarca();
-            MessageBox.Show("Modelo de vehiculo actualizado existosamente");
+                ClearForm();
+                PopulateDataGridView();
+                PopulateComboMarca();
+                MessageBox.Show("Modelo de vehiculo actualizado existosamente");
+            }            
         }
 
         private void gridModeloVehiculo_DoubleClick(object sender, EventArgs e)

@@ -45,30 +45,51 @@ namespace RentACar
             gridMarcaVehiculo.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
-                gridMarcaVehiculo.DataSource = db.MARCA_VEHICULO.ToList<MARCA_VEHICULO>();
+                var items = db.MARCA_VEHICULO.Select(
+                    x => new
+                    {
+                        x.ID,
+                        x.NOMBRE,
+                        ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                    }).ToList();
+                gridMarcaVehiculo.DataSource = items;
             }
+        }
+
+        private bool ValidateData()
+        {
+            if (String.IsNullOrWhiteSpace(TxNombre.Text))
+            {
+                MessageBox.Show("Debe ingresar la marca del vehiculo.");
+                TxNombre.Focus();
+                return false;
+            }
+            return true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            model.NOMBRE = TxNombre.Text.Trim();
-            model.ESTADO = checkEstado.Checked;
-
-            using (DBEntities db = new DBEntities())
+            if (ValidateData())
             {
-                if (model.ID == 0)
+                model.NOMBRE = TxNombre.Text.Trim();
+                model.ESTADO = checkEstado.Checked;
+
+                using (DBEntities db = new DBEntities())
                 {
-                    db.MARCA_VEHICULO.Add(model);
+                    if (model.ID == 0)
+                    {
+                        db.MARCA_VEHICULO.Add(model);
+                    }
+                    else
+                    {
+                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    db.SaveChanges();
                 }
-                else
-                {
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                }
-                db.SaveChanges();
-            }
-            ClearForm();
-            PopulateDataGridView();
-            MessageBox.Show("Marca de vehiculo actualizado existosamente");
+                ClearForm();
+                PopulateDataGridView();
+                MessageBox.Show("Marca de vehiculo actualizado existosamente");
+            }            
         }
 
         private void gridMarcaVehiculo_DoubleClick(object sender, EventArgs e)

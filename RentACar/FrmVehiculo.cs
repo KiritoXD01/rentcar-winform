@@ -27,6 +27,7 @@ namespace RentACar
             TxDescripcion.Text = "";
             TxFechaCreacion.Visible = false;
             labelFechaCreacion.Visible = false;
+            checkEstado.Checked = true;
             btnSave.Text = "Guardar";
             btnDelete.Enabled = false;
             model.ID = 0;
@@ -37,7 +38,16 @@ namespace RentACar
             gridVehiculo.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
-                gridVehiculo.DataSource = db.VEHICULO.ToList<VEHICULO>();
+                var items = db.VEHICULO.Select(
+                    x => new
+                    {
+                        x.ID,
+                        MARCA = x.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE,
+                        MODELO = x.MODELO_VEHICULO.NOMBRE,
+                        x.FECHA_CREACION,
+                        ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                    }).ToList();
+                gridVehiculo.DataSource = items;
             }
         }
 
@@ -46,17 +56,17 @@ namespace RentACar
             using (DBEntities db = new DBEntities())
             {
                 //Fill comboModelo
-                comboModelo.DataSource = db.MODELO_VEHICULO.ToList<MODELO_VEHICULO>();
+                comboModelo.DataSource = db.MODELO_VEHICULO.Where(x => x.ESTADO == true).ToList();
                 comboModelo.DisplayMember = "NOMBRE";
                 comboModelo.ValueMember = "ID";
 
                 //Fill comboTipoVehiculo
-                comboTipoVehiculo.DataSource = db.TIPO_VEHICULO.ToList<TIPO_VEHICULO>();
+                comboTipoVehiculo.DataSource = db.TIPO_VEHICULO.Where(x => x.ESTADO == true).ToList();
                 comboTipoVehiculo.DisplayMember = "NOMBRE";
                 comboTipoVehiculo.ValueMember = "ID";
 
                 //Fill comboTipoCombustible
-                comboTipoCombustible.DataSource = db.COMBUSTIBLE_VEHICULO.ToList<COMBUSTIBLE_VEHICULO>();
+                comboTipoCombustible.DataSource = db.COMBUSTIBLE_VEHICULO.Where(x => x.ESTADO == true).ToList();
                 comboTipoCombustible.DisplayMember = "NOMBRE";
                 comboTipoCombustible.ValueMember = "ID";
             }

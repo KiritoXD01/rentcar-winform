@@ -169,6 +169,7 @@
             // 
             // MARCA
             // 
+            this.MARCA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.MARCA.DataPropertyName = "MARCA";
             this.MARCA.HeaderText = "Marca";
             this.MARCA.Name = "MARCA";

@@ -38,7 +38,14 @@ namespace RentACar
             gridCombustibleVehiculo.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
-                gridCombustibleVehiculo.DataSource = db.COMBUSTIBLE_VEHICULO.ToList<COMBUSTIBLE_VEHICULO>();
+                var items = db.COMBUSTIBLE_VEHICULO.Select(
+                    x => new
+                    {
+                        x.ID,
+                        x.NOMBRE,
+                        ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                    }).ToList();
+                gridCombustibleVehiculo.DataSource = items;
             }
         }
 
@@ -49,26 +56,40 @@ namespace RentACar
             this.WindowState = FormWindowState.Maximized;
         }
 
+        private bool ValidateData()
+        {
+            if (String.IsNullOrWhiteSpace(TxNombre.Text))
+            {
+                MessageBox.Show("Debe ingresar el tipo de combustible.");
+                TxNombre.Focus();
+                return false;
+            }
+            return true;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            model.NOMBRE = TxNombre.Text.Trim();
-            model.ESTADO = checkEstado.Checked;
-
-            using (DBEntities db = new DBEntities())
+            if (ValidateData())
             {
-                if (model.ID == 0)
+                model.NOMBRE = TxNombre.Text.Trim();
+                model.ESTADO = checkEstado.Checked;
+
+                using (DBEntities db = new DBEntities())
                 {
-                    db.COMBUSTIBLE_VEHICULO.Add(model);
+                    if (model.ID == 0)
+                    {
+                        db.COMBUSTIBLE_VEHICULO.Add(model);
+                    }
+                    else
+                    {
+                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    db.SaveChanges();
                 }
-                else
-                {
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                }
-                db.SaveChanges();
+                ClearForm();
+                PopulateDataGridView();
+                MessageBox.Show("Combustible de vehiculo actualizado existosamente");
             }
-            ClearForm();
-            PopulateDataGridView();
-            MessageBox.Show("Combustible de vehiculo actualizado existosamente");
         }
 
         private void gridCombustibleVehiculo_DoubleClick(object sender, EventArgs e)

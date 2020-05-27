@@ -103,6 +103,7 @@
           <Property Name="ID_MODELO_VEHICULO" Type="int" />
           <Property Name="ID_TIPO_COMBUSTIBLE" Type="int" />
           <Property Name="FECHA_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="ESTADO" Type="bit" />
         </EntityType>
         <Association Name="FK__CLIENTE__ID_TIPO__70DDC3D8">
           <End Role="TIPO_CLIENTE" Type="Self.TIPO_CLIENTE" Multiplicity="0..1" />
@@ -286,6 +287,7 @@
           <NavigationProperty Name="COMBUSTIBLE_VEHICULO" Relationship="Self.FK__VEHICULO__ID_TIP__6FE99F9F" FromRole="VEHICULO" ToRole="COMBUSTIBLE_VEHICULO" />
           <NavigationProperty Name="MODELO_VEHICULO" Relationship="Self.FK__VEHICULO__ID_MOD__6EF57B66" FromRole="VEHICULO" ToRole="MODELO_VEHICULO" />
           <NavigationProperty Name="TIPO_VEHICULO" Relationship="Self.FK__VEHICULO__ID_TIP__6E01572D" FromRole="VEHICULO" ToRole="TIPO_VEHICULO" />
+          <Property Name="ESTADO" Type="Boolean" />
         </EntityType>
         <Association Name="FK__VEHICULO__ID_TIP__6FE99F9F">
           <End Role="COMBUSTIBLE_VEHICULO" Type="Self.COMBUSTIBLE_VEHICULO" Multiplicity="0..1" />
@@ -515,6 +517,7 @@
           <EntitySetMapping Name="VEHICULO">
             <EntityTypeMapping TypeName="rentacarModel.VEHICULO">
               <MappingFragment StoreEntitySet="VEHICULO">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
                 <ScalarProperty Name="NUMERO_CHASIS" ColumnName="NUMERO_CHASIS" />
