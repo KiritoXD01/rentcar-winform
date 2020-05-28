@@ -33,6 +33,11 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gridEmpleado = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPO_EMPLEADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.TxNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,11 +56,6 @@
             this.TxFechaCreacion = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.comboTipoEmpleado = new System.Windows.Forms.ComboBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPO_EMPLEADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridEmpleado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,7 +87,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 24;
-            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.Text = "Deshabilitar";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -119,6 +119,45 @@
             this.gridEmpleado.Size = new System.Drawing.Size(684, 295);
             this.gridEmpleado.TabIndex = 26;
             this.gridEmpleado.DoubleClick += new System.EventHandler(this.gridEmpleado_DoubleClick);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // NOMBRES
+            // 
+            this.NOMBRES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NOMBRES.DataPropertyName = "NOMBRES";
+            this.NOMBRES.HeaderText = "Nombres";
+            this.NOMBRES.Name = "NOMBRES";
+            this.NOMBRES.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Apellido.DataPropertyName = "APELLIDOS";
+            this.Apellido.HeaderText = "Apellidos";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // TIPO_EMPLEADO
+            // 
+            this.TIPO_EMPLEADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TIPO_EMPLEADO.DataPropertyName = "TIPO_EMPLEADO";
+            this.TIPO_EMPLEADO.HeaderText = "Tipo";
+            this.TIPO_EMPLEADO.Name = "TIPO_EMPLEADO";
+            this.TIPO_EMPLEADO.ReadOnly = true;
+            // 
+            // ESTADO
+            // 
+            this.ESTADO.DataPropertyName = "ESTADO";
+            this.ESTADO.HeaderText = "Estado";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.ReadOnly = true;
             // 
             // label1
             // 
@@ -191,7 +230,7 @@
             // checkEstado
             // 
             this.checkEstado.AutoSize = true;
-            this.checkEstado.Location = new System.Drawing.Point(73, 178);
+            this.checkEstado.Location = new System.Drawing.Point(73, 179);
             this.checkEstado.Name = "checkEstado";
             this.checkEstado.Size = new System.Drawing.Size(15, 14);
             this.checkEstado.TabIndex = 35;
@@ -271,45 +310,6 @@
             this.comboTipoEmpleado.Name = "comboTipoEmpleado";
             this.comboTipoEmpleado.Size = new System.Drawing.Size(157, 21);
             this.comboTipoEmpleado.TabIndex = 44;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // NOMBRES
-            // 
-            this.NOMBRES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NOMBRES.DataPropertyName = "NOMBRES";
-            this.NOMBRES.HeaderText = "Nombres";
-            this.NOMBRES.Name = "NOMBRES";
-            this.NOMBRES.ReadOnly = true;
-            // 
-            // Apellido
-            // 
-            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Apellido.DataPropertyName = "APELLIDOS";
-            this.Apellido.HeaderText = "Apellidos";
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
-            // 
-            // TIPO_EMPLEADO
-            // 
-            this.TIPO_EMPLEADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TIPO_EMPLEADO.DataPropertyName = "TIPO_EMPLEADO";
-            this.TIPO_EMPLEADO.HeaderText = "Tipo";
-            this.TIPO_EMPLEADO.Name = "TIPO_EMPLEADO";
-            this.TIPO_EMPLEADO.ReadOnly = true;
-            // 
-            // ESTADO
-            // 
-            this.ESTADO.DataPropertyName = "ESTADO";
-            this.ESTADO.HeaderText = "Estado";
-            this.ESTADO.Name = "ESTADO";
-            this.ESTADO.ReadOnly = true;
             // 
             // FrmEmpleado
             // 

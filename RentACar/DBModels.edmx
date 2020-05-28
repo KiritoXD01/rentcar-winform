@@ -67,6 +67,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DESCRIPCION" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ESTADO" Type="bit" />
         </EntityType>
         <EntityType Name="TIPO_CLIENTE">
           <Key>
@@ -438,6 +439,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="EMPLEADO" Relationship="rentacarModel.FK__EMPLEADO__ID_TAN__71D1E811" FromRole="TANDA" ToRole="EMPLEADO" />
+          <Property Name="ESTADO" Type="Boolean" />
         </EntityType>
         <EntityType Name="TIPO_EMPLEADO">
           <Key>
@@ -574,6 +576,7 @@
           <EntitySetMapping Name="TANDA">
             <EntityTypeMapping TypeName="rentacarModel.TANDA">
               <MappingFragment StoreEntitySet="TANDA">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

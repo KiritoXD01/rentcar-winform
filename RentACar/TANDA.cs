@@ -22,6 +22,7 @@ namespace RentACar
     
         public int ID { get; set; }
         public string DESCRIPCION { get; set; }
+        public Nullable<bool> ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EMPLEADO> EMPLEADO { get; set; }

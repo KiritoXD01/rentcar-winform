@@ -160,6 +160,7 @@ namespace RentACar
                 model.ID_TIPO_COMBUSTIBLE = Convert.ToInt32(comboTipoCombustible.SelectedValue);
                 model.DESCRIPCION = TxDescripcion.Text.Trim();
                 model.FECHA_CREACION = DateTime.Now;
+                model.ESTADO = Convert.ToBoolean(checkEstado.Checked);
 
                 using (DBEntities db = new DBEntities())
                 {

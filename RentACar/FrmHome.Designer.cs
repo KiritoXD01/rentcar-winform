@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHome));
             this.Sidebar = new System.Windows.Forms.Panel();
+            this.panelEmpleado = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
+            this.btnVehiculo = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.panelVehiculo = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
@@ -41,8 +45,8 @@
             this.SidebarLogo = new System.Windows.Forms.Panel();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button6 = new System.Windows.Forms.Button();
             this.Sidebar.SuspendLayout();
+            this.panelEmpleado.SuspendLayout();
             this.panelVehiculo.SuspendLayout();
             this.panelContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -52,6 +56,7 @@
             // 
             this.Sidebar.AutoScroll = true;
             this.Sidebar.BackColor = System.Drawing.Color.Black;
+            this.Sidebar.Controls.Add(this.panelEmpleado);
             this.Sidebar.Controls.Add(this.button6);
             this.Sidebar.Controls.Add(this.btnClientes);
             this.Sidebar.Controls.Add(this.panelVehiculo);
@@ -62,6 +67,65 @@
             this.Sidebar.Name = "Sidebar";
             this.Sidebar.Size = new System.Drawing.Size(250, 561);
             this.Sidebar.TabIndex = 0;
+            // 
+            // panelEmpleado
+            // 
+            this.panelEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelEmpleado.Controls.Add(this.button7);
+            this.panelEmpleado.Controls.Add(this.btnVehiculo);
+            this.panelEmpleado.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEmpleado.Location = new System.Drawing.Point(0, 444);
+            this.panelEmpleado.Name = "panelEmpleado";
+            this.panelEmpleado.Size = new System.Drawing.Size(250, 86);
+            this.panelEmpleado.TabIndex = 4;
+            // 
+            // button7
+            // 
+            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.Color.Gainsboro;
+            this.button7.Location = new System.Drawing.Point(0, 40);
+            this.button7.Name = "button7";
+            this.button7.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button7.Size = new System.Drawing.Size(250, 40);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "Tandas";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // btnVehiculo
+            // 
+            this.btnVehiculo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnVehiculo.FlatAppearance.BorderSize = 0;
+            this.btnVehiculo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVehiculo.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnVehiculo.Location = new System.Drawing.Point(0, 0);
+            this.btnVehiculo.Name = "btnVehiculo";
+            this.btnVehiculo.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnVehiculo.Size = new System.Drawing.Size(250, 40);
+            this.btnVehiculo.TabIndex = 0;
+            this.btnVehiculo.Text = "Empleados";
+            this.btnVehiculo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVehiculo.UseVisualStyleBackColor = true;
+            this.btnVehiculo.Click += new System.EventHandler(this.btnVehiculo_Click);
+            // 
+            // button6
+            // 
+            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.Color.Gainsboro;
+            this.button6.Location = new System.Drawing.Point(0, 399);
+            this.button6.Name = "button6";
+            this.button6.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button6.Size = new System.Drawing.Size(250, 45);
+            this.button6.TabIndex = 3;
+            this.button6.Text = "Empleados";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // btnClientes
             // 
@@ -219,22 +283,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button6
-            // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button6.Location = new System.Drawing.Point(0, 399);
-            this.button6.Name = "button6";
-            this.button6.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button6.Size = new System.Drawing.Size(250, 45);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "Empleados";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -249,6 +297,7 @@
             this.Text = "Rent a Car";
             this.Load += new System.EventHandler(this.FrmHome_Load);
             this.Sidebar.ResumeLayout(false);
+            this.panelEmpleado.ResumeLayout(false);
             this.panelVehiculo.ResumeLayout(false);
             this.panelContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -271,6 +320,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Panel panelEmpleado;
+        private System.Windows.Forms.Button btnVehiculo;
+        private System.Windows.Forms.Button button7;
     }
 }
 

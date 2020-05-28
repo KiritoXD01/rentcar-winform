@@ -62,7 +62,7 @@ namespace RentACar
             using (DBEntities db = new DBEntities())
             {
                 //Fill tandas
-                comboTanda.DataSource = db.TANDA.ToList<TANDA>();
+                comboTanda.DataSource = db.TANDA.Where(x => x.ESTADO == true).ToList();
                 comboTanda.DisplayMember = "DESCRIPCION";
                 comboTanda.ValueMember = "ID";
 
@@ -182,6 +182,7 @@ namespace RentACar
                 using (DBEntities db = new DBEntities())
                 {
                     model = db.EMPLEADO.Where(x => x.ID == model.ID).FirstOrDefault();
+
                     TxNombre.Text = model.NOMBRES;
                     TxApellido.Text = model.APELLIDOS;
                     TxClave.Text = model.CLAVE;
@@ -193,30 +194,31 @@ namespace RentACar
                     TxFechaCreacion.Text = model.FECHA_CREACION.ToString();
                     labelFechaCreacion.Visible = true;
                     TxFechaCreacion.Visible = true;
+                    btnDelete.Text = model.ESTADO == true ? "Deshabilitar" : "Habilitar";
+                    btnSave.Text = "Actualizar";
+                    btnDelete.Enabled = true;
                 }
-                btnSave.Text = "Actualizar";
-                btnDelete.Enabled = true;
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea borrar este elemento?", "Eliminar Elemento", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            string question = (model.ESTADO == true) ? "Desea desactivar este elemento?" : "Desea activar este elemento";
+
+            if (MessageBox.Show(question, "Cambiar Estado", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                model.ESTADO = !model.ESTADO;
+
                 using (DBEntities db = new DBEntities())
                 {
-                    var entry = db.Entry(model);
-                    if (entry.State == System.Data.Entity.EntityState.Detached)
-                    {
-                        db.EMPLEADO.Attach(model);
-                    }
-                    db.EMPLEADO.Remove(model);
+                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
-                    ClearForm();
-                    PopulateDataGridView();
-                    PopulateCombos();
-                    MessageBox.Show("Empleado eliminado existosamente");
                 }
+                ClearForm();
+                PopulateDataGridView();
+                PopulateCombos();
+                string result = (model.ESTADO == true) ? "Empleado activado existosamente" : "Empleado desactivado existosamente";
+                MessageBox.Show(result);
             }
         }
     }
