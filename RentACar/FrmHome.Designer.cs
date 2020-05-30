@@ -45,17 +45,24 @@
             this.SidebarLogo = new System.Windows.Forms.Panel();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.Sidebar.SuspendLayout();
             this.panelEmpleado.SuspendLayout();
             this.panelVehiculo.SuspendLayout();
             this.panelContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Sidebar
             // 
             this.Sidebar.AutoScroll = true;
             this.Sidebar.BackColor = System.Drawing.Color.Black;
+            this.Sidebar.Controls.Add(this.panel1);
+            this.Sidebar.Controls.Add(this.button8);
             this.Sidebar.Controls.Add(this.panelEmpleado);
             this.Sidebar.Controls.Add(this.button6);
             this.Sidebar.Controls.Add(this.btnClientes);
@@ -76,7 +83,7 @@
             this.panelEmpleado.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEmpleado.Location = new System.Drawing.Point(0, 444);
             this.panelEmpleado.Name = "panelEmpleado";
-            this.panelEmpleado.Size = new System.Drawing.Size(250, 86);
+            this.panelEmpleado.Size = new System.Drawing.Size(233, 86);
             this.panelEmpleado.TabIndex = 4;
             // 
             // button7
@@ -88,7 +95,7 @@
             this.button7.Location = new System.Drawing.Point(0, 40);
             this.button7.Name = "button7";
             this.button7.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button7.Size = new System.Drawing.Size(250, 40);
+            this.button7.Size = new System.Drawing.Size(233, 40);
             this.button7.TabIndex = 1;
             this.button7.Text = "Tandas";
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -104,7 +111,7 @@
             this.btnVehiculo.Location = new System.Drawing.Point(0, 0);
             this.btnVehiculo.Name = "btnVehiculo";
             this.btnVehiculo.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnVehiculo.Size = new System.Drawing.Size(250, 40);
+            this.btnVehiculo.Size = new System.Drawing.Size(233, 40);
             this.btnVehiculo.TabIndex = 0;
             this.btnVehiculo.Text = "Empleados";
             this.btnVehiculo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -120,7 +127,7 @@
             this.button6.Location = new System.Drawing.Point(0, 399);
             this.button6.Name = "button6";
             this.button6.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button6.Size = new System.Drawing.Size(250, 45);
+            this.button6.Size = new System.Drawing.Size(233, 45);
             this.button6.TabIndex = 3;
             this.button6.Text = "Empleados";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -136,7 +143,7 @@
             this.btnClientes.Location = new System.Drawing.Point(0, 354);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnClientes.Size = new System.Drawing.Size(250, 45);
+            this.btnClientes.Size = new System.Drawing.Size(233, 45);
             this.btnClientes.TabIndex = 2;
             this.btnClientes.Text = "Clientes";
             this.btnClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -154,7 +161,7 @@
             this.panelVehiculo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelVehiculo.Location = new System.Drawing.Point(0, 147);
             this.panelVehiculo.Name = "panelVehiculo";
-            this.panelVehiculo.Size = new System.Drawing.Size(250, 207);
+            this.panelVehiculo.Size = new System.Drawing.Size(233, 207);
             this.panelVehiculo.TabIndex = 1;
             // 
             // button5
@@ -166,7 +173,7 @@
             this.button5.Location = new System.Drawing.Point(0, 160);
             this.button5.Name = "button5";
             this.button5.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button5.Size = new System.Drawing.Size(250, 40);
+            this.button5.Size = new System.Drawing.Size(233, 40);
             this.button5.TabIndex = 4;
             this.button5.Text = "Vehiculos";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -182,7 +189,7 @@
             this.button4.Location = new System.Drawing.Point(0, 120);
             this.button4.Name = "button4";
             this.button4.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(250, 40);
+            this.button4.Size = new System.Drawing.Size(233, 40);
             this.button4.TabIndex = 3;
             this.button4.Text = "Combustibles";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -198,7 +205,7 @@
             this.button3.Location = new System.Drawing.Point(0, 80);
             this.button3.Name = "button3";
             this.button3.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(250, 40);
+            this.button3.Size = new System.Drawing.Size(233, 40);
             this.button3.TabIndex = 2;
             this.button3.Text = "Modelos";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -214,7 +221,7 @@
             this.button2.Location = new System.Drawing.Point(0, 40);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(250, 40);
+            this.button2.Size = new System.Drawing.Size(233, 40);
             this.button2.TabIndex = 1;
             this.button2.Text = "Marcas";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -230,7 +237,7 @@
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(250, 40);
+            this.button1.Size = new System.Drawing.Size(233, 40);
             this.button1.TabIndex = 0;
             this.button1.Text = "Tipo de vehiculo";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -246,7 +253,7 @@
             this.btnVehiculoPanel.Location = new System.Drawing.Point(0, 102);
             this.btnVehiculoPanel.Name = "btnVehiculoPanel";
             this.btnVehiculoPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnVehiculoPanel.Size = new System.Drawing.Size(250, 45);
+            this.btnVehiculoPanel.Size = new System.Drawing.Size(233, 45);
             this.btnVehiculoPanel.TabIndex = 0;
             this.btnVehiculoPanel.Text = "Vehiculos";
             this.btnVehiculoPanel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -258,7 +265,7 @@
             this.SidebarLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.SidebarLogo.Location = new System.Drawing.Point(0, 0);
             this.SidebarLogo.Name = "SidebarLogo";
-            this.SidebarLogo.Size = new System.Drawing.Size(250, 102);
+            this.SidebarLogo.Size = new System.Drawing.Size(233, 102);
             this.SidebarLogo.TabIndex = 0;
             // 
             // panelContainer
@@ -283,6 +290,62 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // button8
+            // 
+            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ForeColor = System.Drawing.Color.Gainsboro;
+            this.button8.Location = new System.Drawing.Point(0, 530);
+            this.button8.Name = "button8";
+            this.button8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button8.Size = new System.Drawing.Size(233, 45);
+            this.button8.TabIndex = 5;
+            this.button8.Text = "Rentas";
+            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panel1.Controls.Add(this.button9);
+            this.panel1.Controls.Add(this.button10);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 575);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(233, 86);
+            this.panel1.TabIndex = 6;
+            // 
+            // button9
+            // 
+            this.button9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.ForeColor = System.Drawing.Color.Gainsboro;
+            this.button9.Location = new System.Drawing.Point(0, 40);
+            this.button9.Name = "button9";
+            this.button9.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button9.Size = new System.Drawing.Size(233, 40);
+            this.button9.TabIndex = 1;
+            this.button9.Text = "Inspecciones";
+            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.ForeColor = System.Drawing.Color.Gainsboro;
+            this.button10.Location = new System.Drawing.Point(0, 0);
+            this.button10.Name = "button10";
+            this.button10.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button10.Size = new System.Drawing.Size(233, 40);
+            this.button10.TabIndex = 0;
+            this.button10.Text = "Rentas";
+            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button10.UseVisualStyleBackColor = true;
+            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -301,6 +364,7 @@
             this.panelVehiculo.ResumeLayout(false);
             this.panelContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -323,6 +387,10 @@
         private System.Windows.Forms.Panel panelEmpleado;
         private System.Windows.Forms.Button btnVehiculo;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button8;
     }
 }
 
