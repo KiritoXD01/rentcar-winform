@@ -55,6 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CANTIDAD_COMBUSTIBLE.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="CLIENTE.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
@@ -77,6 +80,9 @@
       <DependentUpon>DBModels.edmx</DependentUpon>
     </Compile>
     <Compile Include="EMPLEADO.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESTADO_INSPECCION.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
     <Compile Include="FrmCliente.cs">
@@ -102,18 +108,6 @@
     </Compile>
     <Compile Include="FrmHome.Designer.cs">
       <DependentUpon>FrmHome.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmInpeccion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmInpeccion.Designer.cs">
-      <DependentUpon>FrmInpeccion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmInspeccion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmInspeccion.Designer.cs">
-      <DependentUpon>FrmInspeccion.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMarcaVehiculo.cs">
       <SubType>Form</SubType>
@@ -145,6 +139,12 @@
     <Compile Include="FrmVehiculo.Designer.cs">
       <DependentUpon>FrmVehiculo.cs</DependentUpon>
     </Compile>
+    <Compile Include="INSPECCION.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INSPECCION_GOMAS.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="MARCA_VEHICULO.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
@@ -158,6 +158,9 @@
     </Compile>
     <Compile Include="FrmTipoVehiculo.Designer.cs">
       <DependentUpon>FrmTipoVehiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RENTA.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
     <Compile Include="TANDA.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
@@ -185,12 +188,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHome.resx">
       <DependentUpon>FrmHome.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmInpeccion.resx">
-      <DependentUpon>FrmInpeccion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmInspeccion.resx">
-      <DependentUpon>FrmInspeccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMarcaVehiculo.resx">
       <DependentUpon>FrmMarcaVehiculo.cs</DependentUpon>

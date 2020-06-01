@@ -35,5 +35,10 @@ namespace RentACar
         public virtual DbSet<EMPLEADO> EMPLEADO { get; set; }
         public virtual DbSet<TANDA> TANDA { get; set; }
         public virtual DbSet<TIPO_EMPLEADO> TIPO_EMPLEADO { get; set; }
+        public virtual DbSet<CANTIDAD_COMBUSTIBLE> CANTIDAD_COMBUSTIBLE { get; set; }
+        public virtual DbSet<ESTADO_INSPECCION> ESTADO_INSPECCION { get; set; }
+        public virtual DbSet<INSPECCION> INSPECCION { get; set; }
+        public virtual DbSet<INSPECCION_GOMAS> INSPECCION_GOMAS { get; set; }
+        public virtual DbSet<RENTA> RENTA { get; set; }
     }
 }

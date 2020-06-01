@@ -123,5 +123,15 @@ namespace RentACar
         {
             openChildForm(new FrmTanda());
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FrmRenta());
+        }
     }
 }

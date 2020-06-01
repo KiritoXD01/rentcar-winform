@@ -12,31 +12,35 @@ namespace RentACar
     using System;
     using System.Collections.Generic;
     
-    public partial class VEHICULO
+    public partial class INSPECCION
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public VEHICULO()
+        public INSPECCION()
         {
-            this.INSPECCION = new HashSet<INSPECCION>();
+            this.INSPECCION_GOMAS = new HashSet<INSPECCION_GOMAS>();
             this.RENTA = new HashSet<RENTA>();
         }
     
         public int ID { get; set; }
-        public string DESCRIPCION { get; set; }
-        public string NUMERO_CHASIS { get; set; }
-        public string NUMERO_MOTOR { get; set; }
-        public string NUMERO_PLACA { get; set; }
-        public Nullable<int> ID_TIPO_VEHICULO { get; set; }
-        public Nullable<int> ID_MODELO_VEHICULO { get; set; }
-        public Nullable<int> ID_TIPO_COMBUSTIBLE { get; set; }
+        public string CODIGO { get; set; }
+        public Nullable<int> ID_VEHICULO { get; set; }
+        public Nullable<int> ID_CLIENTE { get; set; }
+        public Nullable<int> ID_EMPLEADO { get; set; }
+        public Nullable<bool> TIENE_RAYADURAS { get; set; }
+        public Nullable<int> ID_CANTIDAD_COMBUSTIBLE { get; set; }
+        public Nullable<bool> TIENE_GOMA { get; set; }
+        public Nullable<bool> TIENE_GATO { get; set; }
+        public Nullable<bool> TIENE_ROTURA_CRISTAL { get; set; }
         public System.DateTime FECHA_CREACION { get; set; }
-        public Nullable<bool> ESTADO { get; set; }
+        public Nullable<int> ID_ESTADO_INSPECCION { get; set; }
     
-        public virtual COMBUSTIBLE_VEHICULO COMBUSTIBLE_VEHICULO { get; set; }
-        public virtual MODELO_VEHICULO MODELO_VEHICULO { get; set; }
-        public virtual TIPO_VEHICULO TIPO_VEHICULO { get; set; }
+        public virtual CANTIDAD_COMBUSTIBLE CANTIDAD_COMBUSTIBLE { get; set; }
+        public virtual CLIENTE CLIENTE { get; set; }
+        public virtual EMPLEADO EMPLEADO { get; set; }
+        public virtual ESTADO_INSPECCION ESTADO_INSPECCION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSPECCION> INSPECCION { get; set; }
+        public virtual ICollection<INSPECCION_GOMAS> INSPECCION_GOMAS { get; set; }
+        public virtual VEHICULO VEHICULO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RENTA> RENTA { get; set; }
     }
