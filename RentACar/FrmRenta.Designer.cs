@@ -39,7 +39,7 @@
             this.comboCliente = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnInspeccion = new System.Windows.Forms.Button();
-            this.gridModeloVehiculo = new System.Windows.Forms.DataGridView();
+            this.gridRenta = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_VEHICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,16 +47,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.TxFechaRenta = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.DPFechaDevolucion = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.TxCantidadDias = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.TxMontoDia = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.TxTotal = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.TxDescripcion = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.gridModeloVehiculo)).BeginInit();
+            this.TxCantidadDias = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRenta)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -68,6 +68,7 @@
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -78,6 +79,7 @@
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCloseTipoVehiculo
             // 
@@ -87,6 +89,7 @@
             this.btnCloseTipoVehiculo.TabIndex = 14;
             this.btnCloseTipoVehiculo.Text = "Cerrar";
             this.btnCloseTipoVehiculo.UseVisualStyleBackColor = true;
+            this.btnCloseTipoVehiculo.Click += new System.EventHandler(this.btnCloseTipoVehiculo_Click);
             // 
             // label1
             // 
@@ -99,6 +102,8 @@
             // 
             // comboVehiculo
             // 
+            this.comboVehiculo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboVehiculo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboVehiculo.FormattingEnabled = true;
             this.comboVehiculo.Location = new System.Drawing.Point(83, 67);
             this.comboVehiculo.Name = "comboVehiculo";
@@ -116,6 +121,8 @@
             // 
             // comboEmpleado
             // 
+            this.comboEmpleado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboEmpleado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboEmpleado.FormattingEnabled = true;
             this.comboEmpleado.Location = new System.Drawing.Point(83, 94);
             this.comboEmpleado.Name = "comboEmpleado";
@@ -133,6 +140,8 @@
             // 
             // comboCliente
             // 
+            this.comboCliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboCliente.FormattingEnabled = true;
             this.comboCliente.Location = new System.Drawing.Point(83, 121);
             this.comboCliente.Name = "comboCliente";
@@ -142,7 +151,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 153);
+            this.label4.Location = new System.Drawing.Point(13, 152);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 22;
@@ -156,22 +165,23 @@
             this.btnInspeccion.TabIndex = 23;
             this.btnInspeccion.Text = "Crear Inspeccion";
             this.btnInspeccion.UseVisualStyleBackColor = true;
+            this.btnInspeccion.Click += new System.EventHandler(this.btnInspeccion_Click);
             // 
-            // gridModeloVehiculo
+            // gridRenta
             // 
-            this.gridModeloVehiculo.AllowUserToDeleteRows = false;
-            this.gridModeloVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridModeloVehiculo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridRenta.AllowUserToDeleteRows = false;
+            this.gridRenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridRenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.ID_VEHICULO,
             this.ID_CLIENTE,
             this.ID_EMPLEADO});
-            this.gridModeloVehiculo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridModeloVehiculo.Location = new System.Drawing.Point(0, 326);
-            this.gridModeloVehiculo.Name = "gridModeloVehiculo";
-            this.gridModeloVehiculo.ReadOnly = true;
-            this.gridModeloVehiculo.Size = new System.Drawing.Size(684, 235);
-            this.gridModeloVehiculo.TabIndex = 15;
+            this.gridRenta.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gridRenta.Location = new System.Drawing.Point(0, 326);
+            this.gridRenta.Name = "gridRenta";
+            this.gridRenta.ReadOnly = true;
+            this.gridRenta.Size = new System.Drawing.Size(684, 235);
+            this.gridRenta.TabIndex = 15;
             // 
             // ID
             // 
@@ -231,12 +241,12 @@
             this.label6.TabIndex = 26;
             this.label6.Text = "Fecha Devolucion";
             // 
-            // dateTimePicker1
+            // DPFechaDevolucion
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(375, 67);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(182, 20);
-            this.dateTimePicker1.TabIndex = 27;
+            this.DPFechaDevolucion.Location = new System.Drawing.Point(375, 67);
+            this.DPFechaDevolucion.Name = "DPFechaDevolucion";
+            this.DPFechaDevolucion.Size = new System.Drawing.Size(182, 20);
+            this.DPFechaDevolucion.TabIndex = 27;
             // 
             // label7
             // 
@@ -246,14 +256,6 @@
             this.label7.Size = new System.Drawing.Size(73, 13);
             this.label7.TabIndex = 28;
             this.label7.Text = "Cantidad Dias";
-            // 
-            // TxCantidadDias
-            // 
-            this.TxCantidadDias.Location = new System.Drawing.Point(375, 93);
-            this.TxCantidadDias.Name = "TxCantidadDias";
-            this.TxCantidadDias.ReadOnly = true;
-            this.TxCantidadDias.Size = new System.Drawing.Size(182, 20);
-            this.TxCantidadDias.TabIndex = 29;
             // 
             // label8
             // 
@@ -268,9 +270,9 @@
             // 
             this.TxMontoDia.Location = new System.Drawing.Point(375, 119);
             this.TxMontoDia.Name = "TxMontoDia";
-            this.TxMontoDia.ReadOnly = true;
             this.TxMontoDia.Size = new System.Drawing.Size(182, 20);
             this.TxMontoDia.TabIndex = 31;
+            this.TxMontoDia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxMontoDia_KeyPress);
             // 
             // label9
             // 
@@ -306,20 +308,28 @@
             this.TxDescripcion.Size = new System.Drawing.Size(182, 20);
             this.TxDescripcion.TabIndex = 35;
             // 
+            // TxCantidadDias
+            // 
+            this.TxCantidadDias.Location = new System.Drawing.Point(375, 93);
+            this.TxCantidadDias.Name = "TxCantidadDias";
+            this.TxCantidadDias.ReadOnly = true;
+            this.TxCantidadDias.Size = new System.Drawing.Size(182, 20);
+            this.TxCantidadDias.TabIndex = 36;
+            // 
             // FrmRenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 561);
+            this.Controls.Add(this.TxCantidadDias);
             this.Controls.Add(this.TxDescripcion);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.TxTotal);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.TxMontoDia);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.TxCantidadDias);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.DPFechaDevolucion);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.TxFechaRenta);
             this.Controls.Add(this.label5);
@@ -331,14 +341,15 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboVehiculo);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.gridModeloVehiculo);
+            this.Controls.Add(this.gridRenta);
             this.Controls.Add(this.btnCloseTipoVehiculo);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmRenta";
             this.Text = "FrmRenta";
-            ((System.ComponentModel.ISupportInitialize)(this.gridModeloVehiculo)).EndInit();
+            this.Load += new System.EventHandler(this.FrmRenta_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridRenta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,7 +368,7 @@
         private System.Windows.Forms.ComboBox comboCliente;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnInspeccion;
-        private System.Windows.Forms.DataGridView gridModeloVehiculo;
+        private System.Windows.Forms.DataGridView gridRenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_VEHICULO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_CLIENTE;
@@ -365,14 +376,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TxFechaRenta;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker DPFechaDevolucion;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox TxCantidadDias;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox TxMontoDia;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox TxTotal;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox TxDescripcion;
+        private System.Windows.Forms.TextBox TxCantidadDias;
     }
 }
