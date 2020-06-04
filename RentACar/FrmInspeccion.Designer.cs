@@ -29,12 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboVehiculo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboCliente = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboCantidadCombustible = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.checkTieneRayaduras = new System.Windows.Forms.CheckBox();
@@ -45,6 +42,8 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.TxDescripcion = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.checkLlantaDelanteraIzquierda = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.checkLlantaDelanteraDerecha = new System.Windows.Forms.CheckBox();
@@ -53,8 +52,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.checkGomaTraseraDerecha = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.TxDescripcion = new System.Windows.Forms.TextBox();
+            this.TxEmpleado = new System.Windows.Forms.TextBox();
+            this.TxCliente = new System.Windows.Forms.TextBox();
+            this.TxVehiculo = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,16 +67,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Vehiculo";
             // 
-            // comboVehiculo
-            // 
-            this.comboVehiculo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboVehiculo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboVehiculo.FormattingEnabled = true;
-            this.comboVehiculo.Location = new System.Drawing.Point(141, 27);
-            this.comboVehiculo.Name = "comboVehiculo";
-            this.comboVehiculo.Size = new System.Drawing.Size(198, 21);
-            this.comboVehiculo.TabIndex = 1;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -85,26 +75,6 @@
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Cliente";
-            // 
-            // comboCliente
-            // 
-            this.comboCliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboCliente.FormattingEnabled = true;
-            this.comboCliente.Location = new System.Drawing.Point(141, 54);
-            this.comboCliente.Name = "comboCliente";
-            this.comboCliente.Size = new System.Drawing.Size(198, 21);
-            this.comboCliente.TabIndex = 3;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(141, 81);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(198, 21);
-            this.comboBox1.TabIndex = 5;
             // 
             // label3
             // 
@@ -115,15 +85,15 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Empleado";
             // 
-            // comboBox2
+            // comboCantidadCombustible
             // 
-            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(141, 128);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(198, 21);
-            this.comboBox2.TabIndex = 7;
+            this.comboCantidadCombustible.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboCantidadCombustible.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboCantidadCombustible.FormattingEnabled = true;
+            this.comboCantidadCombustible.Location = new System.Drawing.Point(141, 128);
+            this.comboCantidadCombustible.Name = "comboCantidadCombustible";
+            this.comboCantidadCombustible.Size = new System.Drawing.Size(198, 21);
+            this.comboCantidadCombustible.TabIndex = 7;
             // 
             // label4
             // 
@@ -224,6 +194,24 @@
             this.panel1.Size = new System.Drawing.Size(333, 194);
             this.panel1.TabIndex = 16;
             // 
+            // TxDescripcion
+            // 
+            this.TxDescripcion.Location = new System.Drawing.Point(137, 106);
+            this.TxDescripcion.MaxLength = 255;
+            this.TxDescripcion.Multiline = true;
+            this.TxDescripcion.Name = "TxDescripcion";
+            this.TxDescripcion.Size = new System.Drawing.Size(188, 75);
+            this.TxDescripcion.TabIndex = 20;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 109);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(63, 13);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "Descripcion";
+            // 
             // checkLlantaDelanteraIzquierda
             // 
             this.checkLlantaDelanteraIzquierda.AutoSize = true;
@@ -296,29 +284,38 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Llanta trasera derecha";
             // 
-            // label13
+            // TxEmpleado
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 109);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(63, 13);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "Descripcion";
+            this.TxEmpleado.Location = new System.Drawing.Point(141, 82);
+            this.TxEmpleado.Name = "TxEmpleado";
+            this.TxEmpleado.ReadOnly = true;
+            this.TxEmpleado.Size = new System.Drawing.Size(198, 20);
+            this.TxEmpleado.TabIndex = 17;
             // 
-            // TxDescripcion
+            // TxCliente
             // 
-            this.TxDescripcion.Location = new System.Drawing.Point(137, 106);
-            this.TxDescripcion.MaxLength = 255;
-            this.TxDescripcion.Multiline = true;
-            this.TxDescripcion.Name = "TxDescripcion";
-            this.TxDescripcion.Size = new System.Drawing.Size(188, 20);
-            this.TxDescripcion.TabIndex = 20;
+            this.TxCliente.Location = new System.Drawing.Point(141, 56);
+            this.TxCliente.Name = "TxCliente";
+            this.TxCliente.ReadOnly = true;
+            this.TxCliente.Size = new System.Drawing.Size(198, 20);
+            this.TxCliente.TabIndex = 18;
+            // 
+            // TxVehiculo
+            // 
+            this.TxVehiculo.Location = new System.Drawing.Point(141, 30);
+            this.TxVehiculo.Name = "TxVehiculo";
+            this.TxVehiculo.ReadOnly = true;
+            this.TxVehiculo.Size = new System.Drawing.Size(198, 20);
+            this.TxVehiculo.TabIndex = 19;
             // 
             // FrmInspeccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(358, 427);
+            this.Controls.Add(this.TxVehiculo);
+            this.Controls.Add(this.TxCliente);
+            this.Controls.Add(this.TxEmpleado);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label8);
@@ -328,18 +325,16 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.checkTieneRayaduras);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboCantidadCombustible);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboCliente);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboVehiculo);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmInspeccion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Inspeccion";
+            this.Load += new System.EventHandler(this.FrmInspeccion_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -350,12 +345,9 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboVehiculo;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboCliente;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboCantidadCombustible;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox checkTieneRayaduras;
@@ -376,5 +368,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox TxDescripcion;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox TxEmpleado;
+        private System.Windows.Forms.TextBox TxCliente;
+        private System.Windows.Forms.TextBox TxVehiculo;
     }
 }

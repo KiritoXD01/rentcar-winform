@@ -16,5 +16,29 @@ namespace RentACar
         {
             InitializeComponent();
         }
+
+        private void PopulateCombos()
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                //Combustible
+                var items = db.COMBUSTIBLE_VEHICULO
+                    .Select(
+                    x => new
+                    {
+                        x.ID,
+                        x.NOMBRE
+                    })
+                    .ToList();
+                comboCantidadCombustible.DataSource = items;
+                comboCantidadCombustible.DisplayMember = "NOMBRE";
+                comboCantidadCombustible.ValueMember = "ID";
+            }
+        }
+
+        private void FrmInspeccion_Load(object sender, EventArgs e)
+        {
+            PopulateCombos();
+        }
     }
 }
