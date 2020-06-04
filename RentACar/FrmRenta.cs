@@ -14,6 +14,10 @@ namespace RentACar
     {
         RENTA model = new RENTA();
 
+        public static int VEHICULO = 0;
+        public static int CLIENTE = 0;
+        public static int EMPLEADO = 0;
+
         public FrmRenta()
         {
             InitializeComponent();
@@ -126,11 +130,14 @@ namespace RentACar
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnInspeccion_Click(object sender, EventArgs e)
         {
+            VEHICULO = Convert.ToInt32(comboVehiculo.SelectedValue);
+            CLIENTE = Convert.ToInt32(comboCliente.SelectedValue);
+            EMPLEADO = Convert.ToInt32(comboEmpleado.SelectedValue);
+
             FrmInspeccion form = new FrmInspeccion();
             form.ShowDialog();
         }
