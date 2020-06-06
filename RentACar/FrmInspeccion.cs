@@ -64,13 +64,7 @@ namespace RentACar
                 comboEstadoInspeccion.DataSource = estados;
                 comboEstadoInspeccion.DisplayMember = "DESCRIPCION";
                 comboEstadoInspeccion.ValueMember = "ID";
-            }
-        }
 
-        private void PopulateInfo()
-        {
-            using (DBEntities db = new DBEntities())
-            {
                 //vehiculo
                 var vehiculo = db.VEHICULO
                     .Where(x => x.ID == FrmRenta.VEHICULO)
@@ -96,6 +90,14 @@ namespace RentACar
             if (comboCantidadCombustible.SelectedIndex == -1)
             {
                 MessageBox.Show("Debe seleccionar la cantidad de combustible");
+                comboCantidadCombustible.Focus();
+                return false;
+            }
+
+            if (comboEstadoInspeccion.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar la cantidad de combustible");
+                comboEstadoInspeccion.Focus();
                 return false;
             }
 
@@ -105,7 +107,6 @@ namespace RentACar
         private void FrmInspeccion_Load(object sender, EventArgs e)
         {
             PopulateCombos();
-            PopulateInfo();
             ClearForm();
         }
 
@@ -116,16 +117,10 @@ namespace RentACar
 
         private string GenerateCode(int length = 20)
         {
-            string characters = "1234567890abcdefghijklmnpqrstuvwxyz";
-            string output = "";
-            Random rnd = new Random();
-
-            for (int i = 0; i < length; i++)
-            {
-                output = output + rnd.Next(characters.Length);
-            }
-
-            return output;
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            Random random = new Random();
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -160,6 +155,8 @@ namespace RentACar
 
                     db.INSPECCION_GOMAS.Add(inspeccion_gomas);
                     db.SaveChanges();
+
+                    
                 }
             }
         }

@@ -17,6 +17,7 @@ namespace RentACar
         public static int VEHICULO = 0;
         public static int CLIENTE = 0;
         public static int EMPLEADO = 0;
+        public static int ID_INSPECCION = 0;
 
         public FrmRenta()
         {

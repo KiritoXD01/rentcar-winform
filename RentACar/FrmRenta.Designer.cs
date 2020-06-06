@@ -40,10 +40,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnInspeccion = new System.Windows.Forms.Button();
             this.gridRenta = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_VEHICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_EMPLEADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.TxFechaRenta = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -56,6 +52,11 @@
             this.label10 = new System.Windows.Forms.Label();
             this.TxDescripcion = new System.Windows.Forms.TextBox();
             this.TxCantidadDias = new System.Windows.Forms.TextBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_VEHICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_EMPLEADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INSPECCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridRenta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,45 +176,14 @@
             this.ID,
             this.ID_VEHICULO,
             this.ID_CLIENTE,
-            this.ID_EMPLEADO});
+            this.ID_EMPLEADO,
+            this.INSPECCION});
             this.gridRenta.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gridRenta.Location = new System.Drawing.Point(0, 326);
             this.gridRenta.Name = "gridRenta";
             this.gridRenta.ReadOnly = true;
             this.gridRenta.Size = new System.Drawing.Size(684, 235);
             this.gridRenta.TabIndex = 15;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // ID_VEHICULO
-            // 
-            this.ID_VEHICULO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ID_VEHICULO.DataPropertyName = "ID_VEHICULO";
-            this.ID_VEHICULO.HeaderText = "Vehiculo";
-            this.ID_VEHICULO.Name = "ID_VEHICULO";
-            this.ID_VEHICULO.ReadOnly = true;
-            // 
-            // ID_CLIENTE
-            // 
-            this.ID_CLIENTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ID_CLIENTE.DataPropertyName = "ID_CLIENTE";
-            this.ID_CLIENTE.HeaderText = "Cliente";
-            this.ID_CLIENTE.Name = "ID_CLIENTE";
-            this.ID_CLIENTE.ReadOnly = true;
-            // 
-            // ID_EMPLEADO
-            // 
-            this.ID_EMPLEADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ID_EMPLEADO.DataPropertyName = "ID_EMPLEADO";
-            this.ID_EMPLEADO.HeaderText = "Empleado";
-            this.ID_EMPLEADO.Name = "ID_EMPLEADO";
-            this.ID_EMPLEADO.ReadOnly = true;
             // 
             // label5
             // 
@@ -316,6 +286,46 @@
             this.TxCantidadDias.Size = new System.Drawing.Size(182, 20);
             this.TxCantidadDias.TabIndex = 36;
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // ID_VEHICULO
+            // 
+            this.ID_VEHICULO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ID_VEHICULO.DataPropertyName = "ID_VEHICULO";
+            this.ID_VEHICULO.HeaderText = "Vehiculo";
+            this.ID_VEHICULO.Name = "ID_VEHICULO";
+            this.ID_VEHICULO.ReadOnly = true;
+            // 
+            // ID_CLIENTE
+            // 
+            this.ID_CLIENTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ID_CLIENTE.DataPropertyName = "ID_CLIENTE";
+            this.ID_CLIENTE.HeaderText = "Cliente";
+            this.ID_CLIENTE.Name = "ID_CLIENTE";
+            this.ID_CLIENTE.ReadOnly = true;
+            // 
+            // ID_EMPLEADO
+            // 
+            this.ID_EMPLEADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ID_EMPLEADO.DataPropertyName = "ID_EMPLEADO";
+            this.ID_EMPLEADO.HeaderText = "Empleado";
+            this.ID_EMPLEADO.Name = "ID_EMPLEADO";
+            this.ID_EMPLEADO.ReadOnly = true;
+            // 
+            // INSPECCION
+            // 
+            this.INSPECCION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.INSPECCION.DataPropertyName = "INSPECCION";
+            this.INSPECCION.HeaderText = "Inspeccion";
+            this.INSPECCION.Name = "INSPECCION";
+            this.INSPECCION.ReadOnly = true;
+            // 
             // FrmRenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,10 +379,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnInspeccion;
         private System.Windows.Forms.DataGridView gridRenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_VEHICULO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_CLIENTE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_EMPLEADO;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TxFechaRenta;
         private System.Windows.Forms.Label label6;
@@ -385,5 +391,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox TxDescripcion;
         private System.Windows.Forms.TextBox TxCantidadDias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_VEHICULO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_EMPLEADO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INSPECCION;
     }
 }
