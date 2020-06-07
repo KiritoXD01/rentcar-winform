@@ -17,7 +17,6 @@ namespace RentACar
         public static int VEHICULO = 0;
         public static int CLIENTE = 0;
         public static int EMPLEADO = 0;
-        public static int ID_INSPECCION = 0;
 
         public FrmRenta()
         {
@@ -39,6 +38,9 @@ namespace RentACar
             TxMontoDia.Text = "";
             TxDescripcion.Text = "";
             btnSave.Text = "Guardar";
+            btnSave.Enabled = false;
+            btnInspeccion.Enabled = true;
+            btnInspeccion.Text = "Crear Inspeccion";
             model.ID = 0;
         }
 
@@ -51,9 +53,10 @@ namespace RentACar
                     x => new
                     {
                         x.ID,
-                        VEHICULO = x.VEHICULO.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE,
-                        CLIENTE = x.CLIENTE.NOMBRES,
-                        EMPLEADO = x.EMPLEADO.NOMBRES
+                        VEHICULO = x.VEHICULO.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE + " " + x.VEHICULO.MODELO_VEHICULO.NOMBRE,
+                        CLIENTE = x.CLIENTE.NOMBRES + " " + x.CLIENTE.APELLIDOS,
+                        EMPLEADO = x.EMPLEADO.NOMBRES + " " + x.EMPLEADO.APELLIDOS,
+                        INSPECCION = x.INSPECCION.CODIGO
                     }).ToList();
                 gridRenta.DataSource = items;
             }
@@ -107,6 +110,11 @@ namespace RentACar
             }
         }
 
+        public void GetIdInspeccion(int ID_INSPECCION)
+        {
+            model.ID_INSPECCION = ID_INSPECCION;
+        }
+
         private void FrmRenta_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
@@ -131,6 +139,27 @@ namespace RentACar
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (ValidateData())
+            {
+                model.ID_VEHICULO = Convert.ToInt32(comboVehiculo.SelectedValue);
+                model.ID_EMPLEADO = Convert.ToInt32(comboEmpleado.SelectedValue);
+                model.ID_CLIENTE = Convert.ToInt32(comboCliente.SelectedValue);
+                model.FECHA_RENTA = Convert.ToDateTime(TxFechaRenta.Text);
+                model.FECHA_DEVOLUCION = Convert.ToDateTime(DPFechaDevolucion.Value);
+                model.CANTIDAD_DIAS = Convert.ToInt32(TxCantidadDias.Text);
+                model.MONTO_DIA = Convert.ToInt32(TxMontoDia.Text.Trim());
+                model.DESCRIPCION = TxDescripcion.Text.Trim();
+
+                using (DBEntities db = new DBEntities())
+                {
+                    db.RENTA.Add(model);
+                    db.SaveChanges();
+                    MessageBox.Show("Renta creada exitosamente");
+                    ClearForm();
+                    PopulateCombos();
+                    PopulateDataGridView();
+                }
+            }
         }
 
         private void btnInspeccion_Click(object sender, EventArgs e)
@@ -139,8 +168,71 @@ namespace RentACar
             CLIENTE = Convert.ToInt32(comboCliente.SelectedValue);
             EMPLEADO = Convert.ToInt32(comboEmpleado.SelectedValue);
 
-            FrmInspeccion form = new FrmInspeccion();
+            FrmInspeccion form = new FrmInspeccion(this);
             form.ShowDialog();
+        }
+
+        private bool ValidateData()
+        {
+            if (comboVehiculo.SelectedIndex == -1)
+            {
+                comboVehiculo.Focus();
+                MessageBox.Show("Debe seleccionar un vehiculo");
+                return false;
+            }
+
+            if (comboEmpleado.SelectedIndex == -1)
+            {
+                comboEmpleado.Focus();
+                MessageBox.Show("Debe seleccionar un empleado");
+                return false;
+            }
+
+            if (comboCliente.SelectedIndex == -1)
+            {
+                comboCliente.Focus();
+                MessageBox.Show("Debe seleccionar un cliente");
+                return false;
+            }
+
+            if (model.ID_INSPECCION == 0)
+            {
+                MessageBox.Show("Debe crear una inspeccion");
+                return false;
+            }
+            
+            if (String.IsNullOrWhiteSpace(TxMontoDia.Text))
+            {
+                TxMontoDia.Focus();
+                MessageBox.Show("Debe ingresar el monto de la renta por dia");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void DPFechaDevolucion_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime StartDate = DateTime.Now;
+            DateTime EndDate = DPFechaDevolucion.Value;
+
+            TxCantidadDias.Text = Math.Round((EndDate - StartDate).TotalDays).ToString();
+
+            SetTotalAPagar();
+        }
+
+        private void SetTotalAPagar()
+        {
+            if (TxCantidadDias.Text.Length > 0 && TxMontoDia.Text.Length > 0)
+            {
+                decimal total = Convert.ToInt32(TxCantidadDias.Text) * Convert.ToDecimal(TxMontoDia.Text);
+                TxTotal.Text = total.ToString();
+            }
+        }
+
+        private void TxMontoDia_TextChanged(object sender, EventArgs e)
+        {
+            SetTotalAPagar();
         }
     }
 }

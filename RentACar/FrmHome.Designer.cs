@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHome));
             this.Sidebar = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelRenta = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnRentas = new System.Windows.Forms.Button();
             this.panelEmpleado = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.btnVehiculo = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@
             this.panelContainer = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Sidebar.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelRenta.SuspendLayout();
             this.panelEmpleado.SuspendLayout();
             this.panelVehiculo.SuspendLayout();
             this.panelContainer.SuspendLayout();
@@ -61,8 +61,8 @@
             // 
             this.Sidebar.AutoScroll = true;
             this.Sidebar.BackColor = System.Drawing.Color.Black;
-            this.Sidebar.Controls.Add(this.panel1);
-            this.Sidebar.Controls.Add(this.button8);
+            this.Sidebar.Controls.Add(this.panelRenta);
+            this.Sidebar.Controls.Add(this.btnRentas);
             this.Sidebar.Controls.Add(this.panelEmpleado);
             this.Sidebar.Controls.Add(this.button6);
             this.Sidebar.Controls.Add(this.btnClientes);
@@ -75,16 +75,16 @@
             this.Sidebar.Size = new System.Drawing.Size(250, 561);
             this.Sidebar.TabIndex = 0;
             // 
-            // panel1
+            // panelRenta
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.button10);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 575);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(233, 86);
-            this.panel1.TabIndex = 6;
+            this.panelRenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelRenta.Controls.Add(this.button9);
+            this.panelRenta.Controls.Add(this.button10);
+            this.panelRenta.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelRenta.Location = new System.Drawing.Point(0, 575);
+            this.panelRenta.Name = "panelRenta";
+            this.panelRenta.Size = new System.Drawing.Size(233, 86);
+            this.panelRenta.TabIndex = 6;
             // 
             // button9
             // 
@@ -118,20 +118,21 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // button8
+            // btnRentas
             // 
-            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button8.Location = new System.Drawing.Point(0, 530);
-            this.button8.Name = "button8";
-            this.button8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button8.Size = new System.Drawing.Size(233, 45);
-            this.button8.TabIndex = 5;
-            this.button8.Text = "Rentas";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnRentas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRentas.FlatAppearance.BorderSize = 0;
+            this.btnRentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRentas.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnRentas.Location = new System.Drawing.Point(0, 530);
+            this.btnRentas.Name = "btnRentas";
+            this.btnRentas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnRentas.Size = new System.Drawing.Size(233, 45);
+            this.btnRentas.TabIndex = 5;
+            this.btnRentas.Text = "Rentas";
+            this.btnRentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRentas.UseVisualStyleBackColor = true;
+            this.btnRentas.Click += new System.EventHandler(this.button8_Click);
             // 
             // panelEmpleado
             // 
@@ -362,7 +363,7 @@
             this.Text = "Rent a Car";
             this.Load += new System.EventHandler(this.FrmHome_Load);
             this.Sidebar.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.panelRenta.ResumeLayout(false);
             this.panelEmpleado.ResumeLayout(false);
             this.panelVehiculo.ResumeLayout(false);
             this.panelContainer.ResumeLayout(false);
@@ -389,10 +390,10 @@
         private System.Windows.Forms.Panel panelEmpleado;
         private System.Windows.Forms.Button btnVehiculo;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelRenta;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnRentas;
     }
 }
 

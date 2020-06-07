@@ -74,6 +74,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Enabled = false;
             this.btnSave.Location = new System.Drawing.Point(597, 12);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
@@ -170,6 +171,7 @@
             // 
             // gridRenta
             // 
+            this.gridRenta.AllowUserToAddRows = false;
             this.gridRenta.AllowUserToDeleteRows = false;
             this.gridRenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridRenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -217,6 +219,7 @@
             this.DPFechaDevolucion.Name = "DPFechaDevolucion";
             this.DPFechaDevolucion.Size = new System.Drawing.Size(182, 20);
             this.DPFechaDevolucion.TabIndex = 27;
+            this.DPFechaDevolucion.ValueChanged += new System.EventHandler(this.DPFechaDevolucion_ValueChanged);
             // 
             // label7
             // 
@@ -242,6 +245,7 @@
             this.TxMontoDia.Name = "TxMontoDia";
             this.TxMontoDia.Size = new System.Drawing.Size(182, 20);
             this.TxMontoDia.TabIndex = 31;
+            this.TxMontoDia.TextChanged += new System.EventHandler(this.TxMontoDia_TextChanged);
             this.TxMontoDia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxMontoDia_KeyPress);
             // 
             // label9
@@ -297,7 +301,7 @@
             // ID_VEHICULO
             // 
             this.ID_VEHICULO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ID_VEHICULO.DataPropertyName = "ID_VEHICULO";
+            this.ID_VEHICULO.DataPropertyName = "VEHICULO";
             this.ID_VEHICULO.HeaderText = "Vehiculo";
             this.ID_VEHICULO.Name = "ID_VEHICULO";
             this.ID_VEHICULO.ReadOnly = true;
@@ -305,7 +309,7 @@
             // ID_CLIENTE
             // 
             this.ID_CLIENTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ID_CLIENTE.DataPropertyName = "ID_CLIENTE";
+            this.ID_CLIENTE.DataPropertyName = "CLIENTE";
             this.ID_CLIENTE.HeaderText = "Cliente";
             this.ID_CLIENTE.Name = "ID_CLIENTE";
             this.ID_CLIENTE.ReadOnly = true;
@@ -313,7 +317,7 @@
             // ID_EMPLEADO
             // 
             this.ID_EMPLEADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ID_EMPLEADO.DataPropertyName = "ID_EMPLEADO";
+            this.ID_EMPLEADO.DataPropertyName = "EMPLEADO";
             this.ID_EMPLEADO.HeaderText = "Empleado";
             this.ID_EMPLEADO.Name = "ID_EMPLEADO";
             this.ID_EMPLEADO.ReadOnly = true;
@@ -368,7 +372,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCloseTipoVehiculo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboVehiculo;
@@ -377,7 +380,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboCliente;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnInspeccion;
         private System.Windows.Forms.DataGridView gridRenta;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TxFechaRenta;
@@ -391,6 +393,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox TxDescripcion;
         private System.Windows.Forms.TextBox TxCantidadDias;
+        public System.Windows.Forms.Button btnSave;
+        public System.Windows.Forms.Button btnInspeccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_VEHICULO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_CLIENTE;

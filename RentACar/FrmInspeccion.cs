@@ -15,9 +15,12 @@ namespace RentACar
         INSPECCION inspeccion = new INSPECCION();
         INSPECCION_GOMAS inspeccion_gomas = new INSPECCION_GOMAS();
 
-        public FrmInspeccion()
+        FrmRenta _FrmRenta = new FrmRenta();
+
+        public FrmInspeccion(FrmRenta frmRenta)
         {
             InitializeComponent();
+            _FrmRenta = frmRenta;
         }
 
         private void ClearForm()
@@ -156,8 +159,15 @@ namespace RentACar
                     db.INSPECCION_GOMAS.Add(inspeccion_gomas);
                     db.SaveChanges();
 
-                    
-                }
+                    if (MessageBox.Show("Inspeccion creada exitosamente") == DialogResult.OK)
+                    {
+                        _FrmRenta.GetIdInspeccion(ID_INSPECCION);
+                        _FrmRenta.btnSave.Enabled = true;
+                        _FrmRenta.btnInspeccion.Enabled = false;
+                        _FrmRenta.btnInspeccion.Text = inspeccion.CODIGO;
+                        this.Close();
+                    }
+                }   
             }
         }
     }

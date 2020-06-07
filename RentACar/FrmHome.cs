@@ -24,6 +24,7 @@ namespace RentACar
         {
             panelVehiculo.Visible = false;
             panelEmpleado.Visible = false;
+            panelRenta.Visible = false;
         }
 
         private void HideSubMenu()
@@ -36,6 +37,11 @@ namespace RentACar
             if(panelEmpleado.Visible == true)
             {
                 panelEmpleado.Visible = false;
+            }
+
+            if (panelRenta.Visible == true)
+            {
+                panelRenta.Visible = false;
             }
         }
 
@@ -56,7 +62,6 @@ namespace RentACar
         {
             ShowSubMenu(panelVehiculo);
         }
-
 
         private void openChildForm(Form childForm)
         {
@@ -132,6 +137,11 @@ namespace RentACar
         private void button10_Click(object sender, EventArgs e)
         {
             openChildForm(new FrmRenta());
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(panelRenta);
         }
     }
 }
