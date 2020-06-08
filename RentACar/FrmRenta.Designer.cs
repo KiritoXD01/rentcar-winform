@@ -40,6 +40,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnInspeccion = new System.Windows.Forms.Button();
             this.gridRenta = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_VEHICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_EMPLEADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INSPECCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.TxFechaRenta = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,18 +57,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.TxDescripcion = new System.Windows.Forms.TextBox();
             this.TxCantidadDias = new System.Windows.Forms.TextBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_VEHICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_EMPLEADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INSPECCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnNew = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridRenta)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(597, 41);
+            this.btnCancel.Location = new System.Drawing.Point(597, 70);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 13;
@@ -75,7 +76,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(597, 12);
+            this.btnSave.Location = new System.Drawing.Point(597, 41);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 11;
@@ -106,8 +107,9 @@
             // 
             this.comboVehiculo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboVehiculo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboVehiculo.Enabled = false;
             this.comboVehiculo.FormattingEnabled = true;
-            this.comboVehiculo.Location = new System.Drawing.Point(83, 67);
+            this.comboVehiculo.Location = new System.Drawing.Point(94, 67);
             this.comboVehiculo.Name = "comboVehiculo";
             this.comboVehiculo.Size = new System.Drawing.Size(186, 21);
             this.comboVehiculo.TabIndex = 17;
@@ -125,8 +127,9 @@
             // 
             this.comboEmpleado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboEmpleado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboEmpleado.Enabled = false;
             this.comboEmpleado.FormattingEnabled = true;
-            this.comboEmpleado.Location = new System.Drawing.Point(83, 94);
+            this.comboEmpleado.Location = new System.Drawing.Point(94, 94);
             this.comboEmpleado.Name = "comboEmpleado";
             this.comboEmpleado.Size = new System.Drawing.Size(186, 21);
             this.comboEmpleado.TabIndex = 19;
@@ -144,8 +147,9 @@
             // 
             this.comboCliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboCliente.Enabled = false;
             this.comboCliente.FormattingEnabled = true;
-            this.comboCliente.Location = new System.Drawing.Point(83, 121);
+            this.comboCliente.Location = new System.Drawing.Point(94, 121);
             this.comboCliente.Name = "comboCliente";
             this.comboCliente.Size = new System.Drawing.Size(186, 21);
             this.comboCliente.TabIndex = 21;
@@ -161,7 +165,7 @@
             // 
             // btnInspeccion
             // 
-            this.btnInspeccion.Location = new System.Drawing.Point(83, 148);
+            this.btnInspeccion.Location = new System.Drawing.Point(94, 145);
             this.btnInspeccion.Name = "btnInspeccion";
             this.btnInspeccion.Size = new System.Drawing.Size(186, 23);
             this.btnInspeccion.TabIndex = 23;
@@ -186,109 +190,7 @@
             this.gridRenta.ReadOnly = true;
             this.gridRenta.Size = new System.Drawing.Size(684, 235);
             this.gridRenta.TabIndex = 15;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 181);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 13);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "Fecha Renta";
-            // 
-            // TxFechaRenta
-            // 
-            this.TxFechaRenta.Location = new System.Drawing.Point(83, 177);
-            this.TxFechaRenta.Name = "TxFechaRenta";
-            this.TxFechaRenta.ReadOnly = true;
-            this.TxFechaRenta.Size = new System.Drawing.Size(186, 20);
-            this.TxFechaRenta.TabIndex = 25;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(275, 70);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 13);
-            this.label6.TabIndex = 26;
-            this.label6.Text = "Fecha Devolucion";
-            // 
-            // DPFechaDevolucion
-            // 
-            this.DPFechaDevolucion.Location = new System.Drawing.Point(375, 67);
-            this.DPFechaDevolucion.Name = "DPFechaDevolucion";
-            this.DPFechaDevolucion.Size = new System.Drawing.Size(182, 20);
-            this.DPFechaDevolucion.TabIndex = 27;
-            this.DPFechaDevolucion.ValueChanged += new System.EventHandler(this.DPFechaDevolucion_ValueChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(275, 100);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 13);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "Cantidad Dias";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(275, 126);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 13);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "Monto x Dia";
-            // 
-            // TxMontoDia
-            // 
-            this.TxMontoDia.Location = new System.Drawing.Point(375, 119);
-            this.TxMontoDia.Name = "TxMontoDia";
-            this.TxMontoDia.Size = new System.Drawing.Size(182, 20);
-            this.TxMontoDia.TabIndex = 31;
-            this.TxMontoDia.TextChanged += new System.EventHandler(this.TxMontoDia_TextChanged);
-            this.TxMontoDia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxMontoDia_KeyPress);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(275, 153);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(71, 13);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "Total a Pagar";
-            // 
-            // TxTotal
-            // 
-            this.TxTotal.Location = new System.Drawing.Point(375, 145);
-            this.TxTotal.Name = "TxTotal";
-            this.TxTotal.ReadOnly = true;
-            this.TxTotal.Size = new System.Drawing.Size(182, 20);
-            this.TxTotal.TabIndex = 33;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(276, 180);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(63, 13);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Descripcion";
-            // 
-            // TxDescripcion
-            // 
-            this.TxDescripcion.Location = new System.Drawing.Point(375, 176);
-            this.TxDescripcion.Multiline = true;
-            this.TxDescripcion.Name = "TxDescripcion";
-            this.TxDescripcion.Size = new System.Drawing.Size(182, 20);
-            this.TxDescripcion.TabIndex = 35;
-            // 
-            // TxCantidadDias
-            // 
-            this.TxCantidadDias.Location = new System.Drawing.Point(375, 93);
-            this.TxCantidadDias.Name = "TxCantidadDias";
-            this.TxCantidadDias.ReadOnly = true;
-            this.TxCantidadDias.Size = new System.Drawing.Size(182, 20);
-            this.TxCantidadDias.TabIndex = 36;
+            this.gridRenta.DoubleClick += new System.EventHandler(this.gridRenta_DoubleClick);
             // 
             // ID
             // 
@@ -330,11 +232,134 @@
             this.INSPECCION.Name = "INSPECCION";
             this.INSPECCION.ReadOnly = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 174);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "Fecha Renta";
+            // 
+            // TxFechaRenta
+            // 
+            this.TxFechaRenta.Enabled = false;
+            this.TxFechaRenta.Location = new System.Drawing.Point(94, 171);
+            this.TxFechaRenta.Name = "TxFechaRenta";
+            this.TxFechaRenta.ReadOnly = true;
+            this.TxFechaRenta.Size = new System.Drawing.Size(186, 20);
+            this.TxFechaRenta.TabIndex = 25;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(291, 70);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(94, 13);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Fecha Devolucion";
+            // 
+            // DPFechaDevolucion
+            // 
+            this.DPFechaDevolucion.Enabled = false;
+            this.DPFechaDevolucion.Location = new System.Drawing.Point(391, 67);
+            this.DPFechaDevolucion.Name = "DPFechaDevolucion";
+            this.DPFechaDevolucion.Size = new System.Drawing.Size(182, 20);
+            this.DPFechaDevolucion.TabIndex = 27;
+            this.DPFechaDevolucion.ValueChanged += new System.EventHandler(this.DPFechaDevolucion_ValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(291, 100);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "Cantidad Dias";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(291, 126);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(64, 13);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "Monto x Dia";
+            // 
+            // TxMontoDia
+            // 
+            this.TxMontoDia.Enabled = false;
+            this.TxMontoDia.Location = new System.Drawing.Point(391, 119);
+            this.TxMontoDia.Name = "TxMontoDia";
+            this.TxMontoDia.ReadOnly = true;
+            this.TxMontoDia.Size = new System.Drawing.Size(182, 20);
+            this.TxMontoDia.TabIndex = 31;
+            this.TxMontoDia.TextChanged += new System.EventHandler(this.TxMontoDia_TextChanged);
+            this.TxMontoDia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxMontoDia_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(291, 153);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(71, 13);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "Total a Pagar";
+            // 
+            // TxTotal
+            // 
+            this.TxTotal.Enabled = false;
+            this.TxTotal.Location = new System.Drawing.Point(391, 145);
+            this.TxTotal.Name = "TxTotal";
+            this.TxTotal.ReadOnly = true;
+            this.TxTotal.Size = new System.Drawing.Size(182, 20);
+            this.TxTotal.TabIndex = 33;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(291, 174);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(63, 13);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Descripcion";
+            // 
+            // TxDescripcion
+            // 
+            this.TxDescripcion.Enabled = false;
+            this.TxDescripcion.Location = new System.Drawing.Point(391, 171);
+            this.TxDescripcion.Multiline = true;
+            this.TxDescripcion.Name = "TxDescripcion";
+            this.TxDescripcion.ReadOnly = true;
+            this.TxDescripcion.Size = new System.Drawing.Size(182, 59);
+            this.TxDescripcion.TabIndex = 35;
+            // 
+            // TxCantidadDias
+            // 
+            this.TxCantidadDias.Enabled = false;
+            this.TxCantidadDias.Location = new System.Drawing.Point(391, 93);
+            this.TxCantidadDias.Name = "TxCantidadDias";
+            this.TxCantidadDias.ReadOnly = true;
+            this.TxCantidadDias.Size = new System.Drawing.Size(182, 20);
+            this.TxCantidadDias.TabIndex = 36;
+            // 
+            // btnNew
+            // 
+            this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNew.Location = new System.Drawing.Point(597, 12);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(75, 23);
+            this.btnNew.TabIndex = 37;
+            this.btnNew.Text = "Crear";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
             // FrmRenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 561);
+            this.Controls.Add(this.btnNew);
             this.Controls.Add(this.TxCantidadDias);
             this.Controls.Add(this.TxDescripcion);
             this.Controls.Add(this.label10);
@@ -400,5 +425,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_CLIENTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_EMPLEADO;
         private System.Windows.Forms.DataGridViewTextBoxColumn INSPECCION;
+        public System.Windows.Forms.Button btnNew;
     }
 }

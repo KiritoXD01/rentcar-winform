@@ -39,9 +39,10 @@ namespace RentACar
             TxDescripcion.Text = "";
             btnSave.Text = "Guardar";
             btnSave.Enabled = false;
-            btnInspeccion.Enabled = true;
+            btnInspeccion.Enabled = false;
             btnInspeccion.Text = "Crear Inspeccion";
             model.ID = 0;
+            model.ID_INSPECCION = 0;
         }
 
         private void PopulateDataGridView()
@@ -164,12 +165,16 @@ namespace RentACar
 
         private void btnInspeccion_Click(object sender, EventArgs e)
         {
-            VEHICULO = Convert.ToInt32(comboVehiculo.SelectedValue);
-            CLIENTE = Convert.ToInt32(comboCliente.SelectedValue);
-            EMPLEADO = Convert.ToInt32(comboEmpleado.SelectedValue);
 
-            FrmInspeccion form = new FrmInspeccion(this);
-            form.ShowDialog();
+            if (comboVehiculo.SelectedIndex != -1 && comboCliente.SelectedIndex != -1 && comboEmpleado.SelectedIndex != -1)
+            {
+                VEHICULO = Convert.ToInt32(comboVehiculo.SelectedValue);
+                CLIENTE = Convert.ToInt32(comboCliente.SelectedValue);
+                EMPLEADO = Convert.ToInt32(comboEmpleado.SelectedValue);
+
+                FrmInspeccion form = new FrmInspeccion(this);
+                form.ShowDialog();
+            }
         }
 
         private bool ValidateData()
@@ -228,11 +233,68 @@ namespace RentACar
                 decimal total = Convert.ToInt32(TxCantidadDias.Text) * Convert.ToDecimal(TxMontoDia.Text);
                 TxTotal.Text = total.ToString();
             }
+            else
+            {
+                TxTotal.Text = "";
+            }
         }
 
         private void TxMontoDia_TextChanged(object sender, EventArgs e)
         {
             SetTotalAPagar();
+        }
+
+        private void gridRenta_DoubleClick(object sender, EventArgs e)
+        {
+            if (gridRenta.CurrentRow.Index != -1)
+            {
+                model.ID = Convert.ToInt32(gridRenta.CurrentRow.Cells["ID"].Value);
+
+                using (DBEntities db = new DBEntities())
+                {
+                    model = db.RENTA.Where(x => x.ID == model.ID).FirstOrDefault();
+
+                    comboVehiculo.SelectedValue = Convert.ToInt32(model.ID_VEHICULO);
+                    comboEmpleado.SelectedValue = Convert.ToInt32(model.ID_EMPLEADO);
+                    comboCliente.SelectedValue = Convert.ToInt32(model.ID_CLIENTE);
+                    btnInspeccion.Enabled = false;
+                    btnInspeccion.Text = model.INSPECCION.CODIGO;
+                    TxFechaRenta.Text = model.FECHA_RENTA.ToString();
+                    DPFechaDevolucion.Value = Convert.ToDateTime(model.FECHA_DEVOLUCION);
+                    DPFechaDevolucion.Enabled = false;
+                    TxCantidadDias.Text = model.CANTIDAD_DIAS.ToString();
+                    TxMontoDia.Text = model.MONTO_DIA.ToString();
+                    TxMontoDia.Enabled = false;
+                    decimal TotalAPagaar = Convert.ToInt32(model.CANTIDAD_DIAS) * Convert.ToDecimal(model.MONTO_DIA);
+                    TxTotal.Text = TotalAPagaar.ToString();
+                    TxTotal.Enabled = false;
+                    TxDescripcion.Text = model.DESCRIPCION;
+                    TxDescripcion.Enabled = false;
+                    btnSave.Enabled = false;
+                }
+            }
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            comboVehiculo.Enabled = true;
+            comboCliente.Enabled = true;
+            comboEmpleado.Enabled = true;
+            btnInspeccion.Enabled = true;
+            TxFechaRenta.Enabled = true;
+            TxFechaRenta.ReadOnly = true;
+            TxFechaRenta.Text = DateTime.Now.ToString();
+            DPFechaDevolucion.Enabled = true;
+            DPFechaDevolucion.MinDate = DateTime.Now;
+            TxMontoDia.Enabled = true;
+            TxMontoDia.ReadOnly = false;
+            TxMontoDia.Text = "";
+            TxDescripcion.Enabled = true;
+            TxDescripcion.ReadOnly = false;
+            TxDescripcion.Text = "";
+            btnNew.Enabled = false;
+            btnSave.Enabled = true;
+            model.ID = 0;
         }
     }
 }
