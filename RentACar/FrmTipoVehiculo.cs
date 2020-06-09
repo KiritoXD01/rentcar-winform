@@ -47,7 +47,6 @@ namespace RentACar
 
         private void PopulateDataGridView()
         {
-            gridTipoVehiculo.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
                 var items = db.TIPO_VEHICULO.Select(
@@ -76,24 +75,42 @@ namespace RentACar
         {
             if (ValidateData())
             {
-                model.NOMBRE = TxNombre.Text.Trim();
+                model.NOMBRE = TxNombre.Text.Trim().ToUpper();
                 model.ESTADO = checkEstado.Checked;
 
                 using (DBEntities db = new DBEntities())
                 {
                     if (model.ID == 0)
                     {
-                        db.TIPO_VEHICULO.Add(model);
+                        if (db.TIPO_VEHICULO.Where(x => x.NOMBRE == model.NOMBRE).Count() > 0)
+                        {
+                            MessageBox.Show("El tipo de vehiculo ingresado ya existe, por favor intentelo nuevamente");
+                        }
+                        else
+                        {
+                            db.TIPO_VEHICULO.Add(model);
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            MessageBox.Show("Tipo de vehiculo creado existosamente");
+                        }                        
                     }
                     else
                     {
-                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                        if (db.TIPO_VEHICULO.Where(x => x.NOMBRE == model.NOMBRE && x.ID != model.ID).Count() > 0)
+                        {
+                            MessageBox.Show("El tipo de vehiculo ingresado ya existe, por favor intentelo nuevamente");
+                        }
+                        else
+                        {
+                            db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            MessageBox.Show("Tipo de vehiculo actualizado existosamente");
+                        }                        
                     }
-                    db.SaveChanges();
                 }
-                ClearForm();
-                PopulateDataGridView();
-                MessageBox.Show("Tipo de vehiculo actualizado existosamente");
             }            
         }
 
@@ -132,6 +149,32 @@ namespace RentACar
                 string result = (model.ESTADO == true) ? "Tipo de vehiculo activado existosamente" : "Tipo de vehiculo desactivado existosamente";
                 MessageBox.Show(result);
             }
+        }
+
+        private void TxFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (TxFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var query = from tipos in db.TIPO_VEHICULO
+                                where tipos.NOMBRE.Contains(TxFiltrar.Text.Trim().ToUpper())
+                                select tipos;
+
+                    var items = query.Select(
+                        x => new
+                        {
+                            x.ID,
+                            x.NOMBRE,
+                            ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                        }).ToList();
+                    gridTipoVehiculo.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
+            }            
         }
     }
 }

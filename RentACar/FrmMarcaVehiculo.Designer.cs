@@ -33,13 +33,15 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gridMarcaVehiculo = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkEstado = new System.Windows.Forms.CheckBox();
             this.TxNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TxFiltrar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridMarcaVehiculo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,6 +90,7 @@
             // 
             // gridMarcaVehiculo
             // 
+            this.gridMarcaVehiculo.AllowUserToAddRows = false;
             this.gridMarcaVehiculo.AllowUserToDeleteRows = false;
             this.gridMarcaVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridMarcaVehiculo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -95,35 +98,12 @@
             this.NOMBRE,
             this.ESTADO});
             this.gridMarcaVehiculo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridMarcaVehiculo.Location = new System.Drawing.Point(0, 157);
+            this.gridMarcaVehiculo.Location = new System.Drawing.Point(0, 262);
             this.gridMarcaVehiculo.Name = "gridMarcaVehiculo";
             this.gridMarcaVehiculo.ReadOnly = true;
-            this.gridMarcaVehiculo.Size = new System.Drawing.Size(684, 404);
+            this.gridMarcaVehiculo.Size = new System.Drawing.Size(684, 299);
             this.gridMarcaVehiculo.TabIndex = 11;
             this.gridMarcaVehiculo.DoubleClick += new System.EventHandler(this.gridMarcaVehiculo_DoubleClick);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // NOMBRE
-            // 
-            this.NOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NOMBRE.DataPropertyName = "NOMBRE";
-            this.NOMBRE.HeaderText = "Nombre";
-            this.NOMBRE.Name = "NOMBRE";
-            this.NOMBRE.ReadOnly = true;
-            // 
-            // ESTADO
-            // 
-            this.ESTADO.DataPropertyName = "ESTADO";
-            this.ESTADO.HeaderText = "Estado";
-            this.ESTADO.Name = "ESTADO";
-            this.ESTADO.ReadOnly = true;
             // 
             // checkEstado
             // 
@@ -160,11 +140,56 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Estado";
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // NOMBRE
+            // 
+            this.NOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NOMBRE.DataPropertyName = "NOMBRE";
+            this.NOMBRE.HeaderText = "Nombre";
+            this.NOMBRE.Name = "NOMBRE";
+            this.NOMBRE.ReadOnly = true;
+            // 
+            // ESTADO
+            // 
+            this.ESTADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ESTADO.DataPropertyName = "ESTADO";
+            this.ESTADO.HeaderText = "Estado";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.ReadOnly = true;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(486, 239);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Filtrar";
+            // 
+            // TxFiltrar
+            // 
+            this.TxFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxFiltrar.Location = new System.Drawing.Point(524, 236);
+            this.TxFiltrar.Name = "TxFiltrar";
+            this.TxFiltrar.Size = new System.Drawing.Size(160, 20);
+            this.TxFiltrar.TabIndex = 16;
+            this.TxFiltrar.TextChanged += new System.EventHandler(this.TxFiltrar_TextChanged);
+            // 
             // FrmMarcaVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 561);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.TxFiltrar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnDelete);
@@ -191,12 +216,14 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DataGridView gridMarcaVehiculo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
         private System.Windows.Forms.CheckBox checkEstado;
         private System.Windows.Forms.TextBox TxNombre;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox TxFiltrar;
     }
 }

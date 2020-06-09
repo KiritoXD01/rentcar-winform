@@ -44,7 +44,6 @@ namespace RentACar
                         x.ID,
                         MARCA = x.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE,
                         MODELO = x.MODELO_VEHICULO.NOMBRE,
-                        x.FECHA_CREACION,
                         ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
                     }).ToList();
                 gridVehiculo.DataSource = items;
@@ -148,6 +147,22 @@ namespace RentACar
             return true;
         }
 
+        private bool ValidateUniqueFieldsOnCreate()
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                if (db.VEHICULO.Where(x => x.NUMERO_CHASIS == model.NUMERO_CHASIS).Count() > 0)
+                {
+                    MessageBox.Show("El numero de chais ya existe, por favor verifique los datos.");
+                    return false;
+                }
+
+
+            }
+
+            return true;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (ValidateData())
@@ -173,11 +188,11 @@ namespace RentACar
                         db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                     }
                     db.SaveChanges();
-                }
-                ClearForm();
-                PopulateDataGridView();
-                PopulateCombos();
-                MessageBox.Show("Vehiculo actualizado existosamente");
+                    ClearForm();
+                    PopulateDataGridView();
+                    PopulateCombos();
+                    MessageBox.Show("Vehiculo actualizado existosamente");
+                }                
             }
         }
 
@@ -231,6 +246,40 @@ namespace RentACar
                 PopulateCombos();
                 string result = (model.ESTADO == true) ? "Vehiculo activado existosamente" : "Vehiculo desactivado existosamente";
                 MessageBox.Show(result);
+            }
+        }
+
+        private void TxFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (TxFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var items = db.VEHICULO
+                        .Where(x =>
+                            x.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE.Contains(TxFiltrar.Text.Trim().ToUpper()) ||
+                            x.MODELO_VEHICULO.NOMBRE.Contains(TxFiltrar.Text.Trim().ToUpper()) || 
+                            x.NUMERO_CHASIS.Contains(TxFiltrar.Text.Trim()) ||
+                            x.NUMERO_MOTOR.Contains(TxFiltrar.Text.Trim()) ||
+                            x.NUMERO_PLACA.Contains(TxFiltrar.Text.Trim()) ||
+                            x.TIPO_VEHICULO.NOMBRE.Contains(TxFiltrar.Text.Trim().ToUpper()) ||
+                            x.COMBUSTIBLE_VEHICULO.NOMBRE.Contains(TxFiltrar.Text.Trim().ToUpper())
+                        )
+                        .Select(
+                        x => new
+                        {
+                            x.ID,
+                            MARCA = x.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE,
+                            MODELO = x.MODELO_VEHICULO.NOMBRE,
+                            ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                        })
+                        .ToList();
+                    gridVehiculo.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
             }
         }
     }

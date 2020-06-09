@@ -43,6 +43,8 @@
             this.MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TxFiltrar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridModeloVehiculo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,7 +138,9 @@
             // 
             // gridModeloVehiculo
             // 
+            this.gridModeloVehiculo.AllowUserToAddRows = false;
             this.gridModeloVehiculo.AllowUserToDeleteRows = false;
+            this.gridModeloVehiculo.AllowUserToOrderColumns = true;
             this.gridModeloVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridModeloVehiculo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -144,10 +148,10 @@
             this.MARCA,
             this.ESTADO});
             this.gridModeloVehiculo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridModeloVehiculo.Location = new System.Drawing.Point(0, 186);
+            this.gridModeloVehiculo.Location = new System.Drawing.Point(0, 277);
             this.gridModeloVehiculo.Name = "gridModeloVehiculo";
             this.gridModeloVehiculo.ReadOnly = true;
-            this.gridModeloVehiculo.Size = new System.Drawing.Size(684, 375);
+            this.gridModeloVehiculo.Size = new System.Drawing.Size(684, 284);
             this.gridModeloVehiculo.TabIndex = 13;
             this.gridModeloVehiculo.DoubleClick += new System.EventHandler(this.gridModeloVehiculo_DoubleClick);
             // 
@@ -191,11 +195,32 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "Estado";
             // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(486, 254);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Filtrar";
+            // 
+            // TxFiltrar
+            // 
+            this.TxFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxFiltrar.Location = new System.Drawing.Point(524, 251);
+            this.TxFiltrar.Name = "TxFiltrar";
+            this.TxFiltrar.Size = new System.Drawing.Size(160, 20);
+            this.TxFiltrar.TabIndex = 15;
+            this.TxFiltrar.TextChanged += new System.EventHandler(this.TxFiltrar_TextChanged);
+            // 
             // FrmModeloVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 561);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.TxFiltrar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.gridModeloVehiculo);
             this.Controls.Add(this.btnCancel);
@@ -234,5 +259,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MARCA;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox TxFiltrar;
     }
 }

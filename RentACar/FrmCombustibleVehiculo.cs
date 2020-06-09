@@ -71,24 +71,42 @@ namespace RentACar
         {
             if (ValidateData())
             {
-                model.NOMBRE = TxNombre.Text.Trim();
+                model.NOMBRE = TxNombre.Text.Trim().ToUpper();
                 model.ESTADO = checkEstado.Checked;
 
                 using (DBEntities db = new DBEntities())
                 {
                     if (model.ID == 0)
                     {
-                        db.COMBUSTIBLE_VEHICULO.Add(model);
+                        if (db.COMBUSTIBLE_VEHICULO.Where(x => x.NOMBRE == model.NOMBRE).Count() > 0)
+                        {
+                            MessageBox.Show("El tipo de combustible ingresado ya existe, por favor intentelo nuevamente");
+                        }
+                        else
+                        {
+                            db.COMBUSTIBLE_VEHICULO.Add(model);
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            MessageBox.Show("Combustible de vehiculo creado existosamente");
+                        }                        
                     }
                     else
                     {
-                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                    }
-                    db.SaveChanges();
-                }
-                ClearForm();
-                PopulateDataGridView();
-                MessageBox.Show("Combustible de vehiculo actualizado existosamente");
+                        if (db.COMBUSTIBLE_VEHICULO.Where(x => x.NOMBRE == model.NOMBRE && x.ID != model.ID).Count() > 0)
+                        {
+                            MessageBox.Show("El tipo de combustible ingresado ya existe, por favor intentelo nuevamente");
+                        }
+                        else
+                        {
+                            db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            MessageBox.Show("Combustible de vehiculo actualizado existosamente");
+                        }
+                    }                    
+                }                
             }
         }
 
@@ -132,6 +150,33 @@ namespace RentACar
         private void btnCancel_Click(object sender, EventArgs e)
         {
             ClearForm();
+        }
+
+        private void TxFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (TxFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var query = from combustibles in db.COMBUSTIBLE_VEHICULO
+                                where combustibles.NOMBRE.Contains(TxFiltrar.Text.Trim().ToUpper())
+                                select combustibles;
+
+                    var items = query.Select(
+                        x => new
+                        {
+                            x.ID,
+                            x.NOMBRE,
+                            ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                        })
+                        .ToList();
+                    gridCombustibleVehiculo.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
+            }
         }
     }
 }

@@ -71,24 +71,43 @@ namespace RentACar
         {
             if (ValidateData())
             {
-                model.NOMBRE = TxNombre.Text.Trim();
+                model.NOMBRE = TxNombre.Text.Trim().ToUpper();
                 model.ESTADO = checkEstado.Checked;
 
                 using (DBEntities db = new DBEntities())
                 {
                     if (model.ID == 0)
                     {
-                        db.MARCA_VEHICULO.Add(model);
+                        if (db.MARCA_VEHICULO.Where(x => x.NOMBRE == model.NOMBRE).Count() > 0)
+                        {
+                            MessageBox.Show("La marca de vehiculo ingresado ya existe, por favor intentelo nuevamente");
+                        }
+                        else
+                        {
+                            db.MARCA_VEHICULO.Add(model);
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            MessageBox.Show("Marca de vehiculo creada existosamente");
+                        }
+                        
                     }
                     else
                     {
-                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                    }
-                    db.SaveChanges();
-                }
-                ClearForm();
-                PopulateDataGridView();
-                MessageBox.Show("Marca de vehiculo actualizado existosamente");
+                        if (db.MARCA_VEHICULO.Where(x => x.NOMBRE == model.NOMBRE && x.ID != model.ID).Count() > 0)
+                        {
+                            MessageBox.Show("La marca de vehiculo ingresado ya existe, por favor intentelo nuevamente");
+                        }
+                        else
+                        {
+                            db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            MessageBox.Show("Marca de vehiculo actualizada existosamente");
+                        }                        
+                    }                    
+                }                
             }            
         }
 
@@ -132,6 +151,33 @@ namespace RentACar
         private void btnCancel_Click(object sender, EventArgs e)
         {
             ClearForm();
+        }
+
+        private void TxFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (TxFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var query = from marcas in db.MARCA_VEHICULO
+                                where marcas.NOMBRE.Contains(TxFiltrar.Text.Trim().ToUpper())
+                                select marcas;
+
+                    var items = query.Select(
+                        x => new
+                        {
+                            x.ID,
+                            x.NOMBRE,
+                            ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                        })
+                        .ToList();
+                    gridMarcaVehiculo.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
+            }
         }
     }
 }

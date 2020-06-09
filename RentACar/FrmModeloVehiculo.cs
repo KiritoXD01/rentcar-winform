@@ -92,7 +92,7 @@ namespace RentACar
         {
             if (ValidateData())
             {
-                model.NOMBRE = TxNombre.Text.Trim();
+                model.NOMBRE = TxNombre.Text.Trim().ToUpper();
                 model.ID_MARCA_VEHICULO = Convert.ToInt32(comboMarca.SelectedValue);
                 model.ESTADO = checkEstado.Checked;
 
@@ -100,18 +100,37 @@ namespace RentACar
                 {
                     if (model.ID == 0)
                     {
-                        db.MODELO_VEHICULO.Add(model);
+                        if (db.MODELO_VEHICULO.Where(x => x.NOMBRE == model.NOMBRE).Count() > 0)
+                        {
+                            MessageBox.Show("El modelo ingresado ya existe, por favor, verifique los datos.");
+                        }
+                        else
+                        {
+                            db.MODELO_VEHICULO.Add(model);
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            PopulateComboMarca();
+                            MessageBox.Show("Modelo de vehiculo creado existosamente");
+                        }                        
                     }
                     else
                     {
-                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                    }
-                    db.SaveChanges();
-                }
-                ClearForm();
-                PopulateDataGridView();
-                PopulateComboMarca();
-                MessageBox.Show("Modelo de vehiculo actualizado existosamente");
+                        if (db.MODELO_VEHICULO.Where(x => x.NOMBRE == model.NOMBRE && x.ID != model.ID).Count() > 0)
+                        {
+                            MessageBox.Show("El modelo ingresado ya existe, por favor, verifique los datos.");
+                        }
+                        else
+                        {
+                            db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            PopulateComboMarca();
+                            MessageBox.Show("Modelo de vehiculo creado existosamente");
+                        }                        
+                    }                    
+                }                
             }            
         }
 
@@ -158,6 +177,32 @@ namespace RentACar
         private void btnCancel_Click(object sender, EventArgs e)
         {
             ClearForm();
+        }
+
+        private void TxFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (TxFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var items = db.MODELO_VEHICULO
+                        .Where(x => x.NOMBRE.Contains(TxFiltrar.Text.Trim().ToUpper()) || x.MARCA_VEHICULO.NOMBRE.Contains(TxFiltrar.Text.Trim().ToUpper()))
+                        .Select(
+                        x => new
+                        {
+                            x.ID,
+                            x.NOMBRE,
+                            MARCA = x.MARCA_VEHICULO.NOMBRE,
+                            ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                        })
+                        .ToList();
+                    gridModeloVehiculo.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
+            }
         }
     }
 }

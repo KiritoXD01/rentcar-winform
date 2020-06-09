@@ -40,6 +40,8 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.TxFiltrar = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridTipoVehiculo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,17 +83,19 @@
             // 
             // gridTipoVehiculo
             // 
+            this.gridTipoVehiculo.AllowUserToAddRows = false;
             this.gridTipoVehiculo.AllowUserToDeleteRows = false;
+            this.gridTipoVehiculo.AllowUserToOrderColumns = true;
             this.gridTipoVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridTipoVehiculo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.NOMBRE,
             this.ESTADO});
             this.gridTipoVehiculo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridTipoVehiculo.Location = new System.Drawing.Point(0, 157);
+            this.gridTipoVehiculo.Location = new System.Drawing.Point(0, 233);
             this.gridTipoVehiculo.Name = "gridTipoVehiculo";
             this.gridTipoVehiculo.ReadOnly = true;
-            this.gridTipoVehiculo.Size = new System.Drawing.Size(684, 404);
+            this.gridTipoVehiculo.Size = new System.Drawing.Size(684, 328);
             this.gridTipoVehiculo.TabIndex = 4;
             this.gridTipoVehiculo.DoubleClick += new System.EventHandler(this.gridTipoVehiculo_DoubleClick);
             // 
@@ -113,6 +117,7 @@
             // 
             // ESTADO
             // 
+            this.ESTADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ESTADO.DataPropertyName = "ESTADO";
             this.ESTADO.HeaderText = "Estado";
             this.ESTADO.Name = "ESTADO";
@@ -160,11 +165,32 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Estado";
             // 
+            // TxFiltrar
+            // 
+            this.TxFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxFiltrar.Location = new System.Drawing.Point(524, 207);
+            this.TxFiltrar.Name = "TxFiltrar";
+            this.TxFiltrar.Size = new System.Drawing.Size(160, 20);
+            this.TxFiltrar.TabIndex = 9;
+            this.TxFiltrar.TextChanged += new System.EventHandler(this.TxFiltrar_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(486, 210);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Filtrar";
+            // 
             // FrmTipoVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 561);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.TxFiltrar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnDelete);
@@ -194,9 +220,11 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox TxFiltrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

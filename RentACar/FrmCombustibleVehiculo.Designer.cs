@@ -36,10 +36,12 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gridCombustibleVehiculo = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TxFiltrar = new System.Windows.Forms.TextBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridCombustibleVehiculo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,19 +116,49 @@
             // 
             // gridCombustibleVehiculo
             // 
+            this.gridCombustibleVehiculo.AllowUserToAddRows = false;
             this.gridCombustibleVehiculo.AllowUserToDeleteRows = false;
+            this.gridCombustibleVehiculo.AllowUserToOrderColumns = true;
             this.gridCombustibleVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCombustibleVehiculo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.NOMBRE,
             this.ESTADO});
             this.gridCombustibleVehiculo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridCombustibleVehiculo.Location = new System.Drawing.Point(0, 157);
+            this.gridCombustibleVehiculo.Location = new System.Drawing.Point(0, 242);
             this.gridCombustibleVehiculo.Name = "gridCombustibleVehiculo";
             this.gridCombustibleVehiculo.ReadOnly = true;
-            this.gridCombustibleVehiculo.Size = new System.Drawing.Size(684, 404);
+            this.gridCombustibleVehiculo.Size = new System.Drawing.Size(684, 319);
             this.gridCombustibleVehiculo.TabIndex = 18;
             this.gridCombustibleVehiculo.DoubleClick += new System.EventHandler(this.gridCombustibleVehiculo_DoubleClick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Estado";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(486, 219);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Filtrar";
+            // 
+            // TxFiltrar
+            // 
+            this.TxFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxFiltrar.Location = new System.Drawing.Point(524, 216);
+            this.TxFiltrar.Name = "TxFiltrar";
+            this.TxFiltrar.Size = new System.Drawing.Size(160, 20);
+            this.TxFiltrar.TabIndex = 20;
+            this.TxFiltrar.TextChanged += new System.EventHandler(this.TxFiltrar_TextChanged);
             // 
             // ID
             // 
@@ -146,25 +178,19 @@
             // 
             // ESTADO
             // 
+            this.ESTADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ESTADO.DataPropertyName = "ESTADO";
             this.ESTADO.HeaderText = "Estado";
             this.ESTADO.Name = "ESTADO";
             this.ESTADO.ReadOnly = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 99);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Estado";
             // 
             // FrmCombustibleVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 561);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.TxFiltrar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.gridCombustibleVehiculo);
             this.Controls.Add(this.btnCancel);
@@ -194,9 +220,11 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DataGridView gridCombustibleVehiculo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox TxFiltrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
-        private System.Windows.Forms.Label label2;
     }
 }
