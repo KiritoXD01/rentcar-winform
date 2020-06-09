@@ -58,6 +58,8 @@
             this.TxFechaCreacion = new System.Windows.Forms.TextBox();
             this.TxCedula = new System.Windows.Forms.TextBox();
             this.TxTarjetaCredito = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.TxFiltrar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridCliente)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,7 +98,9 @@
             // 
             // gridCliente
             // 
+            this.gridCliente.AllowUserToAddRows = false;
             this.gridCliente.AllowUserToDeleteRows = false;
+            this.gridCliente.AllowUserToOrderColumns = true;
             this.gridCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -105,10 +109,10 @@
             this.EMAIL,
             this.ESTADO});
             this.gridCliente.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridCliente.Location = new System.Drawing.Point(0, 266);
+            this.gridCliente.Location = new System.Drawing.Point(0, 288);
             this.gridCliente.Name = "gridCliente";
             this.gridCliente.ReadOnly = true;
-            this.gridCliente.Size = new System.Drawing.Size(684, 295);
+            this.gridCliente.Size = new System.Drawing.Size(684, 273);
             this.gridCliente.TabIndex = 19;
             this.gridCliente.DoubleClick += new System.EventHandler(this.gridCliente_DoubleClick);
             // 
@@ -244,6 +248,7 @@
             this.TxLimiteCredito.Name = "TxLimiteCredito";
             this.TxLimiteCredito.Size = new System.Drawing.Size(178, 20);
             this.TxLimiteCredito.TabIndex = 36;
+            this.TxLimiteCredito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxLimiteCredito_KeyPress);
             // 
             // label9
             // 
@@ -292,6 +297,8 @@
             // 
             // comboTipoPersona
             // 
+            this.comboTipoPersona.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboTipoPersona.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboTipoPersona.FormattingEnabled = true;
             this.comboTipoPersona.Location = new System.Drawing.Point(353, 99);
             this.comboTipoPersona.Name = "comboTipoPersona";
@@ -322,6 +329,7 @@
             this.TxCedula.Name = "TxCedula";
             this.TxCedula.Size = new System.Drawing.Size(178, 20);
             this.TxCedula.TabIndex = 45;
+            this.TxCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxCedula_KeyPress);
             // 
             // TxTarjetaCredito
             // 
@@ -330,12 +338,34 @@
             this.TxTarjetaCredito.Name = "TxTarjetaCredito";
             this.TxTarjetaCredito.Size = new System.Drawing.Size(178, 20);
             this.TxTarjetaCredito.TabIndex = 46;
+            this.TxTarjetaCredito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxTarjetaCredito_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(486, 265);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 13);
+            this.label8.TabIndex = 48;
+            this.label8.Text = "Filtrar";
+            // 
+            // TxFiltrar
+            // 
+            this.TxFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxFiltrar.Location = new System.Drawing.Point(524, 262);
+            this.TxFiltrar.Name = "TxFiltrar";
+            this.TxFiltrar.Size = new System.Drawing.Size(160, 20);
+            this.TxFiltrar.TabIndex = 47;
+            this.TxFiltrar.TextChanged += new System.EventHandler(this.TxFiltrar_TextChanged);
             // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 561);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.TxFiltrar);
             this.Controls.Add(this.TxTarjetaCredito);
             this.Controls.Add(this.TxCedula);
             this.Controls.Add(this.TxFechaCreacion);
@@ -403,5 +433,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn EMAIL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox TxFiltrar;
     }
 }

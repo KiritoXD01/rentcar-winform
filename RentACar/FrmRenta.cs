@@ -131,7 +131,7 @@ namespace RentACar
 
         private void TxMontoDia_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Verifica que la tecla presionada esa solo numerica
+            //Verifica que la tecla presionada es solo numerica
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;

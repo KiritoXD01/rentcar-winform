@@ -43,6 +43,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOMBRES" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="APELLIDOS" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="ID_TANDA" Type="int" />
           <Property Name="PORCIENTO_COMISION" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="FECHA_INGRESO" Type="datetime" Nullable="false" />
@@ -705,6 +706,7 @@
           <NavigationProperty Name="TIPO_EMPLEADO" Relationship="rentacarModel.FK__EMPLEADO__ID_TIP__72C60C4A" FromRole="EMPLEADO" ToRole="TIPO_EMPLEADO" />
           <NavigationProperty Name="INSPECCION" Relationship="rentacarModel.FK__INSPECCIO__ID_EM__75A278F5" FromRole="EMPLEADO" ToRole="INSPECCION" />
           <NavigationProperty Name="RENTA" Relationship="rentacarModel.FK__RENTA__ID_EMPLEA__797309D9" FromRole="EMPLEADO" ToRole="RENTA" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TANDA">
           <Key>
@@ -1026,6 +1028,7 @@
           <EntitySetMapping Name="EMPLEADO">
             <EntityTypeMapping TypeName="rentacarModel.EMPLEADO">
               <MappingFragment StoreEntitySet="EMPLEADO">
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="ID_TIPO_EMPLEADO" ColumnName="ID_TIPO_EMPLEADO" />
                 <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
                 <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />

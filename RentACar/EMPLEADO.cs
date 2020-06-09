@@ -31,6 +31,7 @@ namespace RentACar
         public Nullable<bool> ESTADO { get; set; }
         public string CLAVE { get; set; }
         public Nullable<int> ID_TIPO_EMPLEADO { get; set; }
+        public string EMAIL { get; set; }
     
         public virtual TANDA TANDA { get; set; }
         public virtual TIPO_EMPLEADO TIPO_EMPLEADO { get; set; }

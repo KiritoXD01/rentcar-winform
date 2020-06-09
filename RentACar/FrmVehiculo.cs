@@ -153,11 +153,47 @@ namespace RentACar
             {
                 if (db.VEHICULO.Where(x => x.NUMERO_CHASIS == model.NUMERO_CHASIS).Count() > 0)
                 {
-                    MessageBox.Show("El numero de chais ya existe, por favor verifique los datos.");
+                    MessageBox.Show("El numero de chasis ya existe, por favor verifique los datos.");
                     return false;
                 }
 
+                if (db.VEHICULO.Where(x => x.NUMERO_MOTOR == model.NUMERO_MOTOR).Count() > 0)
+                {
+                    MessageBox.Show("El numero de motor ya existe, por favor verifique los datos.");
+                    return false;
+                }
 
+                if (db.VEHICULO.Where(x => x.NUMERO_PLACA == model.NUMERO_PLACA).Count() > 0)
+                {
+                    MessageBox.Show("El numero de placa ya existe, por favor verifique los datos.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool ValidateUniqueFieldsOnUpdate()
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                if (db.VEHICULO.Where(x => x.NUMERO_CHASIS == model.NUMERO_CHASIS && x.ID != model.ID).Count() > 0)
+                {
+                    MessageBox.Show("El numero de chasis ya existe, por favor verifique los datos.");
+                    return false;
+                }
+
+                if (db.VEHICULO.Where(x => x.NUMERO_MOTOR == model.NUMERO_MOTOR && x.ID != model.ID).Count() > 0)
+                {
+                    MessageBox.Show("El numero de motor ya existe, por favor verifique los datos.");
+                    return false;
+                }
+
+                if (db.VEHICULO.Where(x => x.NUMERO_PLACA == model.NUMERO_PLACA && x.ID != model.ID).Count() > 0)
+                {
+                    MessageBox.Show("El numero de placa ya existe, por favor verifique los datos.");
+                    return false;
+                }
             }
 
             return true;
@@ -181,17 +217,28 @@ namespace RentACar
                 {
                     if (model.ID == 0)
                     {
-                        db.VEHICULO.Add(model);
+                        if (ValidateUniqueFieldsOnCreate())
+                        {
+                            db.VEHICULO.Add(model);
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            PopulateCombos();
+                            MessageBox.Show("Vehiculo creado existosamente");
+                        }                        
                     }
                     else
                     {
-                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                    }
-                    db.SaveChanges();
-                    ClearForm();
-                    PopulateDataGridView();
-                    PopulateCombos();
-                    MessageBox.Show("Vehiculo actualizado existosamente");
+                        if (ValidateUniqueFieldsOnUpdate())
+                        {
+                            db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            PopulateCombos();
+                            MessageBox.Show("Vehiculo actualizado existosamente");
+                        }                        
+                    }                    
                 }                
             }
         }

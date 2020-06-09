@@ -33,11 +33,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gridEmpleado = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPO_EMPLEADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.TxNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,6 +51,16 @@
             this.TxFechaCreacion = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.comboTipoEmpleado = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.TxFiltrar = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.TxEmail = new System.Windows.Forms.TextBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMAIL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPO_EMPLEADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridEmpleado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,12 +109,15 @@
             // 
             // gridEmpleado
             // 
+            this.gridEmpleado.AllowUserToAddRows = false;
             this.gridEmpleado.AllowUserToDeleteRows = false;
+            this.gridEmpleado.AllowUserToOrderColumns = true;
             this.gridEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridEmpleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.NOMBRES,
             this.Apellido,
+            this.EMAIL,
             this.TIPO_EMPLEADO,
             this.ESTADO});
             this.gridEmpleado.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -119,45 +127,6 @@
             this.gridEmpleado.Size = new System.Drawing.Size(684, 295);
             this.gridEmpleado.TabIndex = 26;
             this.gridEmpleado.DoubleClick += new System.EventHandler(this.gridEmpleado_DoubleClick);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // NOMBRES
-            // 
-            this.NOMBRES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NOMBRES.DataPropertyName = "NOMBRES";
-            this.NOMBRES.HeaderText = "Nombres";
-            this.NOMBRES.Name = "NOMBRES";
-            this.NOMBRES.ReadOnly = true;
-            // 
-            // Apellido
-            // 
-            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Apellido.DataPropertyName = "APELLIDOS";
-            this.Apellido.HeaderText = "Apellidos";
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
-            // 
-            // TIPO_EMPLEADO
-            // 
-            this.TIPO_EMPLEADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TIPO_EMPLEADO.DataPropertyName = "TIPO_EMPLEADO";
-            this.TIPO_EMPLEADO.HeaderText = "Tipo";
-            this.TIPO_EMPLEADO.Name = "TIPO_EMPLEADO";
-            this.TIPO_EMPLEADO.ReadOnly = true;
-            // 
-            // ESTADO
-            // 
-            this.ESTADO.DataPropertyName = "ESTADO";
-            this.ESTADO.HeaderText = "Estado";
-            this.ESTADO.Name = "ESTADO";
-            this.ESTADO.ReadOnly = true;
             // 
             // label1
             // 
@@ -196,7 +165,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 128);
+            this.label3.Location = new System.Drawing.Point(12, 154);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 13);
             this.label3.TabIndex = 31;
@@ -204,7 +173,7 @@
             // 
             // TxClave
             // 
-            this.TxClave.Location = new System.Drawing.Point(73, 125);
+            this.TxClave.Location = new System.Drawing.Point(73, 151);
             this.TxClave.MaxLength = 10;
             this.TxClave.Name = "TxClave";
             this.TxClave.Size = new System.Drawing.Size(177, 20);
@@ -213,7 +182,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 154);
+            this.label4.Location = new System.Drawing.Point(12, 180);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 33;
@@ -222,7 +191,7 @@
             // comboTanda
             // 
             this.comboTanda.FormattingEnabled = true;
-            this.comboTanda.Location = new System.Drawing.Point(73, 151);
+            this.comboTanda.Location = new System.Drawing.Point(73, 177);
             this.comboTanda.Name = "comboTanda";
             this.comboTanda.Size = new System.Drawing.Size(177, 21);
             this.comboTanda.TabIndex = 34;
@@ -230,7 +199,7 @@
             // checkEstado
             // 
             this.checkEstado.AutoSize = true;
-            this.checkEstado.Location = new System.Drawing.Point(73, 179);
+            this.checkEstado.Location = new System.Drawing.Point(371, 177);
             this.checkEstado.Name = "checkEstado";
             this.checkEstado.Size = new System.Drawing.Size(15, 14);
             this.checkEstado.TabIndex = 35;
@@ -239,7 +208,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 179);
+            this.label5.Location = new System.Drawing.Point(268, 178);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 36;
@@ -311,11 +280,99 @@
             this.comboTipoEmpleado.Size = new System.Drawing.Size(157, 21);
             this.comboTipoEmpleado.TabIndex = 44;
             // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(486, 243);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(32, 13);
+            this.label9.TabIndex = 46;
+            this.label9.Text = "Filtrar";
+            // 
+            // TxFiltrar
+            // 
+            this.TxFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxFiltrar.Location = new System.Drawing.Point(524, 240);
+            this.TxFiltrar.Name = "TxFiltrar";
+            this.TxFiltrar.Size = new System.Drawing.Size(160, 20);
+            this.TxFiltrar.TabIndex = 45;
+            this.TxFiltrar.TextChanged += new System.EventHandler(this.TxFiltrar_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 125);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(32, 13);
+            this.label10.TabIndex = 47;
+            this.label10.Text = "Email";
+            // 
+            // TxEmail
+            // 
+            this.TxEmail.Location = new System.Drawing.Point(73, 122);
+            this.TxEmail.MaxLength = 255;
+            this.TxEmail.Name = "TxEmail";
+            this.TxEmail.Size = new System.Drawing.Size(177, 20);
+            this.TxEmail.TabIndex = 48;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // NOMBRES
+            // 
+            this.NOMBRES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NOMBRES.DataPropertyName = "NOMBRES";
+            this.NOMBRES.HeaderText = "Nombres";
+            this.NOMBRES.Name = "NOMBRES";
+            this.NOMBRES.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Apellido.DataPropertyName = "APELLIDOS";
+            this.Apellido.HeaderText = "Apellidos";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // EMAIL
+            // 
+            this.EMAIL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EMAIL.DataPropertyName = "EMAIL";
+            this.EMAIL.HeaderText = "Email";
+            this.EMAIL.Name = "EMAIL";
+            this.EMAIL.ReadOnly = true;
+            // 
+            // TIPO_EMPLEADO
+            // 
+            this.TIPO_EMPLEADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TIPO_EMPLEADO.DataPropertyName = "TIPO_EMPLEADO";
+            this.TIPO_EMPLEADO.HeaderText = "Tipo";
+            this.TIPO_EMPLEADO.Name = "TIPO_EMPLEADO";
+            this.TIPO_EMPLEADO.ReadOnly = true;
+            // 
+            // ESTADO
+            // 
+            this.ESTADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ESTADO.DataPropertyName = "ESTADO";
+            this.ESTADO.HeaderText = "Estado";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.ReadOnly = true;
+            // 
             // FrmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 561);
+            this.Controls.Add(this.TxEmail);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.TxFiltrar);
             this.Controls.Add(this.comboTipoEmpleado);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.TxFechaCreacion);
@@ -374,9 +431,14 @@
         private System.Windows.Forms.TextBox TxFechaCreacion;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboTipoEmpleado;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox TxFiltrar;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox TxEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRES;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EMAIL;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPO_EMPLEADO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
     }

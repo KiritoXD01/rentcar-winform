@@ -28,6 +28,7 @@ namespace RentACar
         {
             TxNombre.Text = "";
             TxApellido.Text = "";
+            TxEmail.Text = "";
             TxClave.Text = "";
             checkEstado.Checked = true;
             TxPorcientoComision.Text = "";
@@ -50,6 +51,7 @@ namespace RentACar
                         x.ID,
                         x.NOMBRES,
                         x.APELLIDOS,
+                        x.EMAIL,
                         TIPO_EMPLEADO = x.TIPO_EMPLEADO.DESCRIPCION,
                         ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
                     }).ToList();
@@ -97,6 +99,13 @@ namespace RentACar
                 return false;
             }
 
+            if (String.IsNullOrWhiteSpace(TxEmail.Text))
+            {
+                MessageBox.Show("Debe ingresar el email del empleado.");
+                TxEmail.Focus();
+                return false;
+            }
+
             if (String.IsNullOrWhiteSpace(TxClave.Text))
             {
                 MessageBox.Show("Debe ingresar la clave del empleado.");
@@ -135,12 +144,41 @@ namespace RentACar
             return true;
         }
 
+        private bool ValidateUniqueFieldsOnCreate()
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                if (db.EMPLEADO.Where(x => x.EMAIL == model.EMAIL).Count() > 0)
+                {
+                    MessageBox.Show("El email ya existe, por favor verifique los datos.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool ValidateUniqueFieldsOnUpdate()
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                if (db.EMPLEADO.Where(x => x.EMAIL == model.EMAIL && x.ID != model.ID).Count() > 0)
+                {
+                    MessageBox.Show("El email ya existe, por favor verifique los datos.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (ValidateData())
             {
                 model.NOMBRES = TxNombre.Text.Trim();
                 model.APELLIDOS = TxApellido.Text.Trim();
+                model.EMAIL = TxEmail.Text.Trim().ToLower();
                 model.CLAVE = TxClave.Text.Trim();
                 model.ID_TANDA = Convert.ToInt32(comboTanda.SelectedValue);
                 model.ESTADO = checkEstado.Checked;
@@ -153,18 +191,29 @@ namespace RentACar
                 {
                     if (model.ID == 0)
                     {
-                        db.EMPLEADO.Add(model);
+                        if (ValidateUniqueFieldsOnCreate())
+                        {
+                            db.EMPLEADO.Add(model);
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            PopulateCombos();
+                            MessageBox.Show("Empleado Creado existosamente");
+                        }                        
                     }
                     else
                     {
-                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                    }
-                    db.SaveChanges();
-                }
-                ClearForm();
-                PopulateDataGridView();
-                PopulateCombos();
-                MessageBox.Show("Empleado actualizado existosamente");
+                        if (ValidateUniqueFieldsOnUpdate())
+                        {
+                            db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            PopulateCombos();
+                            MessageBox.Show("Empleado Actualizado existosamente");
+                        }                        
+                    }                    
+                }                
             }            
         }
 
@@ -185,6 +234,7 @@ namespace RentACar
 
                     TxNombre.Text = model.NOMBRES;
                     TxApellido.Text = model.APELLIDOS;
+                    TxEmail.Text = model.EMAIL;
                     TxClave.Text = model.CLAVE;
                     comboTanda.SelectedValue = Convert.ToInt32(model.ID_TANDA);
                     checkEstado.Checked = Convert.ToBoolean(model.ESTADO);
@@ -219,6 +269,38 @@ namespace RentACar
                 PopulateCombos();
                 string result = (model.ESTADO == true) ? "Empleado activado existosamente" : "Empleado desactivado existosamente";
                 MessageBox.Show(result);
+            }
+        }
+
+        private void TxFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (TxFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var items = db.EMPLEADO
+                        .Where(x =>
+                            x.NOMBRES.Contains(TxFiltrar.Text.Trim()) ||
+                            x.APELLIDOS.Contains(TxFiltrar.Text.Trim()) ||
+                            x.TIPO_EMPLEADO.DESCRIPCION.Contains(TxFiltrar.Text.Trim())
+                        )
+                        .Select(
+                        x => new
+                        {
+                            x.ID,
+                            x.NOMBRES,
+                            x.APELLIDOS,
+                            x.EMAIL,
+                            TIPO_EMPLEADO = x.TIPO_EMPLEADO.DESCRIPCION,
+                            ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                        })
+                        .ToList();
+                    gridEmpleado.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
             }
         }
     }

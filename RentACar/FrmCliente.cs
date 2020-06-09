@@ -68,7 +68,7 @@ namespace RentACar
             }
         }
 
-        public void PopulateCombos()
+        private void PopulateCombos()
         {
             using (DBEntities db = new DBEntities())
             {
@@ -137,6 +137,46 @@ namespace RentACar
             return true;
         }
 
+        private bool ValidateUniqueFieldsOnCreate()
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                if (db.CLIENTE.Where(x => x.CEDULA == model.CEDULA).Count() > 0)
+                {
+                    MessageBox.Show("La cedula ya existe, por favor verifique los datos.");
+                    return false;
+                }
+
+                if (db.CLIENTE.Where(x => x.EMAIL == model.EMAIL).Count() > 0)
+                {
+                    MessageBox.Show("El email ya existe, por favor verifique los datos.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool ValidateUniqueFieldsOnUpdate()
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                if (db.CLIENTE.Where(x => x.CEDULA == model.CEDULA && x.ID != model.ID).Count() > 0)
+                {
+                    MessageBox.Show("La cedula ya existe, por favor verifique los datos.");
+                    return false;
+                }
+
+                if (db.CLIENTE.Where(x => x.EMAIL == model.EMAIL && x.ID != model.ID).Count() > 0)
+                {
+                    MessageBox.Show("El email ya existe, por favor verifique los datos.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (ValidateData())
@@ -144,7 +184,7 @@ namespace RentACar
                 model.NOMBRES = TxNombres.Text.Trim();
                 model.APELLIDOS = TxApellidos.Text.Trim();
                 model.CEDULA = TxCedula.Text.Trim();
-                model.EMAIL = TxEmail.Text.Trim();
+                model.EMAIL = TxEmail.Text.Trim().ToLower();
                 model.TELEFONO = TxTelefono.Text.Trim();
                 model.TARJETA_CREDITO = TxTarjetaCredito.Text.Trim();
                 model.LIMITE_CREDITO = Convert.ToDecimal(TxLimiteCredito.Text.Trim());
@@ -156,18 +196,29 @@ namespace RentACar
                 {
                     if (model.ID == 0)
                     {
-                        db.CLIENTE.Add(model);
+                        if (ValidateUniqueFieldsOnCreate())
+                        {
+                            db.CLIENTE.Add(model);
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            PopulateCombos();
+                            MessageBox.Show("Cliente creado existosamente");
+                        }                        
                     }
                     else
                     {
-                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                        if (ValidateUniqueFieldsOnUpdate())
+                        {
+                            db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            PopulateCombos();
+                            MessageBox.Show("Cliente actualizado existosamente");
+                        }
                     }
-                    db.SaveChanges();
-                }
-                ClearForm();
-                PopulateDataGridView();
-                PopulateCombos();
-                MessageBox.Show("Cliente actualizado existosamente");
+                }                
             }            
         }
 
@@ -217,6 +268,67 @@ namespace RentACar
                 PopulateCombos();
                 string result = (model.ESTADO == true) ? "Cliente activado existosamente" : "Cliente desactivado existosamente";
                 MessageBox.Show(result);
+            }
+        }
+
+        private void TxFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (TxFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var items = db.CLIENTE
+                        .Where(x =>
+                            x.NOMBRES.Contains(TxFiltrar.Text.Trim()) ||
+                            x.APELLIDOS.Contains(TxFiltrar.Text.Trim()) ||
+                            x.CEDULA.Contains(TxFiltrar.Text.Trim()) ||
+                            x.EMAIL.Contains(TxFiltrar.Text.Trim().ToLower()) ||
+                            x.TELEFONO.Contains(TxFiltrar.Text.Trim()) ||
+                            x.TIPO_CLIENTE.DESCRIPCION.Contains(TxFiltrar.Text.Trim().ToUpper())
+                        )
+                        .Select(
+                        x => new
+                        {
+                            x.ID,
+                            x.NOMBRES,
+                            x.APELLIDOS,
+                            x.EMAIL,
+                            ESTADO = x.ESTADO == true ? "Activo" : "Inactivo"
+                        })
+                        .ToList();
+                    gridCliente.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
+            }
+        }
+
+        private void TxCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Verifica que la tecla presionada es solo numerica
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxTarjetaCredito_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Verifica que la tecla presionada es solo numerica
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxLimiteCredito_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Verifica que la tecla presionada es solo numerica
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
             }
         }
     }
