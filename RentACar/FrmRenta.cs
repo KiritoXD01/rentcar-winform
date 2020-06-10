@@ -283,11 +283,13 @@ namespace RentACar
             comboCliente.Enabled = true;
             comboEmpleado.Enabled = true;
             btnInspeccion.Enabled = true;
+            btnInspeccion.Text = "Crear Inspeccion";
             TxFechaRenta.Enabled = true;
             TxFechaRenta.ReadOnly = true;
             TxFechaRenta.Text = DateTime.Now.ToString();
             DPFechaDevolucion.Enabled = true;
             DPFechaDevolucion.MinDate = DateTime.Now;
+            DPFechaDevolucion.Value = DateTime.Now;
             TxMontoDia.Enabled = true;
             TxMontoDia.ReadOnly = false;
             TxMontoDia.Text = "";

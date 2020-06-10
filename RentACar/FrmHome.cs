@@ -131,7 +131,7 @@ namespace RentACar
 
         private void button9_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new FrmListInpeccion());
         }
 
         private void button10_Click(object sender, EventArgs e)
