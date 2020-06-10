@@ -165,7 +165,6 @@ namespace RentACar
 
         private void btnInspeccion_Click(object sender, EventArgs e)
         {
-
             if (comboVehiculo.SelectedIndex != -1 && comboCliente.SelectedIndex != -1 && comboEmpleado.SelectedIndex != -1)
             {
                 VEHICULO = Convert.ToInt32(comboVehiculo.SelectedValue);
@@ -271,6 +270,9 @@ namespace RentACar
                     TxDescripcion.Text = model.DESCRIPCION;
                     TxDescripcion.Enabled = false;
                     btnSave.Enabled = false;
+                    comboCliente.Enabled = false;
+                    comboEmpleado.Enabled = false;
+                    comboVehiculo.Enabled = false;
                 }
             }
         }
@@ -295,6 +297,40 @@ namespace RentACar
             btnNew.Enabled = false;
             btnSave.Enabled = true;
             model.ID = 0;
+        }
+
+        private void TxFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (TxFiltrar.Text.Length > 0)
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    var items = db.RENTA
+                        .Where(x =>
+                            x.VEHICULO.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE.Contains(TxFiltrar.Text.Trim().ToUpper()) ||
+                            x.VEHICULO.MODELO_VEHICULO.NOMBRE.Contains(TxFiltrar.Text.Trim().ToUpper()) ||
+                            x.CLIENTE.NOMBRES.Contains(TxFiltrar.Text.Trim()) ||
+                            x.CLIENTE.APELLIDOS.Contains(TxFiltrar.Text.Trim()) ||
+                            x.CLIENTE.CEDULA.Contains(TxFiltrar.Text.Trim()) ||
+                            x.INSPECCION.CODIGO.Contains(TxFiltrar.Text.Trim().ToUpper())
+                        )
+                        .Select(
+                        x => new
+                        {
+                            x.ID,
+                            VEHICULO = x.VEHICULO.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE + " " + x.VEHICULO.MODELO_VEHICULO.NOMBRE,
+                            CLIENTE = x.CLIENTE.NOMBRES + " " + x.CLIENTE.APELLIDOS,
+                            EMPLEADO = x.EMPLEADO.NOMBRES + " " + x.EMPLEADO.APELLIDOS,
+                            INSPECCION = x.INSPECCION.CODIGO
+                        })
+                        .ToList();
+                    gridRenta.DataSource = items;
+                }
+            }
+            else
+            {
+                PopulateDataGridView();
+            }
         }
     }
 }

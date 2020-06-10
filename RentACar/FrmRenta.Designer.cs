@@ -58,6 +58,8 @@
             this.TxDescripcion = new System.Windows.Forms.TextBox();
             this.TxCantidadDias = new System.Windows.Forms.TextBox();
             this.btnNew = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.TxFiltrar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridRenta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -354,11 +356,32 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(486, 303);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 13);
+            this.label11.TabIndex = 41;
+            this.label11.Text = "Filtrar";
+            // 
+            // TxFiltrar
+            // 
+            this.TxFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxFiltrar.Location = new System.Drawing.Point(524, 300);
+            this.TxFiltrar.Name = "TxFiltrar";
+            this.TxFiltrar.Size = new System.Drawing.Size(160, 20);
+            this.TxFiltrar.TabIndex = 40;
+            this.TxFiltrar.TextChanged += new System.EventHandler(this.TxFiltrar_TextChanged);
+            // 
             // FrmRenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 561);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.TxFiltrar);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.TxCantidadDias);
             this.Controls.Add(this.TxDescripcion);
@@ -426,5 +449,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_EMPLEADO;
         private System.Windows.Forms.DataGridViewTextBoxColumn INSPECCION;
         public System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox TxFiltrar;
     }
 }

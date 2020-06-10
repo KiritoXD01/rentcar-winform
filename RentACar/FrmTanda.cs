@@ -72,6 +72,35 @@ namespace RentACar
             return true;
         }
 
+        private bool ValidateUniqueFieldsOnCreate()
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                if (db.TANDA.Where(x => x.DESCRIPCION == model.DESCRIPCION).Count() > 0)
+                {
+                    MessageBox.Show("Esta tanda ya existe, por favor verifique los datos.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool ValidateUniqueFieldsOnUpdate()
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                if (db.TANDA.Where(x => x.DESCRIPCION == model.DESCRIPCION && x.ID != model.ID).Count() > 0)
+                {
+                    MessageBox.Show("Esta tanda ya existe, por favor verifique los datos.");
+                    return false;
+                }
+            }
+
+
+            return true;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if(ValidateData())
@@ -83,17 +112,27 @@ namespace RentACar
                 {
                     if(model.ID == 0)
                     {
-                        db.TANDA.Add(model);
+                        if (ValidateUniqueFieldsOnCreate())
+                        {
+                            db.TANDA.Add(model);
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            MessageBox.Show("Tanda creada existosamente");
+                        }                        
                     }
                     else
                     {
-                        db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                    }
-                    db.SaveChanges();
-                }
-                ClearForm();
-                PopulateDataGridView();
-                MessageBox.Show("Tanda actualizado existosamente");
+                        if (ValidateUniqueFieldsOnUpdate())
+                        {
+                            db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+                            ClearForm();
+                            PopulateDataGridView();
+                            MessageBox.Show("Tanda actualizada existosamente");
+                        }                        
+                    }                    
+                }                
             }
         }
 
