@@ -13,11 +13,17 @@ namespace RentACar
     public partial class FrmHome : Form
     {
         private Form activeForm = null;
+        public int ID_EMPLEADO = 0;
 
         public FrmHome()
         {
             InitializeComponent();
             CustomizeDesign();
+        }
+
+        private void FrmHome_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void CustomizeDesign()
@@ -104,11 +110,6 @@ namespace RentACar
             openChildForm(new FrmVehiculo());
         }
 
-        private void FrmHome_Load(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-        }
-
         private void btnClientes_Click(object sender, EventArgs e)
         {
             openChildForm(new FrmCliente());
@@ -142,6 +143,19 @@ namespace RentACar
         private void button8_Click(object sender, EventArgs e)
         {
             ShowSubMenu(panelRenta);
+        }
+
+        private void FrmHome_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Desea cerrar el programa", "Cerrar Sesion", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

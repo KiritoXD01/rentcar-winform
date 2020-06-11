@@ -49,6 +49,7 @@
             this.SidebarLogo = new System.Windows.Forms.Panel();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.Sidebar.SuspendLayout();
             this.panelRenta.SuspendLayout();
             this.panelEmpleado.SuspendLayout();
@@ -331,6 +332,7 @@
             // 
             this.panelContainer.AutoScroll = true;
             this.panelContainer.BackColor = System.Drawing.Color.Gray;
+            this.panelContainer.Controls.Add(this.button8);
             this.panelContainer.Controls.Add(this.pictureBox1);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(250, 0);
@@ -349,6 +351,17 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // button8
+            // 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.Location = new System.Drawing.Point(557, 13);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(115, 29);
+            this.button8.TabIndex = 1;
+            this.button8.Text = "Cerrar Sesion";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
+            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -361,6 +374,7 @@
             this.MinimumSize = new System.Drawing.Size(950, 600);
             this.Name = "FrmHome";
             this.Text = "Rent a Car";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmHome_FormClosed);
             this.Load += new System.EventHandler(this.FrmHome_Load);
             this.Sidebar.ResumeLayout(false);
             this.panelRenta.ResumeLayout(false);
@@ -394,6 +408,7 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button btnRentas;
+        private System.Windows.Forms.Button button8;
     }
 }
 
