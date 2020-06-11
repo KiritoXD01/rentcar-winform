@@ -109,18 +109,6 @@
     <Compile Include="FrmHome.Designer.cs">
       <DependentUpon>FrmHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmInspeccion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmInspeccion.Designer.cs">
-      <DependentUpon>FrmInspeccion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmListInpeccion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmListInpeccion.Designer.cs">
-      <DependentUpon>FrmListInpeccion.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,12 +194,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHome.resx">
       <DependentUpon>FrmHome.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmInspeccion.resx">
-      <DependentUpon>FrmInspeccion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmListInpeccion.resx">
-      <DependentUpon>FrmListInpeccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

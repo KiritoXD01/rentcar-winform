@@ -13,7 +13,7 @@ namespace RentACar
     public partial class FrmHome : Form
     {
         private Form activeForm = null;
-        public int ID_EMPLEADO = 0;
+        public EMPLEADO EMPLEADO = null;
 
         public FrmHome()
         {
@@ -24,6 +24,17 @@ namespace RentACar
         private void FrmHome_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            //SetLoginInfo();
+        }
+
+        private void SetLoginInfo()
+        {
+            if (EMPLEADO.ID_TIPO_EMPLEADO == 1) //Empleado
+            {
+                btnVehiculoPanel.Visible = false;
+                btnClientes.Visible = false;
+                btnEmpleadoPanel.Visible = false;
+            }
         }
 
         private void CustomizeDesign()
@@ -132,12 +143,12 @@ namespace RentACar
 
         private void button9_Click(object sender, EventArgs e)
         {
-            openChildForm(new FrmListInpeccion());
+        
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            openChildForm(new FrmRenta());
+            openChildForm(new FrmRenta(EMPLEADO));
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -147,15 +158,15 @@ namespace RentACar
 
         private void FrmHome_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if (MessageBox.Show("Desea cerrar el programa?", "Cerrar Programa", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }            
         }
 
         private void button8_Click_1(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea cerrar el programa", "Cerrar Sesion", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
+            Application.Exit();
         }
     }
 }

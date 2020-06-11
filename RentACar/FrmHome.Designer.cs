@@ -37,7 +37,7 @@
             this.panelEmpleado = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.btnVehiculo = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnEmpleadoPanel = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.panelVehiculo = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
@@ -48,8 +48,8 @@
             this.btnVehiculoPanel = new System.Windows.Forms.Button();
             this.SidebarLogo = new System.Windows.Forms.Panel();
             this.panelContainer = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Sidebar.SuspendLayout();
             this.panelRenta.SuspendLayout();
             this.panelEmpleado.SuspendLayout();
@@ -65,7 +65,7 @@
             this.Sidebar.Controls.Add(this.panelRenta);
             this.Sidebar.Controls.Add(this.btnRentas);
             this.Sidebar.Controls.Add(this.panelEmpleado);
-            this.Sidebar.Controls.Add(this.button6);
+            this.Sidebar.Controls.Add(this.btnEmpleadoPanel);
             this.Sidebar.Controls.Add(this.btnClientes);
             this.Sidebar.Controls.Add(this.panelVehiculo);
             this.Sidebar.Controls.Add(this.btnVehiculoPanel);
@@ -78,7 +78,7 @@
             // 
             // panelRenta
             // 
-            this.panelRenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelRenta.BackColor = System.Drawing.Color.MidnightBlue;
             this.panelRenta.Controls.Add(this.button9);
             this.panelRenta.Controls.Add(this.button10);
             this.panelRenta.Dock = System.Windows.Forms.DockStyle.Top;
@@ -137,7 +137,7 @@
             // 
             // panelEmpleado
             // 
-            this.panelEmpleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelEmpleado.BackColor = System.Drawing.Color.MidnightBlue;
             this.panelEmpleado.Controls.Add(this.button7);
             this.panelEmpleado.Controls.Add(this.btnVehiculo);
             this.panelEmpleado.Dock = System.Windows.Forms.DockStyle.Top;
@@ -178,21 +178,21 @@
             this.btnVehiculo.UseVisualStyleBackColor = true;
             this.btnVehiculo.Click += new System.EventHandler(this.btnVehiculo_Click);
             // 
-            // button6
+            // btnEmpleadoPanel
             // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button6.Location = new System.Drawing.Point(0, 399);
-            this.button6.Name = "button6";
-            this.button6.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button6.Size = new System.Drawing.Size(233, 45);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "Empleados";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnEmpleadoPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEmpleadoPanel.FlatAppearance.BorderSize = 0;
+            this.btnEmpleadoPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmpleadoPanel.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnEmpleadoPanel.Location = new System.Drawing.Point(0, 399);
+            this.btnEmpleadoPanel.Name = "btnEmpleadoPanel";
+            this.btnEmpleadoPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnEmpleadoPanel.Size = new System.Drawing.Size(233, 45);
+            this.btnEmpleadoPanel.TabIndex = 3;
+            this.btnEmpleadoPanel.Text = "Empleados";
+            this.btnEmpleadoPanel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEmpleadoPanel.UseVisualStyleBackColor = true;
+            this.btnEmpleadoPanel.Click += new System.EventHandler(this.button6_Click);
             // 
             // btnClientes
             // 
@@ -212,7 +212,7 @@
             // 
             // panelVehiculo
             // 
-            this.panelVehiculo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelVehiculo.BackColor = System.Drawing.Color.MidnightBlue;
             this.panelVehiculo.Controls.Add(this.button5);
             this.panelVehiculo.Controls.Add(this.button4);
             this.panelVehiculo.Controls.Add(this.button3);
@@ -340,17 +340,6 @@
             this.panelContainer.Size = new System.Drawing.Size(684, 561);
             this.panelContainer.TabIndex = 1;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(684, 561);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // button8
             // 
             this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -361,6 +350,17 @@
             this.button8.Text = "Cerrar Sesion";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click_1);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(684, 561);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmHome
             // 
@@ -400,7 +400,7 @@
         private System.Windows.Forms.Panel panelContainer;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnClientes;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnEmpleadoPanel;
         private System.Windows.Forms.Panel panelEmpleado;
         private System.Windows.Forms.Button btnVehiculo;
         private System.Windows.Forms.Button button7;

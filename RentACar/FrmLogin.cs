@@ -65,7 +65,7 @@ namespace RentACar
                         if (empleado.CLAVE.Equals(TxClave.Text.Trim()))
                         {
                             FrmHome frm = new FrmHome();
-                            frm.ID_EMPLEADO = empleado.ID;
+                            frm.EMPLEADO = empleado;
                             this.Hide();
                             frm.Show();
                         }
