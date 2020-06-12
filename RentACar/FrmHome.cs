@@ -24,17 +24,6 @@ namespace RentACar
         private void FrmHome_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-            //SetLoginInfo();
-        }
-
-        private void SetLoginInfo()
-        {
-            if (EMPLEADO.ID_TIPO_EMPLEADO == 1) //Empleado
-            {
-                btnVehiculoPanel.Visible = false;
-                btnClientes.Visible = false;
-                btnEmpleadoPanel.Visible = false;
-            }
         }
 
         private void CustomizeDesign()

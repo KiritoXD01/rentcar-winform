@@ -24,8 +24,6 @@ namespace RentACar
         public int ID { get; set; }
         public string CODIGO { get; set; }
         public Nullable<int> ID_VEHICULO { get; set; }
-        public Nullable<int> ID_CLIENTE { get; set; }
-        public Nullable<int> ID_EMPLEADO { get; set; }
         public Nullable<bool> TIENE_RAYADURAS { get; set; }
         public Nullable<int> ID_CANTIDAD_COMBUSTIBLE { get; set; }
         public Nullable<bool> TIENE_GOMA { get; set; }
@@ -35,8 +33,6 @@ namespace RentACar
         public Nullable<int> ID_ESTADO_INSPECCION { get; set; }
     
         public virtual CANTIDAD_COMBUSTIBLE CANTIDAD_COMBUSTIBLE { get; set; }
-        public virtual CLIENTE CLIENTE { get; set; }
-        public virtual EMPLEADO EMPLEADO { get; set; }
         public virtual ESTADO_INSPECCION ESTADO_INSPECCION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INSPECCION_GOMAS> INSPECCION_GOMAS { get; set; }

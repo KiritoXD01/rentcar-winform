@@ -17,7 +17,6 @@ namespace RentACar
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EMPLEADO()
         {
-            this.INSPECCION = new HashSet<INSPECCION>();
             this.RENTA = new HashSet<RENTA>();
         }
     
@@ -35,8 +34,6 @@ namespace RentACar
     
         public virtual TANDA TANDA { get; set; }
         public virtual TIPO_EMPLEADO TIPO_EMPLEADO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSPECCION> INSPECCION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RENTA> RENTA { get; set; }
     }

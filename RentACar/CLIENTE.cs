@@ -17,7 +17,6 @@ namespace RentACar
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CLIENTE()
         {
-            this.INSPECCION = new HashSet<INSPECCION>();
             this.RENTA = new HashSet<RENTA>();
         }
     
@@ -34,8 +33,6 @@ namespace RentACar
         public System.DateTime FECHA_CREACION { get; set; }
     
         public virtual TIPO_CLIENTE TIPO_CLIENTE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSPECCION> INSPECCION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RENTA> RENTA { get; set; }
     }

@@ -28,7 +28,7 @@ namespace RentACar
     
         public virtual CLIENTE CLIENTE { get; set; }
         public virtual EMPLEADO EMPLEADO { get; set; }
-        public virtual INSPECCION INSPECCION { get; set; }
         public virtual VEHICULO VEHICULO { get; set; }
+        public virtual INSPECCION INSPECCION { get; set; }
     }
 }

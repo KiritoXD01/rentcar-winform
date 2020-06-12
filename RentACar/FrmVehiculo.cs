@@ -19,7 +19,7 @@ namespace RentACar
             InitializeComponent();
         }
 
-        public void ClearForm()
+        private void ClearForm()
         {
             TxNumeroChasis.Text = "";
             TxNumeroMotor.Text = "";
@@ -33,7 +33,7 @@ namespace RentACar
             model.ID = 0;
         }
 
-        public void PopulateDataGridView()
+        private void PopulateDataGridView()
         {
             gridVehiculo.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
@@ -50,7 +50,7 @@ namespace RentACar
             }
         }
 
-        public void PopulateCombos()
+        private void PopulateCombos()
         {
             using (DBEntities db = new DBEntities())
             {
