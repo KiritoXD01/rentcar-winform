@@ -14,6 +14,7 @@ namespace RentACar
     {
         private EMPLEADO empleado = null;
         private RENTA renta = new RENTA();
+        private INSPECCION inspeccion = new INSPECCION();
 
         public FrmRenta(EMPLEADO Empleado = null)
         {
@@ -58,6 +59,18 @@ namespace RentACar
                 comboVehiculo.DisplayMember = "NOMBRE";
                 comboVehiculo.ValueMember = "ID";
             }
+        }
+
+        private void ClearForm()
+        {
+            DPFechaRenta.Value = DateTime.Now;
+            DPFechaDevolucion.Value = DateTime.Now;
+            TxCantidadDias.Text = "0";
+            TxMontoxDia.Text = "0";
+            TxTotalPago.Text = "0";
+            TxDescripcion.Text = "";
+            renta.ID = 0;
+
         }
 
         private void FrmRenta_Load(object sender, EventArgs e)
