@@ -71,6 +71,42 @@ namespace RentACar
         private void DPFechaRenta_ValueChanged(object sender, EventArgs e)
         {
             DPFechaDevolucion.MinDate = DPFechaRenta.Value;
+            SetCantidadDias();
+            SetTotalAPagar();
+        }
+
+        private void SetCantidadDias()
+        {
+            DateTime StartDate = DPFechaRenta.Value;
+            DateTime EndDate = DPFechaDevolucion.Value;
+
+            TxCantidadDias.Text = Math.Round((EndDate - StartDate).TotalDays).ToString();            
+        }
+
+        private void DPFechaDevolucion_ValueChanged(object sender, EventArgs e)
+        {
+            SetCantidadDias();
+            SetTotalAPagar();
+        }
+
+        private void SetTotalAPagar()
+        {
+            if (TxMontoxDia.Text.Length > 0)
+            {
+                int dias = Convert.ToInt32(TxCantidadDias.Text);
+                decimal monto = Convert.ToDecimal(TxMontoxDia.Text);
+                decimal total = monto * dias;
+                TxTotalPago.Text = total.ToString();
+            }
+            else
+            {
+                TxTotalPago.Text = "0";
+            }
+        }
+
+        private void TxMontoxDia_TextChanged(object sender, EventArgs e)
+        {
+            SetTotalAPagar();
         }
     }
 }

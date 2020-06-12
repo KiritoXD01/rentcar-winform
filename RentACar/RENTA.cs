@@ -24,6 +24,7 @@ namespace RentACar
         public int CANTIDAD_DIAS { get; set; }
         public decimal MONTO_DIA { get; set; }
         public string DESCRIPCION { get; set; }
+        public Nullable<System.DateTime> FECHA_CREACION { get; set; }
     
         public virtual CLIENTE CLIENTE { get; set; }
         public virtual EMPLEADO EMPLEADO { get; set; }
