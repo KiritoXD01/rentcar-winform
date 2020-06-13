@@ -46,6 +46,8 @@
             this.TxTotalPago = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TxDescripcionInspeccion = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.checkGomaDelanteraIzquierda = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.checkGomaDelanteraDerecha = new System.Windows.Forms.CheckBox();
@@ -68,9 +70,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.TxDescripcionInspeccion = new System.Windows.Forms.TextBox();
+            this.gridRentas = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha_Renta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha_Devolucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRentas)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -249,6 +256,23 @@
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Inspeccion";
+            // 
+            // TxDescripcionInspeccion
+            // 
+            this.TxDescripcionInspeccion.Location = new System.Drawing.Point(373, 98);
+            this.TxDescripcionInspeccion.Multiline = true;
+            this.TxDescripcionInspeccion.Name = "TxDescripcionInspeccion";
+            this.TxDescripcionInspeccion.Size = new System.Drawing.Size(215, 40);
+            this.TxDescripcionInspeccion.TabIndex = 21;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(322, 102);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(45, 13);
+            this.label19.TabIndex = 20;
+            this.label19.Text = "Detalles";
             // 
             // checkGomaDelanteraIzquierda
             // 
@@ -450,28 +474,72 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label19
+            // gridRentas
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(322, 102);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(45, 13);
-            this.label19.TabIndex = 20;
-            this.label19.Text = "Detalles";
+            this.gridRentas.AllowUserToAddRows = false;
+            this.gridRentas.AllowUserToDeleteRows = false;
+            this.gridRentas.AllowUserToOrderColumns = true;
+            this.gridRentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridRentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Cliente,
+            this.Vehiculo,
+            this.Fecha_Renta,
+            this.Fecha_Devolucion});
+            this.gridRentas.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gridRentas.Location = new System.Drawing.Point(0, 344);
+            this.gridRentas.Name = "gridRentas";
+            this.gridRentas.ReadOnly = true;
+            this.gridRentas.Size = new System.Drawing.Size(668, 178);
+            this.gridRentas.TabIndex = 22;
+            this.gridRentas.DoubleClick += new System.EventHandler(this.gridRentas_DoubleClick);
             // 
-            // TxDescripcionInspeccion
+            // ID
             // 
-            this.TxDescripcionInspeccion.Location = new System.Drawing.Point(373, 98);
-            this.TxDescripcionInspeccion.Multiline = true;
-            this.TxDescripcionInspeccion.Name = "TxDescripcionInspeccion";
-            this.TxDescripcionInspeccion.Size = new System.Drawing.Size(215, 40);
-            this.TxDescripcionInspeccion.TabIndex = 21;
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // Cliente
+            // 
+            this.Cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Cliente.DataPropertyName = "CLIENTE";
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            // 
+            // Vehiculo
+            // 
+            this.Vehiculo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Vehiculo.DataPropertyName = "VEHICULO";
+            this.Vehiculo.HeaderText = "Vehiculo";
+            this.Vehiculo.Name = "Vehiculo";
+            this.Vehiculo.ReadOnly = true;
+            // 
+            // Fecha_Renta
+            // 
+            this.Fecha_Renta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Fecha_Renta.DataPropertyName = "FECHA_RENTA";
+            this.Fecha_Renta.HeaderText = "Fecha Renta";
+            this.Fecha_Renta.Name = "Fecha_Renta";
+            this.Fecha_Renta.ReadOnly = true;
+            // 
+            // Fecha_Devolucion
+            // 
+            this.Fecha_Devolucion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Fecha_Devolucion.DataPropertyName = "FECHA_DEVOLUCION";
+            this.Fecha_Devolucion.HeaderText = "Fecha Devolucion";
+            this.Fecha_Devolucion.Name = "Fecha_Devolucion";
+            this.Fecha_Devolucion.ReadOnly = true;
             // 
             // FrmRenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(668, 522);
+            this.Controls.Add(this.gridRentas);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
@@ -498,6 +566,7 @@
             this.Load += new System.EventHandler(this.FrmRenta_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRentas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -547,5 +616,11 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox TxDescripcionInspeccion;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.DataGridView gridRentas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vehiculo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Renta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Devolucion;
     }
 }
