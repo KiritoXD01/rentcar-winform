@@ -33,18 +33,12 @@
             this.comboVehiculo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.comboCliente = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.DPFechaRenta = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.DPFechaDevolucion = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.TxCantidadDias = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.TxMontoxDia = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.TxDescripcionRenta = new System.Windows.Forms.TextBox();
             this.TxTotalPago = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TxDescripcionInspeccion = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -76,6 +70,12 @@
             this.Vehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha_Renta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha_Devolucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.DPFechaRenta = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.DPFechaDevolucion = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRentas)).BeginInit();
             this.SuspendLayout();
@@ -124,40 +124,6 @@
             this.comboCliente.Size = new System.Drawing.Size(183, 21);
             this.comboCliente.TabIndex = 5;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 125);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Fecha Renta";
-            // 
-            // DPFechaRenta
-            // 
-            this.DPFechaRenta.Location = new System.Drawing.Point(113, 118);
-            this.DPFechaRenta.Name = "DPFechaRenta";
-            this.DPFechaRenta.Size = new System.Drawing.Size(183, 20);
-            this.DPFechaRenta.TabIndex = 7;
-            this.DPFechaRenta.ValueChanged += new System.EventHandler(this.DPFechaRenta_ValueChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Fecha Devolucion";
-            // 
-            // DPFechaDevolucion
-            // 
-            this.DPFechaDevolucion.Location = new System.Drawing.Point(113, 144);
-            this.DPFechaDevolucion.Name = "DPFechaDevolucion";
-            this.DPFechaDevolucion.Size = new System.Drawing.Size(183, 20);
-            this.DPFechaDevolucion.TabIndex = 9;
-            this.DPFechaDevolucion.ValueChanged += new System.EventHandler(this.DPFechaDevolucion_ValueChanged);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -192,15 +158,6 @@
             this.TxMontoxDia.TabIndex = 13;
             this.TxMontoxDia.TextChanged += new System.EventHandler(this.TxMontoxDia_TextChanged);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(302, 147);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Detalles";
-            // 
             // TxDescripcionRenta
             // 
             this.TxDescripcionRenta.Location = new System.Drawing.Point(381, 142);
@@ -216,15 +173,6 @@
             this.TxTotalPago.ReadOnly = true;
             this.TxTotalPago.Size = new System.Drawing.Size(183, 20);
             this.TxTotalPago.TabIndex = 17;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(302, 121);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 13);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Total a Pagar";
             // 
             // groupBox1
             // 
@@ -535,6 +483,58 @@
             this.Fecha_Devolucion.Name = "Fecha_Devolucion";
             this.Fecha_Devolucion.ReadOnly = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(302, 147);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Detalles";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(302, 121);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(71, 13);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Total a Pagar";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 125);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Fecha Renta";
+            // 
+            // DPFechaRenta
+            // 
+            this.DPFechaRenta.Location = new System.Drawing.Point(113, 118);
+            this.DPFechaRenta.Name = "DPFechaRenta";
+            this.DPFechaRenta.Size = new System.Drawing.Size(183, 20);
+            this.DPFechaRenta.TabIndex = 7;
+            this.DPFechaRenta.ValueChanged += new System.EventHandler(this.DPFechaRenta_ValueChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 150);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(94, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Fecha Devolucion";
+            // 
+            // DPFechaDevolucion
+            // 
+            this.DPFechaDevolucion.Location = new System.Drawing.Point(113, 144);
+            this.DPFechaDevolucion.Name = "DPFechaDevolucion";
+            this.DPFechaDevolucion.Size = new System.Drawing.Size(183, 20);
+            this.DPFechaDevolucion.TabIndex = 9;
+            this.DPFechaDevolucion.ValueChanged += new System.EventHandler(this.DPFechaDevolucion_ValueChanged);
+            // 
             // FrmRenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -580,18 +580,12 @@
         private System.Windows.Forms.ComboBox comboVehiculo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboCliente;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker DPFechaRenta;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker DPFechaDevolucion;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TxCantidadDias;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox TxMontoxDia;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox TxDescripcionRenta;
         private System.Windows.Forms.TextBox TxTotalPago;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox checkTieneRayaduras;
         private System.Windows.Forms.Label label9;
@@ -623,5 +617,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Vehiculo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Renta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Devolucion;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker DPFechaRenta;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker DPFechaDevolucion;
     }
 }

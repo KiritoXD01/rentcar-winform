@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RentACar
@@ -92,6 +87,7 @@ namespace RentACar
         {
             comboVehiculo.Enabled = true;
             comboCliente.Enabled = true;
+            DPFechaRenta.MinDate = DateTime.Now;
             DPFechaRenta.Value = DateTime.Now;
             DPFechaRenta.Enabled = true;
             DPFechaDevolucion.Value = DateTime.Now;
@@ -152,12 +148,38 @@ namespace RentACar
             }
         }
 
+        private void CheckIfVehicleIsAvailable()
+        {
+            int ID_VEHICULO = Convert.ToInt32(comboVehiculo.SelectedValue);
+            DateTime StartDate = Convert.ToDateTime(DPFechaRenta.Value);
+            DateTime EndDate = Convert.ToDateTime(DPFechaDevolucion.Value);
+
+            using (DBEntities db = new DBEntities())
+            {
+                var query = from rentas in db.RENTA
+                            where rentas.ID_VEHICULO == ID_VEHICULO &&
+                            rentas.FECHA_RENTA >= StartDate && 
+                            rentas.FECHA_DEVOLUCION <= EndDate
+                            select rentas;
+
+                if (query.Count() > 0)
+                {
+                    MessageBox.Show("Te cojiendo la vaina");
+                }
+                else
+                {
+                    MessageBox.Show("Dele para alla");
+                }
+            }
+        }
+
         private void FrmRenta_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
             PopulateCombos();
             ClearForm();
             PopulateDataGridView();
+            CheckIfVehicleIsAvailable();
         }
 
         private void DPFechaRenta_ValueChanged(object sender, EventArgs e)
@@ -179,6 +201,7 @@ namespace RentACar
         {
             SetCantidadDias();
             SetTotalAPagar();
+            CheckIfVehicleIsAvailable();
         }
 
         private void SetTotalAPagar()

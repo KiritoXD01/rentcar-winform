@@ -15,20 +15,20 @@ namespace RentACar
     public partial class RENTA
     {
         public int ID { get; set; }
-        public Nullable<int> ID_EMPLEADO { get; set; }
-        public Nullable<int> ID_VEHICULO { get; set; }
-        public Nullable<int> ID_CLIENTE { get; set; }
-        public Nullable<int> ID_INSPECCION { get; set; }
+        public int ID_EMPLEADO { get; set; }
+        public int ID_VEHICULO { get; set; }
+        public int ID_CLIENTE { get; set; }
+        public int ID_INSPECCION { get; set; }
+        public System.DateTime FECHA_CREACION { get; set; }
         public System.DateTime FECHA_RENTA { get; set; }
-        public Nullable<System.DateTime> FECHA_DEVOLUCION { get; set; }
+        public System.DateTime FECHA_DEVOLUCION { get; set; }
         public int CANTIDAD_DIAS { get; set; }
         public decimal MONTO_DIA { get; set; }
         public string DESCRIPCION { get; set; }
-        public Nullable<System.DateTime> FECHA_CREACION { get; set; }
     
         public virtual CLIENTE CLIENTE { get; set; }
         public virtual EMPLEADO EMPLEADO { get; set; }
-        public virtual VEHICULO VEHICULO { get; set; }
         public virtual INSPECCION INSPECCION { get; set; }
+        public virtual VEHICULO VEHICULO { get; set; }
     }
 }
