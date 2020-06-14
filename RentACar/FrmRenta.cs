@@ -90,26 +90,47 @@ namespace RentACar
 
         private void ClearForm()
         {
+            comboVehiculo.Enabled = true;
+            comboCliente.Enabled = true;
             DPFechaRenta.Value = DateTime.Now;
+            DPFechaRenta.Enabled = true;
             DPFechaDevolucion.Value = DateTime.Now;
+            DPFechaDevolucion.Enabled = true;
             TxCantidadDias.Text = "0";
+            TxCantidadDias.Enabled = true;
             TxMontoxDia.Text = "0";
+            TxMontoxDia.Enabled = true;
             TxTotalPago.Text = "0";
+            TxTotalPago.Enabled = true;
             TxDescripcionRenta.Text = "";
+            TxDescripcionRenta.Enabled = true;
             renta.ID = 0;
 
             checkTieneRayaduras.Checked = false;
+            comboCantidadCombustible.Enabled = true;
+            checkTieneRayaduras.Enabled = true;
             checkTieneGoma.Checked = false;
+            checkTieneGoma.Enabled = true;
             checkTieneGato.Checked = false;
+            checkTieneGato.Enabled = true;
             checkTieneRoturaCristal.Checked = false;
+            checkTieneRoturaCristal.Enabled = true;
+            comboEstadoInspeccion.Enabled = true;
             inspeccion.ID = 0;
 
             checkGomaDerechaTrasera.Checked = false;
+            checkGomaDerechaTrasera.Enabled = true;
             checkGomaTraseraIzquierda.Checked = false;
+            checkGomaTraseraIzquierda.Enabled = true;
             checkGomaDelanteraDerecha.Checked = false;
+            checkGomaDelanteraDerecha.Enabled = true;
             checkGomaDelanteraIzquierda.Checked = false;
+            checkGomaDelanteraIzquierda.Enabled = true;
             TxDescripcionInspeccion.Text = "";
+            TxDescripcionInspeccion.Enabled = true;
             inspeccion_gomas.ID = 0;
+
+            btnSave.Enabled = true;
         }
 
         private void PopulateDataGridView()
@@ -292,10 +313,53 @@ namespace RentACar
                 using (DBEntities db = new DBEntities())
                 {
                     renta = db.RENTA.Where(x => x.ID == renta.ID).FirstOrDefault();
+                    inspeccion = db.INSPECCION.Where(x => x.ID == renta.ID_INSPECCION).FirstOrDefault();
+                    inspeccion_gomas = db.INSPECCION_GOMAS.Where(x => x.ID_INSPECCION == renta.ID_INSPECCION).FirstOrDefault();
 
+                    //renta
                     comboVehiculo.SelectedValue = Convert.ToInt32(renta.ID_VEHICULO);
+                    comboVehiculo.Enabled = false;
                     comboCliente.SelectedValue = Convert.ToInt32(renta.ID_CLIENTE);
+                    comboCliente.Enabled = false;
                     DPFechaRenta.Value = Convert.ToDateTime(renta.FECHA_RENTA);
+                    DPFechaRenta.Enabled = false;
+                    DPFechaDevolucion.Value = Convert.ToDateTime(renta.FECHA_DEVOLUCION);
+                    DPFechaDevolucion.Enabled = false;
+                    TxCantidadDias.Text = renta.CANTIDAD_DIAS.ToString();
+                    TxCantidadDias.Enabled = false;
+                    TxMontoxDia.Text = renta.MONTO_DIA.ToString();
+                    TxMontoxDia.Enabled = false;
+                    TxTotalPago.Enabled = false;
+                    TxDescripcionRenta.Text = renta.DESCRIPCION;
+                    TxDescripcionRenta.Enabled = false;
+
+                    //inspeccion
+                    checkTieneRayaduras.Checked = Convert.ToBoolean(inspeccion.TIENE_RAYADURAS);
+                    checkTieneRayaduras.Enabled = false;
+                    comboCantidadCombustible.SelectedValue = Convert.ToInt32(inspeccion.ID_CANTIDAD_COMBUSTIBLE);
+                    comboCantidadCombustible.Enabled = false;
+                    checkTieneGoma.Checked = Convert.ToBoolean(inspeccion.TIENE_GOMA);
+                    checkTieneGoma.Enabled = false;
+                    checkTieneGato.Checked = Convert.ToBoolean(inspeccion.TIENE_GATO);
+                    checkTieneGato.Enabled = false;
+                    checkTieneRoturaCristal.Checked = Convert.ToBoolean(inspeccion.TIENE_ROTURA_CRISTAL);
+                    checkTieneRoturaCristal.Enabled = false;
+                    comboEstadoInspeccion.SelectedValue = Convert.ToInt32(inspeccion.ID_ESTADO_INSPECCION);
+                    comboEstadoInspeccion.Enabled = false;
+
+                    //inspeccion Gomas
+                    checkGomaDerechaTrasera.Checked = Convert.ToBoolean(inspeccion_gomas.GOMA_TRASERA_DERECHA);
+                    checkGomaDerechaTrasera.Enabled = false;
+                    checkGomaTraseraIzquierda.Checked = Convert.ToBoolean(inspeccion_gomas.GOMA_TRASERA_IZQUIERDA);
+                    checkGomaTraseraIzquierda.Enabled = false;
+                    checkGomaDelanteraDerecha.Checked = Convert.ToBoolean(inspeccion_gomas.GOMA_DELANTERA_DERECHA);
+                    checkGomaDelanteraDerecha.Enabled = false;
+                    checkGomaDelanteraIzquierda.Checked = Convert.ToBoolean(inspeccion_gomas.GOME_DELANTERA_IZQUIERDA);
+                    checkGomaDelanteraIzquierda.Enabled = false;
+                    TxDescripcionInspeccion.Text = inspeccion_gomas.DESCRIPCION;
+                    TxDescripcionInspeccion.Enabled = false;
+
+                    btnSave.Enabled = false;
                 }
             }
         }

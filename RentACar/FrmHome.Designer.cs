@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHome));
             this.Sidebar = new System.Windows.Forms.Panel();
             this.panelRenta = new System.Windows.Forms.Panel();
-            this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.btnRentas = new System.Windows.Forms.Button();
             this.panelEmpleado = new System.Windows.Forms.Panel();
@@ -79,29 +78,12 @@
             // panelRenta
             // 
             this.panelRenta.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panelRenta.Controls.Add(this.button9);
             this.panelRenta.Controls.Add(this.button10);
             this.panelRenta.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelRenta.Location = new System.Drawing.Point(0, 575);
+            this.panelRenta.Location = new System.Drawing.Point(0, 579);
             this.panelRenta.Name = "panelRenta";
-            this.panelRenta.Size = new System.Drawing.Size(233, 86);
+            this.panelRenta.Size = new System.Drawing.Size(233, 46);
             this.panelRenta.TabIndex = 6;
-            // 
-            // button9
-            // 
-            this.button9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button9.Location = new System.Drawing.Point(0, 40);
-            this.button9.Name = "button9";
-            this.button9.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button9.Size = new System.Drawing.Size(233, 40);
-            this.button9.TabIndex = 1;
-            this.button9.Text = "Inspecciones";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -125,7 +107,7 @@
             this.btnRentas.FlatAppearance.BorderSize = 0;
             this.btnRentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRentas.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnRentas.Location = new System.Drawing.Point(0, 530);
+            this.btnRentas.Location = new System.Drawing.Point(0, 534);
             this.btnRentas.Name = "btnRentas";
             this.btnRentas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnRentas.Size = new System.Drawing.Size(233, 45);
@@ -141,7 +123,7 @@
             this.panelEmpleado.Controls.Add(this.button7);
             this.panelEmpleado.Controls.Add(this.btnVehiculo);
             this.panelEmpleado.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelEmpleado.Location = new System.Drawing.Point(0, 444);
+            this.panelEmpleado.Location = new System.Drawing.Point(0, 448);
             this.panelEmpleado.Name = "panelEmpleado";
             this.panelEmpleado.Size = new System.Drawing.Size(233, 86);
             this.panelEmpleado.TabIndex = 4;
@@ -184,7 +166,7 @@
             this.btnEmpleadoPanel.FlatAppearance.BorderSize = 0;
             this.btnEmpleadoPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmpleadoPanel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnEmpleadoPanel.Location = new System.Drawing.Point(0, 399);
+            this.btnEmpleadoPanel.Location = new System.Drawing.Point(0, 403);
             this.btnEmpleadoPanel.Name = "btnEmpleadoPanel";
             this.btnEmpleadoPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnEmpleadoPanel.Size = new System.Drawing.Size(233, 45);
@@ -200,7 +182,7 @@
             this.btnClientes.FlatAppearance.BorderSize = 0;
             this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClientes.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnClientes.Location = new System.Drawing.Point(0, 354);
+            this.btnClientes.Location = new System.Drawing.Point(0, 358);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnClientes.Size = new System.Drawing.Size(233, 45);
@@ -219,7 +201,7 @@
             this.panelVehiculo.Controls.Add(this.button2);
             this.panelVehiculo.Controls.Add(this.button1);
             this.panelVehiculo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelVehiculo.Location = new System.Drawing.Point(0, 147);
+            this.panelVehiculo.Location = new System.Drawing.Point(0, 151);
             this.panelVehiculo.Name = "panelVehiculo";
             this.panelVehiculo.Size = new System.Drawing.Size(233, 207);
             this.panelVehiculo.TabIndex = 1;
@@ -310,7 +292,7 @@
             this.btnVehiculoPanel.FlatAppearance.BorderSize = 0;
             this.btnVehiculoPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVehiculoPanel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnVehiculoPanel.Location = new System.Drawing.Point(0, 102);
+            this.btnVehiculoPanel.Location = new System.Drawing.Point(0, 106);
             this.btnVehiculoPanel.Name = "btnVehiculoPanel";
             this.btnVehiculoPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnVehiculoPanel.Size = new System.Drawing.Size(233, 45);
@@ -322,10 +304,13 @@
             // 
             // SidebarLogo
             // 
+            this.SidebarLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SidebarLogo.BackgroundImage")));
+            this.SidebarLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.SidebarLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.SidebarLogo.Location = new System.Drawing.Point(0, 0);
             this.SidebarLogo.Name = "SidebarLogo";
-            this.SidebarLogo.Size = new System.Drawing.Size(233, 102);
+            this.SidebarLogo.Padding = new System.Windows.Forms.Padding(4);
+            this.SidebarLogo.Size = new System.Drawing.Size(233, 106);
             this.SidebarLogo.TabIndex = 0;
             // 
             // panelContainer
@@ -370,6 +355,7 @@
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.Sidebar);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(950, 600);
             this.Name = "FrmHome";
@@ -405,7 +391,6 @@
         private System.Windows.Forms.Button btnVehiculo;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panelRenta;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button btnRentas;
         private System.Windows.Forms.Button button8;
