@@ -76,6 +76,7 @@
             this.DPFechaRenta = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.DPFechaDevolucion = new System.Windows.Forms.DateTimePicker();
+            this.BtnNew = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRentas)).BeginInit();
             this.SuspendLayout();
@@ -404,7 +405,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(581, 41);
+            this.btnCancel.Location = new System.Drawing.Point(581, 70);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 21;
@@ -415,7 +416,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(581, 12);
+            this.btnSave.Location = new System.Drawing.Point(581, 41);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 19;
@@ -535,11 +536,22 @@
             this.DPFechaDevolucion.TabIndex = 9;
             this.DPFechaDevolucion.ValueChanged += new System.EventHandler(this.DPFechaDevolucion_ValueChanged);
             // 
+            // BtnNew
+            // 
+            this.BtnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnNew.Location = new System.Drawing.Point(581, 12);
+            this.BtnNew.Name = "BtnNew";
+            this.BtnNew.Size = new System.Drawing.Size(75, 23);
+            this.BtnNew.TabIndex = 23;
+            this.BtnNew.Text = "Nuevo";
+            this.BtnNew.UseVisualStyleBackColor = true;
+            // 
             // FrmRenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(668, 522);
+            this.Controls.Add(this.BtnNew);
             this.Controls.Add(this.gridRentas);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -623,5 +635,6 @@
         private System.Windows.Forms.DateTimePicker DPFechaRenta;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker DPFechaDevolucion;
+        private System.Windows.Forms.Button BtnNew;
     }
 }

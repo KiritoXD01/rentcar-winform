@@ -199,7 +199,6 @@ namespace RentACar
         {
             SetCantidadDias();
             SetTotalAPagar();
-            CheckIfVehicleIsAvailable();
         }
 
         private void SetTotalAPagar()
