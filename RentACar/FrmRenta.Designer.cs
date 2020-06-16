@@ -160,7 +160,7 @@
             // 
             // TxDescripcionRenta
             // 
-            this.TxDescripcionRenta.Location = new System.Drawing.Point(381, 142);
+            this.TxDescripcionRenta.Location = new System.Drawing.Point(381, 143);
             this.TxDescripcionRenta.MaxLength = 255;
             this.TxDescripcionRenta.Name = "TxDescripcionRenta";
             this.TxDescripcionRenta.Size = new System.Drawing.Size(183, 20);
