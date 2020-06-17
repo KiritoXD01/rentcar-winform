@@ -52,9 +52,16 @@
             this.comboCliente = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gridRenta = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VEHICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnSave = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboCantidadCombustible = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.checkTieneRoturaCristal = new System.Windows.Forms.CheckBox();
             this.checkTieneGato = new System.Windows.Forms.CheckBox();
             this.checkTieneRayadura = new System.Windows.Forms.CheckBox();
@@ -64,13 +71,8 @@
             this.checkGomaTraseraDerecha = new System.Windows.Forms.CheckBox();
             this.checkGomaDelanteraDerecha = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.comboCantidadCombustible = new System.Windows.Forms.ComboBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VEHICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxFiltrar = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRenta)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -120,7 +122,7 @@
             this.groupBox1.Controls.Add(this.comboCliente);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 42);
+            this.groupBox1.Location = new System.Drawing.Point(0, 54);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(668, 164);
             this.groupBox1.TabIndex = 2;
@@ -195,6 +197,7 @@
             this.TxMontoDia.Name = "TxMontoDia";
             this.TxMontoDia.Size = new System.Drawing.Size(200, 20);
             this.TxMontoDia.TabIndex = 11;
+            this.TxMontoDia.TextChanged += new System.EventHandler(this.TxMontoDia_TextChanged);
             this.TxMontoDia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxMontoDia_KeyPress);
             // 
             // label6
@@ -229,6 +232,7 @@
             this.DPFechaDevolucion.Name = "DPFechaDevolucion";
             this.DPFechaDevolucion.Size = new System.Drawing.Size(200, 20);
             this.DPFechaDevolucion.TabIndex = 7;
+            this.DPFechaDevolucion.ValueChanged += new System.EventHandler(this.DPFechaDevolucion_ValueChanged);
             // 
             // label4
             // 
@@ -307,159 +311,12 @@
             this.CODIGO,
             this.ESTADO});
             this.gridRenta.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridRenta.Location = new System.Drawing.Point(0, 444);
+            this.gridRenta.Location = new System.Drawing.Point(0, 473);
             this.gridRenta.Name = "gridRenta";
             this.gridRenta.ReadOnly = true;
-            this.gridRenta.Size = new System.Drawing.Size(668, 298);
+            this.gridRenta.Size = new System.Drawing.Size(668, 269);
             this.gridRenta.TabIndex = 3;
-            // 
-            // BtnSave
-            // 
-            this.BtnSave.Enabled = false;
-            this.BtnSave.Location = new System.Drawing.Point(174, 12);
-            this.BtnSave.Name = "BtnSave";
-            this.BtnSave.Size = new System.Drawing.Size(75, 23);
-            this.BtnSave.TabIndex = 4;
-            this.BtnSave.Text = "Guardar";
-            this.BtnSave.UseVisualStyleBackColor = true;
-            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
-            // 
-            // BtnCancel
-            // 
-            this.BtnCancel.Enabled = false;
-            this.BtnCancel.Location = new System.Drawing.Point(255, 12);
-            this.BtnCancel.Name = "BtnCancel";
-            this.BtnCancel.Size = new System.Drawing.Size(75, 23);
-            this.BtnCancel.TabIndex = 5;
-            this.BtnCancel.Text = "Cancelar";
-            this.BtnCancel.UseVisualStyleBackColor = true;
-            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.AutoSize = true;
-            this.groupBox2.Controls.Add(this.comboCantidadCombustible);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.checkTieneRoturaCristal);
-            this.groupBox2.Controls.Add(this.checkTieneGato);
-            this.groupBox2.Controls.Add(this.checkTieneRayadura);
-            this.groupBox2.Controls.Add(this.checkGomaRepuesto);
-            this.groupBox2.Controls.Add(this.checkGomaDelanteraIzquierda);
-            this.groupBox2.Controls.Add(this.checkGomaTraseraIzquierda);
-            this.groupBox2.Controls.Add(this.checkGomaTraseraDerecha);
-            this.groupBox2.Controls.Add(this.checkGomaDelanteraDerecha);
-            this.groupBox2.Controls.Add(this.pictureBox1);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 206);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(668, 238);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Inspeccion de Vehiculo";
-            // 
-            // checkTieneRoturaCristal
-            // 
-            this.checkTieneRoturaCristal.AutoSize = true;
-            this.checkTieneRoturaCristal.Location = new System.Drawing.Point(167, 65);
-            this.checkTieneRoturaCristal.Name = "checkTieneRoturaCristal";
-            this.checkTieneRoturaCristal.Size = new System.Drawing.Size(139, 17);
-            this.checkTieneRoturaCristal.TabIndex = 8;
-            this.checkTieneRoturaCristal.Text = "Tiene algun cristal roto?";
-            this.checkTieneRoturaCristal.UseVisualStyleBackColor = true;
-            // 
-            // checkTieneGato
-            // 
-            this.checkTieneGato.AutoSize = true;
-            this.checkTieneGato.Location = new System.Drawing.Point(167, 42);
-            this.checkTieneGato.Name = "checkTieneGato";
-            this.checkTieneGato.Size = new System.Drawing.Size(85, 17);
-            this.checkTieneGato.TabIndex = 7;
-            this.checkTieneGato.Text = "Tiene Gato?";
-            this.checkTieneGato.UseVisualStyleBackColor = true;
-            // 
-            // checkTieneRayadura
-            // 
-            this.checkTieneRayadura.AutoSize = true;
-            this.checkTieneRayadura.Location = new System.Drawing.Point(167, 19);
-            this.checkTieneRayadura.Name = "checkTieneRayadura";
-            this.checkTieneRayadura.Size = new System.Drawing.Size(113, 17);
-            this.checkTieneRayadura.TabIndex = 6;
-            this.checkTieneRayadura.Text = "Tiene Rayaduras?";
-            this.checkTieneRayadura.UseVisualStyleBackColor = true;
-            // 
-            // checkGomaRepuesto
-            // 
-            this.checkGomaRepuesto.AutoSize = true;
-            this.checkGomaRepuesto.Location = new System.Drawing.Point(76, 205);
-            this.checkGomaRepuesto.Name = "checkGomaRepuesto";
-            this.checkGomaRepuesto.Size = new System.Drawing.Size(15, 14);
-            this.checkGomaRepuesto.TabIndex = 5;
-            this.checkGomaRepuesto.UseVisualStyleBackColor = true;
-            // 
-            // checkGomaDelanteraIzquierda
-            // 
-            this.checkGomaDelanteraIzquierda.AutoSize = true;
-            this.checkGomaDelanteraIzquierda.Location = new System.Drawing.Point(32, 60);
-            this.checkGomaDelanteraIzquierda.Name = "checkGomaDelanteraIzquierda";
-            this.checkGomaDelanteraIzquierda.Size = new System.Drawing.Size(15, 14);
-            this.checkGomaDelanteraIzquierda.TabIndex = 4;
-            this.checkGomaDelanteraIzquierda.UseVisualStyleBackColor = true;
-            // 
-            // checkGomaTraseraIzquierda
-            // 
-            this.checkGomaTraseraIzquierda.AutoSize = true;
-            this.checkGomaTraseraIzquierda.Location = new System.Drawing.Point(32, 162);
-            this.checkGomaTraseraIzquierda.Name = "checkGomaTraseraIzquierda";
-            this.checkGomaTraseraIzquierda.Size = new System.Drawing.Size(15, 14);
-            this.checkGomaTraseraIzquierda.TabIndex = 3;
-            this.checkGomaTraseraIzquierda.UseVisualStyleBackColor = true;
-            // 
-            // checkGomaTraseraDerecha
-            // 
-            this.checkGomaTraseraDerecha.AutoSize = true;
-            this.checkGomaTraseraDerecha.Location = new System.Drawing.Point(123, 162);
-            this.checkGomaTraseraDerecha.Name = "checkGomaTraseraDerecha";
-            this.checkGomaTraseraDerecha.Size = new System.Drawing.Size(15, 14);
-            this.checkGomaTraseraDerecha.TabIndex = 2;
-            this.checkGomaTraseraDerecha.UseVisualStyleBackColor = true;
-            // 
-            // checkGomaDelanteraDerecha
-            // 
-            this.checkGomaDelanteraDerecha.AutoSize = true;
-            this.checkGomaDelanteraDerecha.Location = new System.Drawing.Point(123, 60);
-            this.checkGomaDelanteraDerecha.Name = "checkGomaDelanteraDerecha";
-            this.checkGomaDelanteraDerecha.Size = new System.Drawing.Size(15, 14);
-            this.checkGomaDelanteraDerecha.TabIndex = 1;
-            this.checkGomaDelanteraDerecha.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(155, 194);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(164, 85);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(109, 13);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Cantidad Combustible";
-            // 
-            // comboCantidadCombustible
-            // 
-            this.comboCantidadCombustible.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboCantidadCombustible.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboCantidadCombustible.FormattingEnabled = true;
-            this.comboCantidadCombustible.Location = new System.Drawing.Point(167, 102);
-            this.comboCantidadCombustible.Name = "comboCantidadCombustible";
-            this.comboCantidadCombustible.Size = new System.Drawing.Size(181, 21);
-            this.comboCantidadCombustible.TabIndex = 10;
+            this.gridRenta.DoubleClick += new System.EventHandler(this.gridRenta_DoubleClick);
             // 
             // ID
             // 
@@ -500,6 +357,174 @@
             this.ESTADO.HeaderText = "Estado";
             this.ESTADO.Name = "ESTADO";
             this.ESTADO.ReadOnly = true;
+            // 
+            // BtnSave
+            // 
+            this.BtnSave.Enabled = false;
+            this.BtnSave.Location = new System.Drawing.Point(174, 12);
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(75, 23);
+            this.BtnSave.TabIndex = 4;
+            this.BtnSave.Text = "Guardar";
+            this.BtnSave.UseVisualStyleBackColor = true;
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
+            // BtnCancel
+            // 
+            this.BtnCancel.Enabled = false;
+            this.BtnCancel.Location = new System.Drawing.Point(255, 12);
+            this.BtnCancel.Name = "BtnCancel";
+            this.BtnCancel.Size = new System.Drawing.Size(75, 23);
+            this.BtnCancel.TabIndex = 5;
+            this.BtnCancel.Text = "Cancelar";
+            this.BtnCancel.UseVisualStyleBackColor = true;
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.AutoSize = true;
+            this.groupBox2.Controls.Add(this.TxFiltrar);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.comboCantidadCombustible);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.checkTieneRoturaCristal);
+            this.groupBox2.Controls.Add(this.checkTieneGato);
+            this.groupBox2.Controls.Add(this.checkTieneRayadura);
+            this.groupBox2.Controls.Add(this.checkGomaRepuesto);
+            this.groupBox2.Controls.Add(this.checkGomaDelanteraIzquierda);
+            this.groupBox2.Controls.Add(this.checkGomaTraseraIzquierda);
+            this.groupBox2.Controls.Add(this.checkGomaTraseraDerecha);
+            this.groupBox2.Controls.Add(this.checkGomaDelanteraDerecha);
+            this.groupBox2.Controls.Add(this.pictureBox1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox2.Location = new System.Drawing.Point(0, 218);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(668, 255);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Inspeccion de Vehiculo";
+            // 
+            // comboCantidadCombustible
+            // 
+            this.comboCantidadCombustible.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboCantidadCombustible.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboCantidadCombustible.FormattingEnabled = true;
+            this.comboCantidadCombustible.Location = new System.Drawing.Point(167, 102);
+            this.comboCantidadCombustible.Name = "comboCantidadCombustible";
+            this.comboCantidadCombustible.Size = new System.Drawing.Size(181, 21);
+            this.comboCantidadCombustible.TabIndex = 10;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(164, 85);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(109, 13);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Cantidad Combustible";
+            // 
+            // checkTieneRoturaCristal
+            // 
+            this.checkTieneRoturaCristal.AutoSize = true;
+            this.checkTieneRoturaCristal.Location = new System.Drawing.Point(167, 65);
+            this.checkTieneRoturaCristal.Name = "checkTieneRoturaCristal";
+            this.checkTieneRoturaCristal.Size = new System.Drawing.Size(139, 17);
+            this.checkTieneRoturaCristal.TabIndex = 8;
+            this.checkTieneRoturaCristal.Text = "Tiene algun cristal roto?";
+            this.checkTieneRoturaCristal.UseVisualStyleBackColor = true;
+            // 
+            // checkTieneGato
+            // 
+            this.checkTieneGato.AutoSize = true;
+            this.checkTieneGato.Location = new System.Drawing.Point(167, 42);
+            this.checkTieneGato.Name = "checkTieneGato";
+            this.checkTieneGato.Size = new System.Drawing.Size(85, 17);
+            this.checkTieneGato.TabIndex = 7;
+            this.checkTieneGato.Text = "Tiene Gato?";
+            this.checkTieneGato.UseVisualStyleBackColor = true;
+            // 
+            // checkTieneRayadura
+            // 
+            this.checkTieneRayadura.AutoSize = true;
+            this.checkTieneRayadura.Location = new System.Drawing.Point(167, 19);
+            this.checkTieneRayadura.Name = "checkTieneRayadura";
+            this.checkTieneRayadura.Size = new System.Drawing.Size(113, 17);
+            this.checkTieneRayadura.TabIndex = 6;
+            this.checkTieneRayadura.Text = "Tiene Rayaduras?";
+            this.checkTieneRayadura.UseVisualStyleBackColor = true;
+            // 
+            // checkGomaRepuesto
+            // 
+            this.checkGomaRepuesto.AutoSize = true;
+            this.checkGomaRepuesto.Location = new System.Drawing.Point(77, 205);
+            this.checkGomaRepuesto.Name = "checkGomaRepuesto";
+            this.checkGomaRepuesto.Size = new System.Drawing.Size(15, 14);
+            this.checkGomaRepuesto.TabIndex = 5;
+            this.checkGomaRepuesto.UseVisualStyleBackColor = true;
+            // 
+            // checkGomaDelanteraIzquierda
+            // 
+            this.checkGomaDelanteraIzquierda.AutoSize = true;
+            this.checkGomaDelanteraIzquierda.Location = new System.Drawing.Point(32, 60);
+            this.checkGomaDelanteraIzquierda.Name = "checkGomaDelanteraIzquierda";
+            this.checkGomaDelanteraIzquierda.Size = new System.Drawing.Size(15, 14);
+            this.checkGomaDelanteraIzquierda.TabIndex = 4;
+            this.checkGomaDelanteraIzquierda.UseVisualStyleBackColor = true;
+            // 
+            // checkGomaTraseraIzquierda
+            // 
+            this.checkGomaTraseraIzquierda.AutoSize = true;
+            this.checkGomaTraseraIzquierda.Location = new System.Drawing.Point(32, 162);
+            this.checkGomaTraseraIzquierda.Name = "checkGomaTraseraIzquierda";
+            this.checkGomaTraseraIzquierda.Size = new System.Drawing.Size(15, 14);
+            this.checkGomaTraseraIzquierda.TabIndex = 3;
+            this.checkGomaTraseraIzquierda.UseVisualStyleBackColor = true;
+            // 
+            // checkGomaTraseraDerecha
+            // 
+            this.checkGomaTraseraDerecha.AutoSize = true;
+            this.checkGomaTraseraDerecha.Location = new System.Drawing.Point(121, 162);
+            this.checkGomaTraseraDerecha.Name = "checkGomaTraseraDerecha";
+            this.checkGomaTraseraDerecha.Size = new System.Drawing.Size(15, 14);
+            this.checkGomaTraseraDerecha.TabIndex = 2;
+            this.checkGomaTraseraDerecha.UseVisualStyleBackColor = true;
+            // 
+            // checkGomaDelanteraDerecha
+            // 
+            this.checkGomaDelanteraDerecha.AutoSize = true;
+            this.checkGomaDelanteraDerecha.Location = new System.Drawing.Point(121, 60);
+            this.checkGomaDelanteraDerecha.Name = "checkGomaDelanteraDerecha";
+            this.checkGomaDelanteraDerecha.Size = new System.Drawing.Size(15, 14);
+            this.checkGomaDelanteraDerecha.TabIndex = 1;
+            this.checkGomaDelanteraDerecha.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(155, 194);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // TxFiltrar
+            // 
+            this.TxFiltrar.Location = new System.Drawing.Point(463, 216);
+            this.TxFiltrar.Name = "TxFiltrar";
+            this.TxFiltrar.Size = new System.Drawing.Size(200, 20);
+            this.TxFiltrar.TabIndex = 17;
+            this.TxFiltrar.TextChanged += new System.EventHandler(this.TxFiltrar_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(460, 200);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(45, 13);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Detalles";
             // 
             // FrmRenta
             // 
@@ -573,5 +598,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CLIENTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
+        private System.Windows.Forms.TextBox TxFiltrar;
+        private System.Windows.Forms.Label label11;
     }
 }
