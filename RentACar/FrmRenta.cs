@@ -428,7 +428,11 @@ namespace RentACar
                 {
                     var items = db.RENTA
                         .Where(x => 
-                            x.CLIENTE.NOMBRES.Contains(TxFiltrar.Text.Trim())
+                            x.CLIENTE.NOMBRES.Contains(TxFiltrar.Text.Trim()) ||
+                            x.CLIENTE.APELLIDOS.Contains(TxFiltrar.Text.Trim()) ||
+                            x.CODIGO.Contains(TxFiltrar.Text.Trim()) ||
+                            x.VEHICULO.MODELO_VEHICULO.MARCA_VEHICULO.NOMBRE.Contains(TxFiltrar.Text.Trim()) ||
+                            x.VEHICULO.MODELO_VEHICULO.NOMBRE.Contains(TxFiltrar.Text.Trim())
                         )
                         .Select(
                         x => new
