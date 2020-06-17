@@ -344,7 +344,11 @@ namespace RentACar
                 var file = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Reports\Cliente.cshtml");
                 var html = Engine.Razor.RunCompile(file, Guid.NewGuid().ToString(), null, items, null);
                 var htmlToPDF = new NReco.PdfGenerator.HtmlToPdfConverter();
-                htmlToPDF.GeneratePdf(html, null, AppDomain.CurrentDomain.BaseDirectory + @"Reports\Clientes.pdf");
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = "Clientes";
+                saveFileDialog.DefaultExt = "pdf";
+                saveFileDialog.ShowDialog();
+                htmlToPDF.GeneratePdf(html, null, saveFileDialog.FileName + ".pdf");
             }
         }
     }

@@ -300,6 +300,7 @@
             // 
             this.comboTipoPersona.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboTipoPersona.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboTipoPersona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipoPersona.FormattingEnabled = true;
             this.comboTipoPersona.Location = new System.Drawing.Point(353, 99);
             this.comboTipoPersona.Name = "comboTipoPersona";

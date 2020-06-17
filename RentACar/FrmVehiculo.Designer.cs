@@ -167,6 +167,7 @@
             // 
             this.comboModelo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboModelo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboModelo.FormattingEnabled = true;
             this.comboModelo.Location = new System.Drawing.Point(103, 60);
             this.comboModelo.Name = "comboModelo";
@@ -228,6 +229,7 @@
             // 
             this.comboTipoVehiculo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboTipoVehiculo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboTipoVehiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipoVehiculo.FormattingEnabled = true;
             this.comboTipoVehiculo.Location = new System.Drawing.Point(384, 60);
             this.comboTipoVehiculo.Name = "comboTipoVehiculo";
@@ -247,6 +249,7 @@
             // 
             this.comboTipoCombustible.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboTipoCombustible.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboTipoCombustible.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipoCombustible.FormattingEnabled = true;
             this.comboTipoCombustible.Location = new System.Drawing.Point(384, 90);
             this.comboTipoCombustible.Name = "comboTipoCombustible";

@@ -2,6 +2,9 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using System.IO;
+using RazorEngine;
+using RazorEngine.Templating;
 
 namespace RentACar
 {
@@ -450,6 +453,22 @@ namespace RentACar
             else
             {
                 PopulateDataGridView();
+            }
+        }
+
+        private void BtnExport_Click(object sender, EventArgs e)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                var items = db.RENTA.ToList();
+                var file = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Reports\Renta.cshtml");
+                var html = Engine.Razor.RunCompile(file, Guid.NewGuid().ToString(), null, items, null);
+                var htmlToPDF = new NReco.PdfGenerator.HtmlToPdfConverter();
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = "Rentas";
+                saveFileDialog.DefaultExt = "pdf";
+                saveFileDialog.ShowDialog();
+                htmlToPDF.GeneratePdf(html, null, saveFileDialog.FileName + ".pdf");
             }
         }
     }

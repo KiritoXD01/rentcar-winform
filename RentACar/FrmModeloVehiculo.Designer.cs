@@ -97,6 +97,7 @@
             // 
             this.comboMarca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboMarca.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboMarca.FormattingEnabled = true;
             this.comboMarca.Location = new System.Drawing.Point(61, 94);
             this.comboMarca.Name = "comboMarca";

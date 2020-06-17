@@ -73,6 +73,7 @@
             this.checkGomaTraseraDerecha = new System.Windows.Forms.CheckBox();
             this.checkGomaDelanteraDerecha = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.BtnExport = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRenta)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -264,6 +265,7 @@
             // 
             this.comboVehiculo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboVehiculo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboVehiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboVehiculo.FormattingEnabled = true;
             this.comboVehiculo.Location = new System.Drawing.Point(10, 80);
             this.comboVehiculo.Name = "comboVehiculo";
@@ -283,6 +285,7 @@
             // 
             this.comboCliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboCliente.FormattingEnabled = true;
             this.comboCliente.Location = new System.Drawing.Point(10, 36);
             this.comboCliente.Name = "comboCliente";
@@ -475,7 +478,7 @@
             // checkGomaRepuesto
             // 
             this.checkGomaRepuesto.AutoSize = true;
-            this.checkGomaRepuesto.Location = new System.Drawing.Point(77, 205);
+            this.checkGomaRepuesto.Location = new System.Drawing.Point(78, 205);
             this.checkGomaRepuesto.Name = "checkGomaRepuesto";
             this.checkGomaRepuesto.Size = new System.Drawing.Size(15, 14);
             this.checkGomaRepuesto.TabIndex = 5;
@@ -528,12 +531,23 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // BtnExport
+            // 
+            this.BtnExport.Location = new System.Drawing.Point(336, 12);
+            this.BtnExport.Name = "BtnExport";
+            this.BtnExport.Size = new System.Drawing.Size(75, 23);
+            this.BtnExport.TabIndex = 7;
+            this.BtnExport.Text = "Exportar";
+            this.BtnExport.UseVisualStyleBackColor = true;
+            this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
+            // 
             // FrmRenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(668, 742);
+            this.Controls.Add(this.BtnExport);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.BtnCancel);
@@ -602,5 +616,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
         private System.Windows.Forms.TextBox TxFiltrar;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button BtnExport;
     }
 }
