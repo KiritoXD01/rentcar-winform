@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using RazorEngine;
+using RazorEngine.Templating;
 
 namespace RentACar
 {
@@ -329,6 +332,19 @@ namespace RentACar
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void BtnExport_Click(object sender, EventArgs e)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                var items = db.CLIENTE.ToList();
+
+                var file = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Reports\Cliente.cshtml");
+                var html = Engine.Razor.RunCompile(file, Guid.NewGuid().ToString(), null, items, null);
+                var htmlToPDF = new NReco.PdfGenerator.HtmlToPdfConverter();
+                htmlToPDF.GeneratePdf(html, null, AppDomain.CurrentDomain.BaseDirectory + @"Reports\Clientes.pdf");
             }
         }
     }

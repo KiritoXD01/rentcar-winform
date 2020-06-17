@@ -1,0 +1,150 @@
+﻿@model IEnumerable<RentACar.CLIENTE>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Clientes</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+            .header div {
+                display: inline-block;
+            }
+
+            .header .logo {
+                width: 100px;
+            }
+
+        .logo img {
+            width: inherit;
+        }
+
+        .header .title {
+            font-size: 30px;
+            width: 78%;
+        }
+
+        .header .det span {
+            display: block;
+        }
+
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            .table th,
+            td {
+                text-align: left;
+                padding: 7px 5px;
+                font-size: 13px;
+            }
+
+            .table tr:nth-child(even) {
+                background-color: #f2f2f2
+            }
+
+            .table th {
+                background-color: #0079FE;
+                color: white;
+            }
+
+        .section {
+            padding: 10px;
+            border: 1px solid #EEE;
+            margin-bottom: 10px;
+        }
+
+            .section .header {
+                border-bottom: 1px solid #EEE;
+                padding-bottom: 5px;
+                padding-top: 0;
+                margin-top: 0;
+            }
+
+        .detalle-renta div {
+            margin-bottom: 3px;
+        }
+
+        .signature {
+            padding: 70px 50px 30px 50px;
+            margin: auto;
+        }
+
+            .signature table {
+                width: 100%;
+            }
+
+            .signature th, .signature td {
+                text-align: center;
+                width: 50%;
+                padding: 5px 30px;
+            }
+
+        hr {
+            border: 1px solid black
+        }
+
+        .total {
+            font-size: 20px;
+            width: 100%;
+            text-align: right;
+        }
+
+        .fact {
+            font-size: 10px;
+            text-align: justify;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="title">Rent car</div>
+        <div class="det">
+            @* <span><strong>Fecha: </strong> @DateTime.Now.ToString("dd/MM/yyyy HH:mm") </span> *@
+        </div>
+    </div>
+    <div class="section">
+        <h3 class="header">Reporte de Clientes</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Cedula</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in Model)
+                {
+                    <tr>
+                        <td>@row.NOMBRES</td>
+                        <td>@row.APELLIDOS</td>
+                        <td>@row.CEDULA</td>
+                        <td>@row.EMAIL</td>
+                        <td>@row.TELEFONO</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

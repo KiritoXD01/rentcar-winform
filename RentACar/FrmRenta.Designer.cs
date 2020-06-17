@@ -60,6 +60,8 @@
             this.BtnSave = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TxFiltrar = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.comboCantidadCombustible = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.checkTieneRoturaCristal = new System.Windows.Forms.CheckBox();
@@ -71,8 +73,6 @@
             this.checkGomaTraseraDerecha = new System.Windows.Forms.CheckBox();
             this.checkGomaDelanteraDerecha = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.TxFiltrar = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRenta)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -404,6 +404,25 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Inspeccion de Vehiculo";
             // 
+            // TxFiltrar
+            // 
+            this.TxFiltrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.TxFiltrar.Location = new System.Drawing.Point(463, 216);
+            this.TxFiltrar.Name = "TxFiltrar";
+            this.TxFiltrar.Size = new System.Drawing.Size(200, 20);
+            this.TxFiltrar.TabIndex = 17;
+            this.TxFiltrar.TextChanged += new System.EventHandler(this.TxFiltrar_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(460, 200);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(45, 13);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Detalles";
+            // 
             // comboCantidadCombustible
             // 
             this.comboCantidadCombustible.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -508,23 +527,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // TxFiltrar
-            // 
-            this.TxFiltrar.Location = new System.Drawing.Point(463, 216);
-            this.TxFiltrar.Name = "TxFiltrar";
-            this.TxFiltrar.Size = new System.Drawing.Size(200, 20);
-            this.TxFiltrar.TabIndex = 17;
-            this.TxFiltrar.TextChanged += new System.EventHandler(this.TxFiltrar_TextChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(460, 200);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(45, 13);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "Detalles";
             // 
             // FrmRenta
             // 

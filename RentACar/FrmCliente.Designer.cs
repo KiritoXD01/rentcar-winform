@@ -60,6 +60,7 @@
             this.TxTarjetaCredito = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.TxFiltrar = new System.Windows.Forms.TextBox();
+            this.BtnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridCliente)).BeginInit();
             this.SuspendLayout();
             // 
@@ -359,11 +360,23 @@
             this.TxFiltrar.TabIndex = 47;
             this.TxFiltrar.TextChanged += new System.EventHandler(this.TxFiltrar_TextChanged);
             // 
+            // BtnExport
+            // 
+            this.BtnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnExport.Location = new System.Drawing.Point(13, 255);
+            this.BtnExport.Name = "BtnExport";
+            this.BtnExport.Size = new System.Drawing.Size(121, 23);
+            this.BtnExport.TabIndex = 49;
+            this.BtnExport.Text = "Exportar Todo a PDF";
+            this.BtnExport.UseVisualStyleBackColor = true;
+            this.BtnExport.Click += new System.EventHandler(this.BtnExport_Click);
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 561);
+            this.Controls.Add(this.BtnExport);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.TxFiltrar);
             this.Controls.Add(this.TxTarjetaCredito);
@@ -435,5 +448,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox TxFiltrar;
+        private System.Windows.Forms.Button BtnExport;
     }
 }

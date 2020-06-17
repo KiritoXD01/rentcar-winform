@@ -144,18 +144,18 @@ namespace RentACar
         {
             ShowSubMenu(panelRenta);
         }
-
-        private void FrmHome_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (MessageBox.Show("Desea cerrar el programa?", "Cerrar Programa", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                Application.Exit();
-            }            
-        }
-
+        
         private void button8_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void FrmHome_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (MessageBox.Show("Desea cerrar el sistema?", "Cerrar Sistema", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }
