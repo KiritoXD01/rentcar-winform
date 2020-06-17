@@ -66,6 +66,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.comboCantidadCombustible = new System.Windows.Forms.ComboBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VEHICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRenta)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -295,6 +300,12 @@
             this.gridRenta.AllowUserToDeleteRows = false;
             this.gridRenta.AllowUserToOrderColumns = true;
             this.gridRenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridRenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.VEHICULO,
+            this.CLIENTE,
+            this.CODIGO,
+            this.ESTADO});
             this.gridRenta.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gridRenta.Location = new System.Drawing.Point(0, 444);
             this.gridRenta.Name = "gridRenta";
@@ -311,6 +322,7 @@
             this.BtnSave.TabIndex = 4;
             this.BtnSave.Text = "Guardar";
             this.BtnSave.UseVisualStyleBackColor = true;
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // BtnCancel
             // 
@@ -449,6 +461,46 @@
             this.comboCantidadCombustible.Size = new System.Drawing.Size(181, 21);
             this.comboCantidadCombustible.TabIndex = 10;
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // VEHICULO
+            // 
+            this.VEHICULO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.VEHICULO.DataPropertyName = "VEHICULO";
+            this.VEHICULO.HeaderText = "Vehiculo";
+            this.VEHICULO.Name = "VEHICULO";
+            this.VEHICULO.ReadOnly = true;
+            // 
+            // CLIENTE
+            // 
+            this.CLIENTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CLIENTE.DataPropertyName = "CLIENTE";
+            this.CLIENTE.HeaderText = "Cliente";
+            this.CLIENTE.Name = "CLIENTE";
+            this.CLIENTE.ReadOnly = true;
+            // 
+            // CODIGO
+            // 
+            this.CODIGO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CODIGO.DataPropertyName = "CODIGO";
+            this.CODIGO.HeaderText = "Codigo";
+            this.CODIGO.Name = "CODIGO";
+            this.CODIGO.ReadOnly = true;
+            // 
+            // ESTADO
+            // 
+            this.ESTADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ESTADO.DataPropertyName = "ESTADO";
+            this.ESTADO.HeaderText = "Estado";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.ReadOnly = true;
+            // 
             // FrmRenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -516,5 +568,10 @@
         private System.Windows.Forms.CheckBox checkTieneRayadura;
         private System.Windows.Forms.ComboBox comboCantidadCombustible;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VEHICULO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CLIENTE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
     }
 }

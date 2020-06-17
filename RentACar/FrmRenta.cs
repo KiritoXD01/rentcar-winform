@@ -106,10 +106,23 @@ namespace RentACar
             }
         }
 
+        private void PopulateDataGridView()
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                var items = db.RENTA.Select(
+                    x => new
+                    {
+                        x.ID
+                    })
+                    .ToList();
+            }
+        }
+
         private void TxMontoDia_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Verifica que la tecla presionada es solo numerica
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -138,7 +151,7 @@ namespace RentACar
             TxMontoDia.Text = "";
             TxMontoDia.Enabled = true;
             checkEstado.Checked = false;
-            checkEstado.Enabled = true;
+            checkEstado.Enabled = false;
             BtnSave.Enabled = true;
             BtnCancel.Enabled = true;
             BtnNew.Enabled = false;
@@ -150,7 +163,19 @@ namespace RentACar
             checkGomaDelanteraDerecha.Enabled = true;
             checkGomaDelanteraIzquierda.Checked = false;
             checkGomaDelanteraIzquierda.Enabled = true;
-
+            checkGomaTraseraDerecha.Checked = false;
+            checkGomaTraseraDerecha.Enabled = true;
+            checkGomaTraseraIzquierda.Checked = false;
+            checkGomaTraseraIzquierda.Enabled = true;
+            checkGomaRepuesto.Checked = false;
+            checkGomaRepuesto.Enabled = true;
+            checkTieneRayadura.Checked = false;
+            checkTieneRayadura.Enabled = true;
+            checkTieneGato.Checked = false;
+            checkTieneGato.Enabled = true;
+            checkTieneRoturaCristal.Checked = false;
+            checkTieneRoturaCristal.Enabled = true;
+            comboCantidadCombustible.Enabled = true;
             #endregion
         }
 
@@ -162,6 +187,69 @@ namespace RentACar
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             ClearForm();
+        }
+
+        private bool ValidateData()
+        {
+            if (comboCliente.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un cliente.");
+                comboCliente.Focus();
+                return false;
+            }
+
+            if (comboVehiculo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un vehiculo.");
+                comboVehiculo.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(TxMontoDia.Text))
+            {
+                MessageBox.Show("Debe ingresar el monto or dia de la renta.");
+                TxMontoDia.Focus();
+                return false;
+            }
+
+            if (comboCantidadCombustible.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar la cantidad de combustible disponible.");
+                comboCantidadCombustible.Focus();
+                return false;
+            }
+
+            using (DBEntities db = new DBEntities())
+            {
+                int ID_VEHICULO = Convert.ToInt32(comboVehiculo.SelectedValue);
+                DateTime StartDate = DPFechaRenta.Value;
+                DateTime EndDate = DPFechaDevolucion.Value;
+
+                int VehicleIsRented = db.RENTA
+                    .Where(x =>
+                        x.ID_VEHICULO == ID_VEHICULO &&
+                        (
+                            (StartDate >= x.FECHA_RENTA && StartDate <= x.FECHA_DEVOLUCION)
+                            ||
+                            (EndDate >= x.FECHA_RENTA && EndDate <= x.FECHA_DEVOLUCION)
+                        )
+                    )
+                    .Count();
+
+                if (VehicleIsRented > 0)
+                {
+                    MessageBox.Show("El vehiculo seleccionado ya esta reservado para el rango de fecha ingresado.");
+                    DPFechaRenta.Focus();
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
