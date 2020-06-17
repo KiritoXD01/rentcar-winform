@@ -17,25 +17,24 @@ namespace RentACar
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public INSPECCION()
         {
-            this.INSPECCION_GOMAS = new HashSet<INSPECCION_GOMAS>();
             this.RENTA = new HashSet<RENTA>();
         }
     
         public int ID { get; set; }
         public string CODIGO { get; set; }
-        public Nullable<int> ID_VEHICULO { get; set; }
-        public Nullable<bool> TIENE_RAYADURAS { get; set; }
-        public Nullable<int> ID_CANTIDAD_COMBUSTIBLE { get; set; }
-        public Nullable<bool> TIENE_GOMA { get; set; }
-        public Nullable<bool> TIENE_GATO { get; set; }
-        public Nullable<bool> TIENE_ROTURA_CRISTAL { get; set; }
+        public int ID_VEHICULO { get; set; }
+        public bool TIENE_RAYADURAS { get; set; }
+        public int ID_CANTIDAD_COMBUSTIBLE { get; set; }
+        public bool TIENE_GATO { get; set; }
+        public bool TIENE_ROTURA_CRISTAL { get; set; }
         public System.DateTime FECHA_CREACION { get; set; }
-        public Nullable<int> ID_ESTADO_INSPECCION { get; set; }
+        public bool GOMA_TRASERA_DERECHA { get; set; }
+        public bool GOMA_TRASERA_IZQUIERDA { get; set; }
+        public bool GOMA_DELANTERA_DERECHA { get; set; }
+        public bool GOMA_DELANTERA_IZQUIERDA { get; set; }
+        public bool GOMA_REPUESTO { get; set; }
     
         public virtual CANTIDAD_COMBUSTIBLE CANTIDAD_COMBUSTIBLE { get; set; }
-        public virtual ESTADO_INSPECCION ESTADO_INSPECCION { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSPECCION_GOMAS> INSPECCION_GOMAS { get; set; }
         public virtual VEHICULO VEHICULO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RENTA> RENTA { get; set; }

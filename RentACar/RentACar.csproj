@@ -103,9 +103,6 @@
     <Compile Include="EMPLEADO.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="ESTADO_INSPECCION.cs">
-      <DependentUpon>DBModels.tt</DependentUpon>
-    </Compile>
     <Compile Include="FrmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,9 +164,6 @@
       <DependentUpon>FrmVehiculo.cs</DependentUpon>
     </Compile>
     <Compile Include="INSPECCION.cs">
-      <DependentUpon>DBModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="INSPECCION_GOMAS.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
     <Compile Include="MARCA_VEHICULO.cs">

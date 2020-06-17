@@ -25,6 +25,8 @@ namespace RentACar
         public int CANTIDAD_DIAS { get; set; }
         public decimal MONTO_DIA { get; set; }
         public string DESCRIPCION { get; set; }
+        public bool ESTADO { get; set; }
+        public string CODIGO { get; set; }
     
         public virtual CLIENTE CLIENTE { get; set; }
         public virtual EMPLEADO EMPLEADO { get; set; }

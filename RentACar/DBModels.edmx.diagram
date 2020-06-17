@@ -5,21 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a256f9c9b7804d19855065abfaa64804" Name="Diagram1" ZoomLevel="100">
-        <EntityTypeShape EntityType="rentacarModel.CANTIDAD_COMBUSTIBLE" Width="1.5" PointX="9.625" PointY="10.75" />
-        <EntityTypeShape EntityType="rentacarModel.INSPECCION_GOMAS" Width="1.5" PointX="14.125" PointY="11.5" />
-        <EntityTypeShape EntityType="rentacarModel.CLIENTE" Width="1.5" PointX="11.875" PointY="6.125" />
-        <EntityTypeShape EntityType="rentacarModel.COMBUSTIBLE_VEHICULO" Width="1.5" PointX="7.375" PointY="13.125" />
-        <EntityTypeShape EntityType="rentacarModel.EMPLEADO" Width="1.5" PointX="11.875" PointY="22.5" />
-        <EntityTypeShape EntityType="rentacarModel.ESTADO_INSPECCION" Width="1.5" PointX="9.625" PointY="20" />
-        <EntityTypeShape EntityType="rentacarModel.INSPECCION" Width="1.5" PointX="11.875" PointY="10.875" />
-        <EntityTypeShape EntityType="rentacarModel.MARCA_VEHICULO" Width="1.5" PointX="5.125" PointY="15.875" />
-        <EntityTypeShape EntityType="rentacarModel.MODELO_VEHICULO" Width="1.5" PointX="7.375" PointY="15.75" />
-        <EntityTypeShape EntityType="rentacarModel.RENTA" Width="1.5" PointX="14.125" PointY="15.375" />
-        <EntityTypeShape EntityType="rentacarModel.TANDA" Width="1.5" PointX="9.625" PointY="24.75" />
-        <EntityTypeShape EntityType="rentacarModel.TIPO_CLIENTE" Width="1.5" PointX="9.625" PointY="7" />
-        <EntityTypeShape EntityType="rentacarModel.TIPO_EMPLEADO" Width="1.5" PointX="9.625" PointY="22.375" />
-        <EntityTypeShape EntityType="rentacarModel.TIPO_VEHICULO" Width="1.5" PointX="7.375" PointY="18.625" />
-        <EntityTypeShape EntityType="rentacarModel.VEHICULO" Width="1.5" PointX="9.625" PointY="13.875" />
+        <EntityTypeShape EntityType="rentacarModel.CANTIDAD_COMBUSTIBLE" Width="1.5" PointX="5.25" PointY="8.625" />
+        <EntityTypeShape EntityType="rentacarModel.CLIENTE" Width="1.5" PointX="7.5" PointY="11.625" />
+        <EntityTypeShape EntityType="rentacarModel.COMBUSTIBLE_VEHICULO" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="rentacarModel.EMPLEADO" Width="1.5" PointX="7.5" PointY="16.125" />
+        <EntityTypeShape EntityType="rentacarModel.INSPECCION" Width="1.5" PointX="7.5" PointY="2.375" />
+        <EntityTypeShape EntityType="rentacarModel.MARCA_VEHICULO" Width="1.5" PointX="0.75" PointY="3.5" />
+        <EntityTypeShape EntityType="rentacarModel.MODELO_VEHICULO" Width="1.5" PointX="3" PointY="3.25" />
+        <EntityTypeShape EntityType="rentacarModel.RENTA" Width="1.5" PointX="9.75" PointY="2.25" />
+        <EntityTypeShape EntityType="rentacarModel.TANDA" Width="1.5" PointX="5.25" PointY="15.875" />
+        <EntityTypeShape EntityType="rentacarModel.TIPO_CLIENTE" Width="1.5" PointX="5.25" PointY="12.625" />
+        <EntityTypeShape EntityType="rentacarModel.TIPO_EMPLEADO" Width="1.5" PointX="5.25" PointY="18.5" />
+        <EntityTypeShape EntityType="rentacarModel.TIPO_VEHICULO" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="rentacarModel.VEHICULO" Width="1.5" PointX="5.25" PointY="2.375" />
         <AssociationConnector Association="rentacarModel.FK__INSPECCIO__ID_CA__76969D2E" />
         <AssociationConnector Association="rentacarModel.FK__CLIENTE__ID_TIPO__70DDC3D8" />
         <AssociationConnector Association="rentacarModel.FK__RENTA__ID_CLIENT__7B5B524B" />
@@ -27,15 +25,13 @@
         <AssociationConnector Association="rentacarModel.FK__EMPLEADO__ID_TAN__71D1E811" />
         <AssociationConnector Association="rentacarModel.FK__EMPLEADO__ID_TIP__72C60C4A" />
         <AssociationConnector Association="rentacarModel.FK__RENTA__ID_EMPLEA__797309D9" />
-        <AssociationConnector Association="rentacarModel.FK__INSPECCIO__ID_ES__778AC167" />
-        <AssociationConnector Association="rentacarModel.FK__INSPECCIO__ID_IN__787EE5A0" />
         <AssociationConnector Association="rentacarModel.FK__INSPECCIO__ID_VE__73BA3083" />
         <AssociationConnector Association="rentacarModel.FK__RENTA__ID_INSPEC__7C4F7684" />
         <AssociationConnector Association="rentacarModel.FK__MODELO_VE__ID_MA__6D0D32F4" />
         <AssociationConnector Association="rentacarModel.FK__VEHICULO__ID_MOD__6EF57B66" />
         <AssociationConnector Association="rentacarModel.FK__RENTA__ID_VEHICU__7A672E12" />
         <AssociationConnector Association="rentacarModel.FK__VEHICULO__ID_TIP__6E01572D" />
-        </Diagram>
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
